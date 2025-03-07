@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": [
+        "."
+    ],
+    "java.project.referencedLibraries": [
+        "entregable\\lib\\json-20240303 (2).jar",
+        "entregable\\lib\\sqlite-jdbc-3.46.1.2.jar"
+    ]
+}
