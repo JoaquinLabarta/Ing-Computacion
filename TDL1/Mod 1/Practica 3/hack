@@ -1,0 +1,15 @@
+union fechapro{
+  struct {
+    short int año; //2 bytes
+    unsigned char mes; //1 byte
+    unsigned char dia; //1 byte
+  } fecha;
+  int completo; //4 bytes
+};
+
+f.año = 2020
+f.mes = 01
+f.dia = 10
+
+printf("%d%d%d",f.año,f.mes,f.dia);
+printf("%d",f.completo);
