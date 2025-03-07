@@ -1,0 +1,23 @@
+ORG 1000h
+    tabla1 db 1,2,3,4
+    tabla2 db 20,30,40,60
+    tabla3 db 0,0,0,0
+    fin dw ?
+    
+ORG 2000h
+    mov bx, offset tabla3 ;GUARDO DIR TABLA3
+    mov al, offset tabla2- offset tabla1; GUARDO DIML
+ 
+while: mov ah,0 ;INICIALIZO ACUMULADOR
+      sub bl, al ;VOY A DIR TABLA2
+      mov ah, [bx]; GUARDO VALOR EN ACUMULADOR
+      sub bl, al; VOY A DIR TABLA1
+      add ah, [bx]; GUARDO VALOR EN ACUMULADOR
+      add bl, al; VUELVO A DIR TABLA2
+      add bl, al; VUELVO A DIR TABLA3
+      mov [bx], ah; GUARDO VALOR EN TABLA3
+      inc bx; AVANZO TABLA3
+      cmp bx, offset fin; COMPARO DIR TABLA3 CON DIR FIN TABLA3
+      jnz while
+hlt
+end

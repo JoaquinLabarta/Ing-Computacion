@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="4">
+      <Unit0>
+        <Filename Value="ejercicio1REALIZADO.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="265"/>
+        <CursorPos X="68" Y="280"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="..\clase2\ProgramaVectores.pas"/>
+        <UnitName Value="Arreglos"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="..\clase2\ProgramaRecursion.pas"/>
+        <UnitName Value="Recursion"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="..\clase3\arbolesinrepetidos.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="26" Y="20"/>
+        <UsageCount Value="10"/>
+      </Unit3>
+    </Units>
+    <JumpHistory Count="2" HistoryIndex="1">
+      <Position1>
+        <Filename Value="ejercicio1REALIZADO.pas"/>
+        <Caret Line="259" Column="39" TopLine="248"/>
+      </Position1>
+      <Position2>
+        <Filename Value="ejercicio1REALIZADO.pas"/>
+        <Caret Line="253" Column="28" TopLine="234"/>
+      </Position2>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

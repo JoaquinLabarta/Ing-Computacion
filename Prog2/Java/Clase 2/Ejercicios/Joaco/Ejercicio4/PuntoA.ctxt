@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=PuntoA
+comment1.params=vec\ dimf
+comment1.target=Partido[]\ cargarvector(Partido[],\ int)
+numComments=2

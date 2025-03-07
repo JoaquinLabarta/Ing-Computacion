@@ -1,0 +1,39 @@
+IDF10 equ 10
+EOI equ 20h
+IMR equ  21h
+INT0 equ 24h
+PB equ 31h
+CB equ 33h
+org 3000h
+APAGAR: mov al, 00h
+  out pb, al
+  not dl
+  jmp FIN_RET
+  
+PRENDER: cmp dl, 0
+  jnz APAGAR
+  mov al, 11111111b ;enciendo luces
+  out pb, al
+  not dl
+  
+FIN_RET: mov al, EOI ;le aviso al pic que termine
+  out EOI, al
+  iret
+org 2000h
+  mov bx, 40
+  mov ax, PRENDER
+  mov [bx], ax ;muevo gestor a la posicion ID * 4
+  mov dl,0
+  mov al, 00000000b ;configuro luces como salida
+  out cb, al
+  
+  cli
+  mov al, 11111110b
+  out IMR, al
+  mov al, IDF10
+  out INT0, al
+  sti
+  
+  loop: jmp loop
+end
+

@@ -1,0 +1,71 @@
+ORG 1000H
+NUM DW 00h
+ORG 2000H
+mov bx, OFFSET NUM
+mov al,1
+mov dx,00h
+loop: int 7
+  inc dx
+  mov NUM,dx
+  mov bx, OFFSET NUM
+  cmp dx, 255
+  jnz loop
+INT 0
+END
+--------------------------------------B----------------------------------------
+ORG 1000H
+NUM DW 'A'
+ORG 2000H
+mov bx, OFFSET NUM
+mov al,1
+mov dx,'A'
+mov cl, 26
+loop: int 7
+  inc dx
+  mov NUM,dx
+  mov bx, OFFSET NUM
+  dec cl
+  cmp cl,0
+  jnz loop
+INT 0
+END
+--------------------------------------C----------------------------------------
+ORG 1000H
+NUM DW 30h
+ORG 2000H
+mov bx, OFFSET NUM
+mov al,1
+mov dx,30h
+loop: int 7
+  inc dx
+  mov NUM,dx
+  mov bx, OFFSET NUM
+  cmp dx,3Ah
+  jnz loop
+INT 0
+END
+
+--------------------------------------E----------------------------------------
+ORG 1000H
+NUM DW 'A'
+ORG 2000H
+mov bx, OFFSET NUM
+mov al,1
+mov ah, 52
+mov dx, 'A'
+
+loop: int 7
+  dec ah
+  add dx, 32
+  mov NUM, dx
+  mov bx, OFFSET NUM
+  int 7
+  dec ah
+  sub dx, 32
+  inc dx
+  mov NUM, dx
+  mov bx, OFFSET NUM
+  cmp ah,0
+  jnz loop
+INT 0
+END

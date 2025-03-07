@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="3">
+      <Unit0>
+        <Filename Value="encomiendas.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos X="12" Y="130"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="..\clase3\arbolesinrepetidos.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="121"/>
+        <CursorPos Y="146"/>
+        <UsageCount Value="10"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="..\Clase1\twitter.pas"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="138"/>
+        <CursorPos X="87" Y="116"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit2>
+    </Units>
+    <JumpHistory HistoryIndex="-1"/>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

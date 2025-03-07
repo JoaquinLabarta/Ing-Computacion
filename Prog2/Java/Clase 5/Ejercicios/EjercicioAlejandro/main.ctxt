@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=main
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=ent
+comment2.target=void\ leerEntrenador(entrenador)
+comment3.params=jug
+comment3.target=void\ leerJugador(jugador)
+numComments=4

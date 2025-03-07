@@ -1,0 +1,16 @@
+ORG 1000h
+tabla DB 1,2,3,4 ; 1000,1001,1002,1003
+fin_tabla DB ? ; 1005h
+resultadosuma DB 0
+
+ORG 2000h
+mov BX, OFFSET tabla
+mov CL, OFFSET fin_tabla - OFFSET tabla ; guardo dim logica
+
+loop: mov AL, [BX]
+inc BX ; para buscar prox direccion
+add resultadosuma, AL
+dec CL
+JNZ loop
+hlt
+end

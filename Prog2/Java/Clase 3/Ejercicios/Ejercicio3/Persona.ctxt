@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Persona
+comment0.text=\r\n\ 3-\ A-\ Modifique\ la\ clase\ Persona\ (del\ ejercicio\ 2\ de\ la\ clase\ 2)\ para\ representar\ entrenadores\ de\ un\ club\ de\ f\u00FAtbol.\ \r\n\ Un\ entrenador\ se\ caracteriza\ por\ su\ nombre,\ sueldo\ b\u00E1sico\ y\ la\ cantidad\ de\ campeonatos\ ganados.\r\n\uF0A7\t*\ Defina\ m\u00E9todos\ para\ obtener/modificar\ el\ valor\ de\ cada\ atributo.\r\n\uF0A7\t*\ Defina\ el\ m\u00E9todo\ calcularSueldoACobrar\ que\ calcula\ y\ devuelve\ el\ sueldo\ a\ cobrar\ por\ el\ entrenador.\ \r\n\ \ \ \ \ \ \ \ El\ sueldo\ se\ compone\ del\ sueldo\ b\u00E1sico,\ al\ cual\ se\ le\ adiciona\ un\ plus\ por\ campeonatos\ ganados\ \r\n\ \ \ \ \ \ \ \ (5000$\ si\ ha\ ganado\ entre\ 1\ y\ 4\ campeonatos;\ $30.000\ si\ ha\ ganado\ entre\ 5\ y\ 10\ campeonatos;\ 50.000$\ si\ ha\ ganado\ m\u00E1s\ de\ 10\ campeonatos).\ \r\n\r\n\ \ \ \ B-\ Realizar\ un\ programa\ principal\ que\ instancie\ un\ entrenador,\ carg\u00E1ndole\ datos\ le\u00EDdos\ desde\ teclado.\ \r\n\ \ \ \ \ \ \ Pruebe\ el\ correcto\ funcionamiento\ de\ cada\ m\u00E9todo\ implementado.\r\n
+comment1.params=unNombre\ torneos
+comment1.target=Persona(java.lang.String,\ int)
+comment2.params=
+comment2.target=Persona()
+comment3.params=
+comment3.target=int\ setSueldo()
+comment4.params=
+comment4.target=java.lang.String\ toString()
+numComments=5

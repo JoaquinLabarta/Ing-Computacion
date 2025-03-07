@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=entrenador
+comment0.text=2-A\u2013\ Defina\ un\ constructor\ para\ la\ clase\ Entrenador\ (definida\ en\ la\ Act.\ 3\ -\ Parte\ 1)\ que\ reciba\ los\ datos\ necesarios\ \r\n\ \ \ \ \ \ \ \ \ (nombre,\ sueldo\ b\u00E1sico,\ cantidad\ de\ campeonatos\ ganados).\ Adem\u00E1s\ defina\ un\ constructor\ nulo.\ \r\n\ \ \ B-\ Realice\ un\ programa\ que\ instancie\ un\ entrenador\ mediante\ el\ primer\ constructor.\ \r\n\r\n
+comment1.params=nombre\ torneos
+comment1.target=entrenador(java.lang.String,\ int)
+comment2.params=
+comment2.target=entrenador()
+comment3.params=
+comment3.target=int\ setSueldo()
+comment4.params=
+comment4.target=java.lang.String\ toString()
+numComments=5

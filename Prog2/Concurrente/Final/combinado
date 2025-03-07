@@ -1,0 +1,156 @@
+programa ejcombinado
+procesos
+  proceso maximo(E flores:numero;E ID:numero; ES ID1:numero; ES ID2:numero; ES max1:numero; ES max2:numero) 
+  comenzar
+    si flores > max1
+      max2:=max1
+      ID2:=ID1
+      max1:=flores
+      ID1:=ID
+    sino
+      si flores > max2
+        max2:=flores
+        ID2:=ID
+  fin
+  proceso recorrerAvenida(ES cant:numero)
+  comenzar
+    repetir 99
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+        cant:=cant+1
+      mover
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      cant:=cant+1
+  fin
+  proceso competencia
+  comenzar
+    repetir 99
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+      mover
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+  fin
+areas
+  avenidas: AreaC(97,1,100,100)
+  areaJefe: AreaP(1,1,1,1)
+  areaRob1: AreaP(1,2,1,2)
+  areaRob2: AreaP(1,3,1,3)
+  areaRob3: AreaP(1,4,1,4)
+  areaRob4: AreaP(1,5,1,5)
+  area50: AreaP(50,1,50,100)
+  area60: AreaP(60,1,60,100)
+robots
+  robot jefe
+  variables
+    ID,ID1,ID2,max1,max2,flores,flores1,flores2,flores3,flores4,multicampeon,segundo: numero
+  comenzar 
+    ID1:=0
+    ID2:=0
+    max1:=-1
+    max2:=-1
+    {---Mando ID---}
+    EnviarMensaje(1,r1)
+    EnviarMensaje(2,r2)
+    EnviarMensaje(3,r3)
+    EnviarMensaje(4,r4)
+    {---Mando Pos---}
+    EnviarMensaje(97,r1)
+    EnviarMensaje(98,r2)
+    EnviarMensaje(99,r3)
+    EnviarMensaje(100,r4)
+    {---Recepcion de datos---}
+    repetir 4
+      flores:=0
+      RecibirMensaje(ID,*)
+      si ID=1
+        RecibirMensaje(flores,r1)
+        flores1:=flores
+      sino
+        si ID=2
+          RecibirMensaje(flores,r2)
+          flores2:=flores
+        sino
+          si ID=3
+            RecibirMensaje(flores,r3)
+            flores3:=flores
+          sino
+            RecibirMensaje(flores,r4)
+            flores4:=flores
+      maximo(flores,ID,ID1,ID2,max1,max2)
+    Informar('CantidadTotal',(flores1+flores2+flores3+flores4))
+    Informar('El_Robot_con_mas_flores_es',ID1)
+    Informar('El_Robot_por_detras_es',ID2)
+    {---Multicampeonato---}
+    EnviarMensaje(ID1,r1)
+    EnviarMensaje(ID1,r2)
+    EnviarMensaje(ID1,r3)
+    EnviarMensaje(ID1,r4)
+    EnviarMensaje(ID2,r1)
+    EnviarMensaje(ID2,r2)
+    EnviarMensaje(ID2,r3)
+    EnviarMensaje(ID2,r4)
+    RecibirMensaje(multicampeon,*)
+    RecibirMensaje(segundo,*)
+    Informar('El_multicampeon_es_el_robot',multicampeon)
+    Informar('El_segundo_es_el_robot', segundo)
+  fin  
+  robot ejecutor
+  variables
+    cant,ID,av,caIni,ganador,ganador2: numero
+  comenzar
+    caIni:=PosCa
+    RecibirMensaje(ID,jef)
+    Informar('Soy_el_rob',ID)
+    RecibirMensaje(av,jef)
+    cant:=0
+    Pos(av,1)
+    recorrerAvenida(cant)
+    EnviarMensaje(ID,jef)
+    EnviarMensaje(cant,jef)
+    Pos(1,caIni)
+    RecibirMensaje(ganador,jef)
+    RecibirMensaje(ganador2,jef)
+    si (ganador = ID)
+      Pos(50,1)
+      competencia
+      EnviarMensaje(ID,jef)
+      Pos(1,caIni)
+    sino
+      si (ganador2 = ID)
+        Pos(60,1)
+        competencia
+        EnviarMensaje(ID,jef)
+        Pos(1,caIni)
+  fin
+variables
+  r1,r2,r3,r4:ejecutor
+  jef:jefe
+comenzar
+  {---Areas de recorrido---}
+  AsignarArea(r1, avenidas)
+  AsignarArea(r2, avenidas)
+  AsignarArea(r3, avenidas)
+  AsignarArea(r4, avenidas)
+  {---Areas de inicio---} 
+  AsignarArea(jef, areaJefe)
+  AsignarArea(r1, areaRob1)
+  AsignarArea(r2, areaRob2)
+  AsignarArea(r3, areaRob3)
+  AsignarArea(r4, areaRob4)
+  {---Areas de supercampeon---}
+  AsignarArea(r1, area50)
+  AsignarArea(r2, area50)
+  AsignarArea(r3, area50)
+  AsignarArea(r4, area50)
+  AsignarArea(r1, area60)
+  AsignarArea(r2, area60)  
+  AsignarArea(r3, area60)
+  AsignarArea(r4, area60)
+  Iniciar(jef,1,1)
+  Iniciar(r1,1,2)
+  Iniciar(r2,1,3)
+  Iniciar(r3,1,4)
+  Iniciar(r4,1,5)
+fin

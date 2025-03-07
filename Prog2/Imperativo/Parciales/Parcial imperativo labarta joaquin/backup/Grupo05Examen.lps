@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="Grupo05Examen.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="TPGrupo05"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="423"/>
+        <CursorPos X="38" Y="440"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="2">
+      <Position>
+        <Filename Value="Grupo05Examen.pas"/>
+        <Caret Line="441" Column="5" TopLine="423"/>
+      </Position>
+      <Position>
+        <Filename Value="Grupo05Examen.pas"/>
+        <Caret Line="440" Column="30" TopLine="419"/>
+      </Position>
+      <Position>
+        <Filename Value="Grupo05Examen.pas"/>
+        <Caret Line="439" Column="9" TopLine="430"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

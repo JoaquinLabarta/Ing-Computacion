@@ -1,0 +1,102 @@
+-------------------------A-------------------------
+org 1000h
+PA equ 30h
+PB equ 31h
+CA equ 32h
+CB equ 33h
+org 2000h
+mov al, 11111101b; strobe salida, busy entrada
+out ca,al
+mov al, 00h; todo salida
+out cb,al
+;chequeo si esta libre
+poll: in al, pa
+  and al, 1
+  jnz poll
+;si sali es porq esta libre
+mov al,'A'
+out pb, al
+
+;le aviso que estoy mandando caracter
+in al,pa; traigo estado
+or al, 2
+out pa, al
+
+;mando strobe cero
+in al, pa
+and al, 0fdh
+out pa, al
+
+FIN: hlt
+end
+-------------------------B-------------------------
+org 1000h
+PA equ 30h
+PB equ 31h
+CA equ 32h
+CB equ 33h
+MSJ db "ORGANIZACION Y ARQUITECTURA DE COMPUTADORAS"
+FIN_MSJ db ?
+org 2000h
+mov bx, OFFSET MSJ
+mov al, 11111101b; strobe salida, busy entrada
+out ca,al
+mov al, 00h; todo salida
+out cb,al
+;chequeo si esta libre
+poll: in al, pa
+  and al, 1
+  jnz poll
+  ;si sali es porq esta libre
+  mov al,[bx]
+  out pb, al
+  ;le aviso que estoy mandando caracter
+  in al,pa; traigo estado
+  or al, 2
+  out pa, al
+  
+  ;mando strobe cero
+  in al, pa
+  and al, 0fdh
+  out pa, al
+  
+  inc bx
+  cmp bx, OFFSET FIN_MSJ
+jnz poll
+FIN: hlt
+end
+-------------------------C-------------------------
+org 1000h
+PA equ 30h
+PB equ 31h
+CA equ 32h
+CB equ 33h
+CHAR db ?
+final db 5
+org 2000h
+mov bx, OFFSET CHAR
+mov al, 11111101b; strobe salida, busy entrada
+out ca,al
+mov al, 00h; los datos seran solo salida
+out cb,al
+;chequeo si esta libre
+poll: in al, pa
+  and al, 1
+  jnz poll
+  ;si sali es porq esta libre
+  int 6
+  dec final
+  mov al, [bx] ;mando char
+  out pb, al
+  in al,pa ;traigo estado
+  or al, 2 ;le digo que le mando algo
+  out pa, al
+  
+  ;mando strobe cero
+  in al, pa
+  and al, 0fdh
+  out pa, al
+cmp final, 0
+jnz poll
+FIN: hlt
+end

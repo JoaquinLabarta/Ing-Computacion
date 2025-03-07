@@ -1,0 +1,161 @@
+programa promTemaUno
+procesos
+  proceso juntarPapeles(ES cantPapeles:numero)
+  comenzar
+    mientras HayPapelEnLaEsquina
+      tomarPapel
+      cantPapeles:=cantPapeles+1
+  fin
+areas
+  AreaRobots: AreaC(5,5,60,30)
+  AreaJefe: AreaP(1,1,1,1)
+  AreaInicioL1: AreaP(6,4,6,4)
+  AreaInicioL2: AreaP(8,4,8,4)
+  AreaInicioD1: AreaP(10,4,10,4)
+  AreaInicioD2: AreaP(12,4,12,4) 
+  AreaDeposito: AreaPC(1,50,1,50)
+  AreaDecoracion: AreaC(100,1,100,100)
+robots
+  {---Robot limpiador---}
+  robot limpiador
+  variables
+    ID,quienMueve,cantPapeles,avIni,caIni,avAnt,caAnt,av,ca:numero
+  comenzar
+    avIni:=PosAv
+    caIni:=PosCa
+    RecibirMensaje(ID,RobotJefe)
+    cantPapeles:=0
+    repetir 10
+      RecibirMensaje(quienMueve,RobotJefe)
+      si quienMueve=ID
+        RecibirMensaje(av,RobotJefe)
+        RecibirMensaje(ca,RobotJefe)
+        BloquearEsquina(av,ca)
+        avAnt:=PosAv
+        caAnt:=PosCa
+        Pos(av,ca)
+        LiberarEsquina(avAnt,caAnt)
+        juntarPapeles(cantPapeles)
+    EnviarMensaje(ID,RobotJefe)
+    EnviarMensaje(cantPapeles,RobotJefe)
+    BloquearEsquina(1,50)
+    Pos(1,50)
+    mientras HayPapelEnLaBolsa
+      depositarPapel
+    Pos(avIni,caIni)
+    LiberarEsquina(1,50)
+  fin
+  {---Robot decorador---}
+  robot decorador
+  variables
+    quienMueve,avIni,caIni,ca,cantFlores,total,ID:numero
+  comenzar
+    RecibirMensaje(ID,RobotJefe)
+    avIni:=PosAv
+    caIni:=PosCa
+    total:=0
+    cantFlores:=0
+    RecibirMensaje(quienMueve,RobotJefe)
+    mientras HayPapelEnLaEsquina
+      si quienMueve=ID
+        RecibirMensaje(ca,RobotJefe)
+        BloquearEsquina(1,50)
+        Pos(1,50)
+        tomarPapel
+        BloquearEsquina(100,ca)
+        Pos(100,ca)
+        LiberarEsquina(1,50)
+        depositarPapel
+        si HayFlorEnLaEsquina
+          tomarFlor
+          cantFlores:=cantFlores+1
+          total:=total+2
+        BloquearEsquina(1,50)
+        Pos(1,50)
+        LiberarEsquina(100,ca)
+    Pos(avIni,caIni)
+    EnviarMensaje(ID,RobotJefe)
+    EnviarMensaje(total,RobotJefe)
+  fin
+  {---Robot Jefe---}
+  robot jefe
+  variables
+    av,ca,quienLlego,cantPapeles1,cantPapeles2,total1,total2:numero
+  comenzar
+    {---Asignacion---}
+    EnviarMensaje(1,RobotLimpiador1)
+    EnviarMensaje(2,RobotLimpiador2)
+    EnviarMensaje(3,RobotDecorador1)
+    EnviarMensaje(4,RobotDecorador2)
+    {---Proceso limpiador---}
+    repetir 10
+      EnviarMensaje(1,RobotLimpiador1)
+      EnviarMensaje(2,RobotLimpiador2)
+      Random(av,5,60)
+      Random(ca,5,30)
+      EnviarMensaje(av,RobotLimpiador1)
+      EnviarMensaje(ca,RobotLimpiador1)
+      Random(av,5,60)
+      Random(ca,5,30)
+      EnviarMensaje(av,RobotLimpiador2)
+      EnviarMensaje(ca,RobotLimpiador2)
+    repetir 2
+      RecibirMensaje(quienLlego,*)
+      si quienLlego=1
+        RecibirMensaje(cantPapeles1,RobotLimpiador1)
+      sino
+        RecibirMensaje(cantPapeles2,RobotLimpiador2)
+    si (cantPapeles1<=cantPapeles2)
+      Informar(cantPapeles2)
+    sino
+      Informar(cantPapeles1)
+    {---Decoradores---}
+    EnviarMensaje(3,RobotDecorador1)
+    EnviarMensaje(4,RobotDecorador2)
+    repetir (cantPapeles1+cantPapeles2)
+      Random(ca,1,100)
+      EnviarMensaje(ca,RobotDecorador1)
+      Random(ca,1,100)
+      EnviarMensaje(ca,RobotDecorador2)
+    repetir 2
+      RecibirMensaje(quienLlego,*)
+      si quienLlego=3
+        RecibirMensaje(total1,RobotDecorador1)
+      sino
+        RecibirMensaje(total2,RobotDecorador2)
+    si total1>=total2
+      Informar(RobotDecorador1,total1)
+    sino
+      Informar(RobotDecorador2,total2)
+  fin
+{---Inicio---}
+variables
+  RobotLimpiador1,RobotLimpiador2: limpiador
+  RobotDecorador1,RobotDecorador2: decorador
+  RobotJefe: jefe
+comenzar
+  AsignarArea(RobotLimpiador1,AreaRobots)
+  AsignarArea(RobotLimpiador1,AreaInicioL1)
+  AsignarArea(RobotLimpiador1,AreaDeposito)
+  AsignarArea(RobotLimpiador2,AreaRobots)
+  AsignarArea(RobotLimpiador2,AreaInicioL2)
+  AsignarArea(RobotLimpiador2,AreaDeposito)
+  AsignarArea(RobotDecorador1,AreaRobots)
+  AsignarArea(RobotDecorador1,AreaInicioD1)
+  AsignarArea(RobotDecorador1,AreaDeposito)
+  AsignarArea(RobotDecorador1,AreaDecoracion)
+  AsignarArea(RobotDecorador2,AreaRobots)
+  AsignarArea(RobotDecorador2,AreaInicioD2)
+  AsignarArea(RobotDecorador2,AreaDeposito)
+  AsignarArea(RobotDecorador2,AreaDecoracion)
+  AsignarArea(RobotJefe,AreaJefe)
+  Iniciar(RobotLimpiador1,6,4)
+  Iniciar(RobotLimpiador2,8,4)
+  Iniciar(RobotDecorador1,10,4)
+  Iniciar(RobotDecorador2,12,4)
+  Iniciar(RobotJefe,1,1)
+fin
+
+
+
+

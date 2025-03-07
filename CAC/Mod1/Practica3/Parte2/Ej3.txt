@@ -1,0 +1,53 @@
+IDF10 equ 1
+EOI equ 20h
+IMR equ 21h
+INT0 equ 24h
+PB equ 31h
+CB equ 33h
+CANT equ 3
+
+org 1000h
+MSJ db "PRESIONE F10 PARA COMENZAR"
+MSJ_IN db ?
+
+org 3000h
+IMPRIMIR: pop cx
+  pop bx
+  push cx
+  mov al, CANT
+  int 7
+ret
+INGRESAR: mov dh, 0
+  mov bx, OFFSET MSJ_IN
+  lazo: int 6
+    inc bx
+    inc dh
+    cmp dh, CANT
+    jnz lazo
+    mov bx, OFFSET MSJ_IN
+    push bx
+    call IMPRIMIR
+  not dl
+iret
+
+CONFIG_PIC: mov bx, 4
+  mov ax, INGRESAR
+  mov [bx], ax
+  cli
+  mov al, 11111110b
+  out IMR, al
+  mov al, IDF10
+  out INT0, al
+  sti
+ret 
+
+org 2000h
+mov bx, OFFSET MSJ
+mov al, OFFSET MSJ_IN - OFFSET MSJ
+int 7
+mov dl, 0; uso como checkeo
+call CONFIG_PIC
+loop: cmp dl, 0
+  jz loop
+FIN: hlt
+end

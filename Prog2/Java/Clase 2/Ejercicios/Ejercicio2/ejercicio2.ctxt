@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=ejercicio2
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=vec\ dimf
+comment2.target=int\ contador(Persona[],\ int)
+comment3.params=vec\ dimf
+comment3.target=java.lang.String\ dnimin(Persona[],\ int)
+numComments=4

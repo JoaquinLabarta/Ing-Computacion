@@ -1,0 +1,146 @@
+programa clase3Act1
+procesos
+  proceso Recorrer(ES cantFlores:numero;ES cantPapeles:numero)
+  variables
+    alto:numero
+  comenzar
+    repetir 4
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+        cantFlores:=cantFlores+1
+      mientras HayPapelEnLaEsquina
+        tomarPapel
+        cantPapeles:=cantPapeles+1
+      Random( alto, 1, 5 )
+      repetir alto
+        mover
+      derecha
+      mover
+      mover
+      repetir 3
+        derecha
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      cantFlores:=cantFlores+1
+  fin
+{-----------------------------------------------------------------------------}
+areas 
+  Area1: AreaC(1,1,99,99)
+{-----------------------------------------------------------------------------}
+robots
+  robot robot1
+  variables
+    cantFloresRobot1: numero
+    cantPapelesRobot1: numero
+    avenida1:numero
+    calle1:numero
+  comenzar
+    cantFloresRobot1:=0
+    cantPapelesRobot1:=0
+    Recorrer(cantFloresRobot1,cantPapelesRobot1)
+    avenida1:=PosAv+1
+    calle1:=PosCa
+    EnviarMensaje(avenida1,Robot4)
+    EnviarMensaje(calle1,Robot4)
+    EnviarMensaje(cantFloresRobot1,Robot4)
+    EnviarMensaje(cantPapelesRobot1,Robot4)
+
+  fin
+  {-----------------------------------------------------------------------------}
+  robot robot2
+  variables
+    cantFloresRobot2: numero
+    cantPapelesRobot2: numero
+    aux:numero
+    calle2:numero
+    avenida2:numero
+  comenzar
+    RecibirMensaje(avenida2,Robot4)
+    RecibirMensaje(calle2,Robot4)
+    Pos(avenida2,calle2)
+    cantFloresRobot2:=0
+    cantPapelesRobot2:=0
+    Recorrer(cantFloresRobot2,cantPapelesRobot2)
+    avenida2:=PosAv+1
+    calle2:=PosCa
+    EnviarMensaje(avenida2,Robot4)
+    EnviarMensaje(calle2,Robot4)
+    EnviarMensaje(cantFloresRobot2,Robot4)
+    EnviarMensaje(cantPapelesRobot2,Robot4)
+  fin
+  {-----------------------------------------------------------------------------}   
+  robot robot3
+  variables
+    cantFloresRobot3: numero
+    cantPapelesRobot3: numero
+    aux:numero
+    calle3:numero
+    avenida3:numero
+  comenzar
+    RecibirMensaje(avenida3,Robot4)
+    RecibirMensaje(calle3,Robot4)
+    Pos(avenida3,calle3)
+    cantFloresRobot3:=0
+    cantPapelesRobot3:=0
+    Recorrer(cantFloresRobot3,cantPapelesRobot3)
+    EnviarMensaje(cantFloresRobot3,Robot4)
+    EnviarMensaje(cantPapelesRobot3,Robot4)
+  fin
+  {-----------------------------------------------------------------------------}
+  robot robot4
+  variables
+    quienEs:numero
+    cantFlores1, cantFlores2:numero
+    dif:numero
+    avenida1:numero
+    calle1:numero
+    avenida2:numero
+    calle2:numero
+    cantFloresRobot1: numero
+    cantPapelesRobot1: numero
+    cantFloresRobot2: numero
+    cantPapelesRobot2: numero
+    cantFloresRobot3: numero
+    cantPapelesRobot3: numero
+  comenzar
+    RecibirMensaje(avenida1,Robot1)
+    RecibirMensaje(calle1,Robot1)
+    RecibirMensaje(cantFloresRobot1,Robot1)
+    RecibirMensaje(cantPapelesRobot1,Robot1)   
+    EnviarMensaje(avenida1,Robot2)
+    EnviarMensaje(calle1,Robot2)
+ 
+    RecibirMensaje(avenida2,Robot2)
+    RecibirMensaje(calle2,Robot2)
+    RecibirMensaje(cantFloresRobot2,Robot2)
+    RecibirMensaje(cantPapelesRobot2,Robot2)
+    EnviarMensaje(avenida2,Robot3)
+    EnviarMensaje(calle2,Robot3)
+    
+    RecibirMensaje(cantFloresRobot3,Robot3)
+    RecibirMensaje(cantPapelesRobot3,Robot3)
+    Informar(la_cantidad_de_flores_del_robot1_es,cantFloresRobot1)
+    Informar(la_cantidad_de_papeles_del_robot1_es,cantPapelesRobot1)
+    Informar(la_cantidad_de_flores_del_robot2_es,cantFloresRobot2)
+    Informar(la_cantidad_de_papeles_del_robot2_es,cantPapelesRobot2)
+    Informar(la_cantidad_de_flores_del_robot3_es,cantFloresRobot3)
+    Informar(la_cantidad_de_papeles_del_robot3_es,cantPapelesRobot3)
+  fin
+{-----------------------------------------------------------------------------}
+variables
+  Robot1: robot1
+  Robot2: robot2
+  Robot3: robot3
+  Robot4: robot4
+{-----------------------------------------------------------------------------}
+comenzar
+  AsignarArea(Robot1,Area1)
+  AsignarArea(Robot2,Area1)
+  AsignarArea(Robot3,Area1)
+  AsignarArea(Robot4,Area1)
+  Iniciar(Robot1,2,1)
+  Iniciar(Robot2,7,1)
+  Iniciar(Robot3,12,1)
+  Iniciar(Robot4,1,1)
+fin
+

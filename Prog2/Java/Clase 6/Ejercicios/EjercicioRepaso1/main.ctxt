@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=main
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=vec\ DIML\ DIMF
+comment2.target=void\ cargarEjemplar(Ejemplar[],\ int,\ int)
+comment3.params=vec\ i\ DIML
+comment3.target=void\ leerLibro(Ejemplar[],\ int,\ int)
+comment4.params=vec\ i\ DIML
+comment4.target=void\ leerRevista(Ejemplar[],\ int,\ int)
+comment5.params=
+comment5.target=Autor\ leerAutor()
+numComments=6

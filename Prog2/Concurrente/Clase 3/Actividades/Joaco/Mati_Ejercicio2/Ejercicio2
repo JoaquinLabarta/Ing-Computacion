@@ -1,0 +1,77 @@
+programa clase3Act1
+procesos
+  proceso Recorrer(ES cantFlores:numero)
+  comenzar
+    repetir 9
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+        cantFlores:=cantFlores+1
+      mover
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      cantFlores:=cantFlores+1
+  fin
+{-----------------------------------------------------------------------------}
+areas 
+  Area1: AreaP(1,1,1,10)
+  Area2: AreaP(2,11,2,20)
+  Area3: AreaP(2,1,2,1)
+{-----------------------------------------------------------------------------}
+robots
+  robot robot1
+  variables
+    cantFloresRobot1: numero
+    aux:numero
+  comenzar
+    cantFloresRobot1:=0
+    Recorrer(cantFloresRobot1)
+    EnviarMensaje(1,Robot3)
+    EnviarMensaje(cantFloresRobot1,Robot3)
+  fin
+  
+  robot robot3
+  variables
+    quienEs:numero
+    cantFlores1, cantFlores2:numero
+    dif:numero
+  comenzar
+    repetir 2
+      RecibirMensaje(quienEs,*)
+      si (quienEs = 1)
+        RecibirMensaje(cantFlores1,Robot1)
+      sino
+        RecibirMensaje(cantFlores2,Robot2)
+    dif:=cantFlores1 - cantFlores2
+    si (dif<0)
+      dif:=-dif
+      Informar('gano1_y_la_diferencia_es',dif)
+    si(dif>0)
+      Informar('gano2_y_la_diferencia_es',dif)
+    sino 
+      Informar(son_iguales)
+  fin
+  
+  robot robot2
+  variables
+    cantFloresRobot2: numero
+    aux:numero
+  comenzar
+    cantFloresRobot2:=0
+    Recorrer(cantFloresRobot2)
+    EnviarMensaje(2,Robot3)
+    EnviarMensaje(cantFloresRobot2,Robot3)
+  fin
+{-----------------------------------------------------------------------------}
+variables
+  Robot1: robot1
+  Robot2: robot2
+  Robot3: robot3
+{-----------------------------------------------------------------------------}
+comenzar
+  AsignarArea(Robot1,Area1)
+  AsignarArea(Robot2,Area2)
+  AsignarArea(Robot3,Area3)
+  Iniciar(Robot1,1,1)
+  Iniciar(Robot2,2,11)
+  Iniciar(Robot3,2,1)
+fin

@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=main
+comment0.text=2-A\u2013\ Defina\ un\ constructor\ para\ la\ clase\ Entrenador\ (definida\ en\ la\ Act.\ 3\ -\ Parte\ 1)\ que\ reciba\ los\ datos\ necesarios\ \r\n\ \ \ \ \ \ \ \ \ (nombre,\ sueldo\ b\u00E1sico,\ cantidad\ de\ campeonatos\ ganados).\ Adem\u00E1s\ defina\ un\ constructor\ nulo.\ \r\n\ \ \ B-\ Realice\ un\ programa\ que\ instancie\ un\ entrenador\ mediante\ el\ primer\ constructor.\ \r\n\r\n\r\n
+comment1.params=
+comment1.target=main()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ main\r\n
+comment2.params=y
+comment2.target=int\ sampleMethod(int)
+comment2.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\r\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\r\n
+numComments=3

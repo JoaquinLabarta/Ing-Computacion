@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="2">
+      <Unit0>
+        <Filename Value="ProgramaVectorOrdenado.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="VectorOrdenado"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="33"/>
+        <CursorPos X="14" Y="69"/>
+        <UsageCount Value="21"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="ProgramaVectorOrdenado7.pas"/>
+        <UnitName Value="VectorOrdenado"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="69"/>
+        <CursorPos X="24" Y="101"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit1>
+    </Units>
+    <JumpHistory HistoryIndex="-1"/>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

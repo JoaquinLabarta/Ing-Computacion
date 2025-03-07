@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="2">
+      <Unit0>
+        <Filename Value="project1.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Parcial3"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="138"/>
+        <CursorPos X="28" Y="171"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="..\..\..\..\..\Documentos\GitHub\progra-2-\ParcialYresolucion\Parcial 2 joaco\biblioteca.lpr"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="56"/>
+        <CursorPos Y="73"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit1>
+    </Units>
+    <JumpHistory Count="17" HistoryIndex="16">
+      <Position1>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="45" Column="14" TopLine="23"/>
+      </Position1>
+      <Position2>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="50" Column="21" TopLine="31"/>
+      </Position2>
+      <Position3>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="60" Column="42" TopLine="42"/>
+      </Position3>
+      <Position4>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="119" Column="60" TopLine="83"/>
+      </Position4>
+      <Position5>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="74" Column="10" TopLine="56"/>
+      </Position5>
+      <Position6>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="92" Column="18" TopLine="82"/>
+      </Position6>
+      <Position7>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="101" Column="26" TopLine="80"/>
+      </Position7>
+      <Position8>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="114" Column="22" TopLine="89"/>
+      </Position8>
+      <Position9>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="119" Column="55" TopLine="89"/>
+      </Position9>
+      <Position10>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="101" Column="20" TopLine="88"/>
+      </Position10>
+      <Position11>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="132" Column="7" TopLine="95"/>
+      </Position11>
+      <Position12>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="113" Column="14" TopLine="91"/>
+      </Position12>
+      <Position13>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="121" Column="16" TopLine="91"/>
+      </Position13>
+      <Position14>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="115" Column="8" TopLine="98"/>
+      </Position14>
+      <Position15>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="121" Column="6" TopLine="89"/>
+      </Position15>
+      <Position16>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="119" Column="13" TopLine="101"/>
+      </Position16>
+      <Position17>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="133" Column="5" TopLine="106"/>
+      </Position17>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

@@ -1,0 +1,23 @@
+DATA equ 40h
+STATE equ 41h
+org 1000h
+MSJ db "INGENIERIA E INFORMATICA"
+FIN_MSJ db ?
+org 2000h
+mov bx, OFFSET MSJ
+;configuro para polling
+in al, STATE
+and al, 01111111b
+out STATE, al
+;chequeo si no esta ocupada
+poll: in al, STATE
+  and al, 1
+  jnz poll
+  ;salgo si no esta ocupada
+  mov al,[bx]
+  inc bx
+  out DATA, al
+  cmp bx, OFFSET FIN_MSJ
+  jnz poll
+int 0
+end

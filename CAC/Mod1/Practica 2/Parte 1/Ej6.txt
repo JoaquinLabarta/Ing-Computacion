@@ -1,0 +1,34 @@
+;Lectura de dígitos con verificación Escribir un programa que lea un vector de
+;20 números de un solo dígito, y los almacene en un vector. 
+;Luego, se calcula el máximo de los números, y se imprime en pantalla. 
+;Los números deben almacenarse como valores entre 0 y 9, y no como los 
+;códigos ASCII de los caracteres que les  corresponde. 
+;Para ello, implementar las siguientes subrutinas:
+;es_digito: recibe un código ASCII y devuelve 1 si el mismo pertenece a un 
+;dígito (‘0’ al ‘9) y 0 de lo contrario
+;leer_digito: lee caracteres con int 6 hasta que se ingresa un carácter dígito.
+;Antes de leer por primera vez, debe mostrarse el mensaje “Ingresar un dígito 
+;del 0 al 9”. Cada vez que se ingresa un carácter no dígito, debe mostrarse
+;el mensaje “Carácter inválido: solo dígitos del 0 al 9”. Cuando se ingresa 
+;finalmente un carácter dígito, debe devolverse por registro.
+;leer_vector: recibe la dirección de comienzo de un vector y un número N, lee 
+;N números de un dígito y los guarda en el vector.
+;max_num: recibe dos números en los registros DL y DH, y devuelve el mayor en 
+;el registro DL.
+;max_vector: recibe la dirección de comienzo de un vector y la cantidad de 
+;elementos, y devuelve el valor máximo del mismo.
+
+org 1000h
+DIMF DB 20
+ERR DB "Carácter inválido: solo dígitos del 0 al 9"
+MSJ DB "Ingrese un digito del 0 al 9"
+MAX DB 0
+DIGITOS DB 30H ; inicia en cero
+VECTOR DB ?
+org 3000h
+leer_digito: 
+
+org 2000h
+
+FIN: hlt
+end

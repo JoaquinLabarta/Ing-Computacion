@@ -1,0 +1,56 @@
+SEGUNDOS equ 12
+TIMER equ 1
+CONT equ 10h
+COMP equ 11h
+EOI equ 20h
+IMR equ 21h
+INT1 equ 25h
+PIO equ 30h
+
+org 3000h
+LUCES12: pop cx
+  pop ax ;traigo estado llaves
+  push cx ;devuelvo ret
+  and al, 10000000b
+  jz FIN
+  mov al, 0
+  out cont, al
+  mov al, 0ffh
+  out PIO+1, al
+  ret 
+APAGAR:
+  mov al, 00h
+  out PIO+1, al
+ ;termine interrupcion
+ mov al, EOI
+ out EOI, al
+ hlt
+iret
+
+org 2000h
+;configuro etiquetas
+mov bx, 4
+mov ax, APAGAR
+mov [bx], ax
+;configuracion pic
+cli
+  mov al, 11111101b
+  out IMR, al
+  mov al, TIMER
+  out INT1, al
+  mov al, segundos
+  out comp, al
+sti
+;configuro puertos del pio
+mov al, 0ffh ;entrada para llaves
+out PIO+2, al
+not al ;salida para luces
+out PIO+3,al
+in al, PIO ;traigo estado de llaves
+mov ah, 00h
+push ax
+call LUCES12
+;queda esperando
+loop: jmp loop 
+FIN: hlt
+end

@@ -1,0 +1,93 @@
+-------------------------A-------------------------
+org 1000h
+clave db 11000011b
+CB equ 33h
+PB equ 31h
+org 2000h
+mov al, 00h
+out CB, al
+mov al, clave
+out PB, al
+FIN: hlt
+end
+-------------------------B-------------------------
+org 1000h
+clave db 10000000b
+CA equ 32h
+PA equ 30h
+ok db "Llave prendida"
+no db "Llave apagada"
+
+org 2000h
+mov al, 0ffh ;confituro llaves como salida
+out CA, al
+in al, PA ;recibo datos
+and al,clave; me quedo con el mas significativo
+cmp al, clave
+jnz apagada
+mov bx, OFFSET ok
+mov al, 14
+int 7
+jmp fin
+apagada: mov bx, OFFSET NO
+mov al, 13
+int 7
+FIN: hlt
+end
+-------------------------C-------------------------
+org 1000h
+PA equ 30h
+PB equ 31h
+CA equ 32h
+CB equ 33h
+org 2000h
+mov al, 00h; configuro luces como salida
+out cb, al
+mov al, 0ffh; configuro llaves como entrada
+out ca, al
+loop: in al, pa; traigo data de estado llaves
+out pb, al; manejo luces con llaves
+jmp loop
+FIN: hlt
+end
+-------------------------D-------------------------
+org 1000h
+PA equ 30h
+PB equ 31h
+CA equ 32h
+CB equ 33h
+org 2000h
+mov dl, 00000001b
+mov al,00h
+out cb, al
+loop: mov al, dl
+out pb, al
+inc dl
+cmp dl, 11111111b
+jnz loop
+FIN: hlt
+end
+-------------------------E-------------------------
+org 1000h
+PA equ 30h
+PB equ 31h
+CA equ 32h
+CB equ 33h
+org 2000h
+;voy a encender
+mov al, 00h
+out cb, al
+reset1: mov dl,01h
+loop: mov al, dl
+  out pb, al
+  add dl, dl
+  jc reset2
+  jnz loop
+reset2: mov dl, 40h
+loop2: mov al,dl
+  out pb,al
+  ;rotarderecha
+  jc reset1
+  jnz loop2
+FIN: hlt
+end

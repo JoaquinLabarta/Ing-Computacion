@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="3">
+      <Unit0>
+        <Filename Value="EjercicioA.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="productos"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="29"/>
+        <CursorPos X="11" Y="66"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="..\..\..\..\..\AppData\Local\Temp\Temp2_twitter.zip\twitter.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="125" Y="17"/>
+        <UsageCount Value="10"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="..\..\..\Programacion 2\clase 1\iteracion.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3"/>
+        <CursorPos X="51"/>
+        <UsageCount Value="10"/>
+      </Unit2>
+    </Units>
+    <JumpHistory Count="6" HistoryIndex="5">
+      <Position1>
+        <Filename Value="EjercicioA.lpr"/>
+        <Caret Line="3" Column="8"/>
+      </Position1>
+      <Position2>
+        <Filename Value="EjercicioA.lpr"/>
+        <Caret Line="16" Column="13"/>
+      </Position2>
+      <Position3>
+        <Filename Value="EjercicioA.lpr"/>
+        <Caret Line="92" Column="5" TopLine="70"/>
+      </Position3>
+      <Position4>
+        <Filename Value="EjercicioA.lpr"/>
+        <Caret Line="115" Column="9" TopLine="80"/>
+      </Position4>
+      <Position5>
+        <Filename Value="EjercicioA.lpr"/>
+        <Caret Line="126" Column="6" TopLine="95"/>
+      </Position5>
+      <Position6>
+        <Filename Value="EjercicioA.lpr"/>
+        <Caret Line="49" Column="6" TopLine="27"/>
+      </Position6>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

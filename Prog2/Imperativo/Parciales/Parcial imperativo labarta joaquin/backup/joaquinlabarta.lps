@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="254"/>
+        <CursorPos X="18" Y="273"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="Grupo05Examen.pas"/>
+        <UnitName Value="TPGrupo05"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="591"/>
+        <CursorPos X="5" Y="440"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\Documents\Ingenieria en Computacion\2do Año\progra 2\Imperativo\clase6\Ejercicio futbolistas\Ejercicio1.pas"/>
+        <UnitName Value="ejercicio1"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="178"/>
+        <UsageCount Value="10"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="24">
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="27" Column="14" TopLine="11"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="4" Column="16"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="88" Column="7" TopLine="84"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="103" Column="22" TopLine="92"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="104" Column="8" TopLine="88"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="112" Column="10" TopLine="93"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="136" Column="24" TopLine="126"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="147" Column="51" TopLine="132"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="138" Column="24" TopLine="132"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="153" Column="22" TopLine="142"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="154" Column="11" TopLine="142"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="155" Column="24" TopLine="134"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="137" Column="11" TopLine="130"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="173" Column="18" TopLine="162"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="163" Column="15" TopLine="159"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="17" Column="17"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="152" Column="34" TopLine="183"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="196" Column="5" TopLine="185"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="197" Column="15" TopLine="186"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="198" Column="5" TopLine="187"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="216" Column="16" TopLine="205"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="196" Column="22" TopLine="182"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="193" Column="28" TopLine="185"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="197" Column="11" TopLine="187"/>
+      </Position>
+      <Position>
+        <Filename Value="joaquinlabarta.lpr"/>
+        <Caret Line="198" Column="19" TopLine="193"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

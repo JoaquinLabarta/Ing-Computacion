@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="1">
+      <Unit0>
+        <Filename Value="ProgramaRecursion.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Recursion"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="3"/>
+        <CursorPos X="16" Y="18"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+    </Units>
+    <JumpHistory Count="1">
+      <Position1>
+        <Filename Value="ProgramaRecursion.pas"/>
+        <Caret Line="20" Column="10" TopLine="3"/>
+      </Position1>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

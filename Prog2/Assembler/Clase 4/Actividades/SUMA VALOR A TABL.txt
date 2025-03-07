@@ -1,0 +1,41 @@
+ORG 1000H
+TABLA DB 	1,4,5,3,10,7,14,78,23,18
+FIN_TABLA DB ?
+VALOR	DB 	3
+
+ORG 3000H
+
+PROC: PUSH AX
+  PUSH BX
+  PUSH DX
+  MOV BX, SP
+  ADD BX, 4; me muevo hasta dir donde está el valor 3
+  MOV BX, [BX]; guardo direccion donde está valor 3
+  MOV DL, [BX]; guardo 03 en DL
+  CMP DL, 0
+  JZ FIN
+  MOV BX, SP
+  ADD BX, 2
+  MOV BX, [BX]; guardo direccion tabla en BX
+  
+  ;SUMO
+  SUMAR: ADD [BX], DL
+  INC BX; paso a la siguiente posicion
+  DEC DH; decremento cant operaciones
+  JNZ SUMAR
+  POP DX
+  POP BX
+  POP AX
+  RET
+
+ORG 2000H
+  MOV AX, OFFSET VALOR; guardo dir valor a sumar
+  MOV BX, OFFSET TABLA; guardo dir tabla
+  MOV DH, OFFSET FIN_TABLA - OFFSET TABLA; guardo diml tabla
+  PUSH AX; mando dir valor a pila
+  PUSH BX; mando dir tabla a pila
+  CALL PROC
+  POP AX
+  POP BX
+FIN: HLT
+END

@@ -1,0 +1,4 @@
+program parcialdolo;
+begin
+
+end.

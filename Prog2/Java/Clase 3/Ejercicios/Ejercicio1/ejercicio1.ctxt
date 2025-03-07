@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=ejercicio1
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=tri
+comment2.target=double\ calcularPerimetro(Triangulo)
+comment3.params=tri
+comment3.target=double\ calcularArea(Triangulo)
+numComments=4

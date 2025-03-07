@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=entrenador
+comment1.params=torneos\ sueldoent
+comment1.target=entrenador(int,\ double)
+comment2.params=
+comment2.target=entrenador()
+comment3.params=torneos
+comment3.target=void\ setTorneos(int)
+comment4.params=sueldoent
+comment4.target=void\ setSueldo(double)
+comment5.params=
+comment5.target=int\ getTorneos()
+comment6.params=
+comment6.target=double\ calcularSueldoACobrar()
+numComments=7

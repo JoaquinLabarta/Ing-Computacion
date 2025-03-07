@@ -1,0 +1,82 @@
+programa promocionTemaDos
+areas
+  {CalleInicio: AreaC(1,70,97,63)}
+  {RecorridoFinal: AreaC(1,2,100,100)}
+  AreaJefe: AreaP(1,1,1,1)
+  AreaRobot1: AreaP(2,1,2,1)
+  AreaRobot2: AreaP(3,1,3,1)
+  AreaRobot3: AreaP(4,1,4,1)
+robots
+  robot robotR
+  variables
+    ID,avIni,avFuente,caFuente,av,ca,cantFlores,muevo,pasos,cantElementos:numero
+    exito:boolean
+  comenzar
+    cantFlores:=0
+    exito:=F
+    RecibirMensaje(ID,jefe)
+    RecibirMensaje(avFuente,jefe)
+    RecibirMensaje(caFuente,jefe)
+    RecibirMensaje(avIni,jefe)
+    derecha
+    Pos(avIni,70)
+    repetir 7
+      av:=PosAv+1
+      BloquearEsquina(avFuente,caFuente)
+      Pos(avFuente,caFuente)
+      tomarFlor
+      Pos(av,70)
+      LiberarEsquina(avFuente,caFuente)
+      si HayFlorEnLaBolsa
+        depositarFlor
+        cantFlores:=cantFlores+1
+    derecha
+    repetir 3
+      ca:=PosCa+1
+      BloquearEsquina(avFuente,caFuente)
+      Pos(avFuente,caFuente)
+      tomarFlor
+      Pos(av,ca)
+      LiberarEsquina(avFuente,caFuente)
+      si HayFlorEnLaBolsa
+        depositarFlor
+        cantFlores:=cantFlores+1
+    si cantFlores=10
+      exito:=V
+    EnviarMensaje(ID,jefe)
+    EnviarMensaje(exito,jefe)
+    RecibirMensaje(muevo,jefe)
+    si muevo=ID
+      Recibir(pasos,jefe)
+      Pos(1,avIni)
+      repetir pasos
+        mientras (HayPapelEnLaEsquina)
+          tomarPapel
+          cantElementos:=cantElementos+1
+        mientras (HayFlorEnLaEsquina)
+          cantElementos:=cantElementos+1
+  fin
+  robot jefe
+  variables
+  comenzar
+  fin
+variables
+  r1,r2,r3:robotR
+  jefe:jefe
+comenzar
+  AsignarArea(r1,CalleInicio)
+  AsignarArea(r2,CalleInicio)
+  AsignarArea(r3,CalleInicio)
+  AsignarArea(r1,RecorridoFinal)
+  AsignarArea(r2,RecorridoFinal)
+  AsignarArea(r3,RecorridoFinal)
+  AsignarArea(r1,AreaRobot1)
+  AsignarArea(r2,AreaRobot2)
+  AsignarArea(r3,AreaRobot3)
+  AsignarArea(jefe,AreaJefe)
+  Iniciar(r1,2,1)
+  Iniciar(r2,3,1)
+  Iniciar(r3,4,1)
+fin
+
+

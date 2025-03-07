@@ -1,0 +1,122 @@
+programa clase2Act4
+{-----------------------------------------------------------------------------}
+areas 
+  Area1: AreaP(7,4,7,4)
+  Area2: AreaP(9,4,9,4)
+  Area3: AreaP(11,4,11,4)
+  Area4: AreaP(13,4,13,4)
+  Area5: AreaP(1,1,1,1)
+  Area6: AreaPC(5,5,50,30)
+{-----------------------------------------------------------------------------}
+robots
+  robot robot1
+  variables
+    ID,avIni,caIni,av2,ca2,cant,quienMueve: numero
+    mov:numero
+  comenzar
+    {-----Asignacion----}
+    RecibirMensaje(ID, Jefe)
+    Informar(ID)
+    avIni:=PosAv
+    caIni:=PosCa
+    {-------Turnos------}
+    RecibirMensaje(quienMueve,Jefe)
+    mientras (quienMueve>0)
+      cant:=0
+      Informar('MueveRobot',quienMueve)
+      si quienMueve=ID
+        Random(av2,5,50)
+        Random(ca2,5,30)
+        Informar(av2,ca2)
+        Pos(av2,ca2)
+        mientras HayFlorEnLaEsquina
+          tomarFlor
+          cant:=cant+1
+        mientras HayPapelEnLaEsquina
+          tomarPapel
+          cant:=cant+1
+        Pos(avIni,caIni) 
+        EnviarMensaje(cant,Jefe) 
+        RecibirMensaje(quienMueve,Jefe)
+  fin
+{----------Jefe----------}
+  robot robot2
+  variables
+    rob,cantUno,cantDos,cantTres,cantCuatro,cant,IDmax,max: numero
+  comenzar
+    cantUno:=0
+    cantDos:=0
+    cantTres:=0
+    cantCuatro:=0
+    {----------Asignacion----------}
+    EnviarMensaje(1,Robot1)
+    EnviarMensaje(2,Robot2)
+    EnviarMensaje(3,Robot3)
+    EnviarMensaje(4,Robot4)
+    {-------------Turnos--------------}
+    repetir 20
+      Random(rob, 1, 4)
+      Informar('Le_toca_al_rob',rob)
+      {-----Mensajes para robots-----}
+      si rob=1
+        EnviarMensaje(rob,Robot1)
+        RecibirMensaje(cant,Robot1)
+        cantUno:=cantUno+cant
+      sino
+        si rob=2
+          EnviarMensaje(rob,Robot2)
+          RecibirMensaje(cant,Robot2)
+          cantDos:=cantDos+cant
+        sino
+          si rob=3
+            EnviarMensaje(rob,Robot3)
+            RecibirMensaje(cant,Robot3)
+            cantTres:=cantTres+cant
+          sino
+            EnviarMensaje(rob,Robot4)
+            RecibirMensaje(cant,Robot4)
+            cantCuatro:=cantCuatro+cant
+    EnviarMensaje(0,Robot1)
+    EnviarMensaje(0,Robot2)
+    EnviarMensaje(0,Robot3)
+    EnviarMensaje(0,Robot4)
+    cantUno:=max
+    IDmax:=1
+    si cantDos>=max
+      max:=cantDos
+      IDmax:=2
+    si cantTres>=max
+      max:=cantTres
+      IDmax:=3
+    si cantCuatro>=max
+      max:=cantCuatro
+      IDmax:=4
+    Informar('GanoRobot',IDmax)
+    Informar('Cantidad',max)
+  fin
+{-----------------------------------------------------------------------------}
+variables
+  Robot1: robot1
+  Robot2: robot1
+  Robot3: robot1
+  Robot4: robot1
+  Jefe: robot2
+{-----------------------------------------------------------------------------}
+comenzar
+  AsignarArea(Robot1,Area1)
+  AsignarArea(Robot2,Area2)
+  AsignarArea(Robot3,Area3)
+  AsignarArea(Robot4,Area4)
+  AsignarArea(Jefe,Area5)
+  AsignarArea(Robot1,Area6)
+  AsignarArea(Robot2,Area6)
+  AsignarArea(Robot3,Area6)
+  AsignarArea(Robot4,Area6)
+  Iniciar(Robot1,7,4)
+  Iniciar(Robot2,9,4)
+  Iniciar(Robot3,11,4)
+  Iniciar(Robot4,13,4)
+  Iniciar(Jefe,1,1)
+fin
+
+

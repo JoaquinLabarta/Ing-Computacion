@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Micros
+comment1.params=patente\ horario\ destino
+comment1.target=Micros(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.params=
+comment2.target=Micros()
+comment3.params=patente
+comment3.target=void\ setPatente(java.lang.String)
+comment4.params=horario
+comment4.target=void\ setHorario(java.lang.String)
+comment5.params=destino
+comment5.target=void\ setDestino(java.lang.String)
+comment6.params=
+comment6.target=java.lang.String\ getPatente()
+comment7.params=
+comment7.target=java.lang.String\ getHorario()
+comment8.params=
+comment8.target=java.lang.String\ getDestino()
+numComments=9

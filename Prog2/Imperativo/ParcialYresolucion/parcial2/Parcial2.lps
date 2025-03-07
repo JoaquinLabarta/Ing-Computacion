@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="2">
+      <Unit0>
+        <Filename Value="Parcial2.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="170"/>
+        <CursorPos X="23" Y="183"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="..\..\Clase1\twitter.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="199"/>
+        <CursorPos X="22" Y="227"/>
+        <UsageCount Value="10"/>
+      </Unit1>
+    </Units>
+    <JumpHistory Count="10" HistoryIndex="9">
+      <Position1>
+        <Filename Value="Parcial2.lpr"/>
+        <Caret Line="160" Column="31" TopLine="123"/>
+      </Position1>
+      <Position2>
+        <Filename Value="Parcial2.lpr"/>
+        <Caret Line="143" Column="3" TopLine="122"/>
+      </Position2>
+      <Position3>
+        <Filename Value="Parcial2.lpr"/>
+        <Caret Line="151" Column="29" TopLine="137"/>
+      </Position3>
+      <Position4>
+        <Filename Value="Parcial2.lpr"/>
+        <Caret Line="176" Column="34" TopLine="144"/>
+      </Position4>
+      <Position5>
+        <Filename Value="Parcial2.lpr"/>
+        <Caret Line="208" Column="27" TopLine="188"/>
+      </Position5>
+      <Position6>
+        <Filename Value="Parcial2.lpr"/>
+        <Caret Line="190" Column="5" TopLine="190"/>
+      </Position6>
+      <Position7>
+        <Filename Value="Parcial2.lpr"/>
+        <Caret Line="219" Column="24" TopLine="207"/>
+      </Position7>
+      <Position8>
+        <Filename Value="Parcial2.lpr"/>
+        <Caret Line="213" Column="48" TopLine="194"/>
+      </Position8>
+      <Position9>
+        <Filename Value="Parcial2.lpr"/>
+        <Caret Line="214" Column="6" TopLine="196"/>
+      </Position9>
+      <Position10>
+        <Filename Value="Parcial2.lpr"/>
+        <Caret Line="221" Column="44" TopLine="199"/>
+      </Position10>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

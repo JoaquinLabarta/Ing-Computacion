@@ -1,0 +1,117 @@
+---------------------------A-----------------------------
+org 1000h
+CADENA db "thomy"
+ db 0
+
+org 3000h
+longitud: pop dx; vuelta
+  pop bx
+  mov ax,0; contador
+loop:  cmp BYTE PTR [bx],00h; 00h
+  JZ retorno
+  inc ax
+  inc bx
+  JMP loop
+  
+retorno:  push dx
+  ret
+org 2000h
+  mov ax, OFFSET CADENA
+  push ax
+  call longitud
+  hlt
+end
+---------------------------B-----------------------------
+org 1000h
+CADENA db "tHoMy"
+ db 0
+
+org 3000h
+contar_min: mov ax,0
+loop:  cmp BYTE PTR [bx], 00h
+  JZ retorno
+  cmp BYTE PTR [bx], 61h; 1ra - a > 0
+  JS sig
+  cmp BYTE PTR [bx], 7Ah
+  JNS sig
+  inc ax
+  
+sig: inc bx
+  JMP loop
+  
+retorno: ret
+org 2000h
+  mov bx, OFFSET CADENA
+  call contar_min
+  hlt
+end
+---------------------------C-----------------------------
+org 1000h
+c1 db 'U'
+vocales db "aeiouAEIOU"
+db 0
+
+org 3000h
+INCREMENTO: inc dx
+  mov cx,0FFh
+  JMP RETORNO
+
+ES_VOCAL: mov dx,0
+loop: cmp al, [bx]
+  JZ INCREMENTO
+  inc bx
+  cmp BYTE PTR [bx],00h
+  JNZ loop
+  mov cx, 00h
+  JMP RETORNO
+
+RETORNO: ret
+
+org 2000h
+mov al,c1
+mov bx, OFFSET vocales
+call ES_VOCAL
+hlt
+end
+---------------------------D-----------------------------
+ORG 1000H
+ CADENA DB "MANUEL"
+ FIN_CADENA DB ?
+ VOCALES DB 61h,65h,69h,6fh,75h,41h,45h,49h,4fh,55h; "aeiouAEIOU"
+ FIN_TABLA DB ?
+ 
+ORG 3000H
+ ES_VOCAL: CMP [BX], AL
+   JNZ NOINCREMENTAR
+   INC AH; SI ES VOCAL INCREMENTO
+   JMP FIN_VOCAL; SALE PARA NO RECORRER EL VECTOR DE VOCALES ENTERO
+   
+  NOINCREMENTAR: INC BX; PASO A LA SIGUIENTE VOCAL
+   DEC DL; DECREMENTO LONGITUD TABLA VOCALES
+   JNZ ES_VOCAL
+  FIN_VOCAL: RET; PUNTO DE RETORNO AL RECORRER_CADENA
+  
+ RECORRER_CADENA: MOV AL, [BX]; GUARDO CHAR 
+    PUSH BX; GUARDO EN PILA PARA NO PERDER DIR CADENA
+    MOV BX, CX; MANDO DIR DE VOCALES
+    CALL ES_VOCAL 
+    MOV DL, OFFSET FIN_TABLA - OFFSET VOCALES; GUARDO DE VUELTA LA LONGITUD DE LAS VOCALES
+    POP BX; RECUPERO OFFSET CADENA
+    INC BX; INCREMENTO A SIGUIENTE CHAR
+    DEC DH; DECREMENTO LONGITUD STRING
+    JNZ RECORRER_CADENA
+   RET
+ 
+
+ORG 2000H
+ MOV AH, 0
+ MOV BX, OFFSET CADENA
+ MOV CX, OFFSET VOCALES
+ MOV DL, OFFSET FIN_TABLA - OFFSET VOCALES; GUARDO LONGITUD TABLA VOCALES
+ MOV DH, OFFSET FIN_CADENA - OFFSET CADENA; GUARDO LONGITUD DE STRING
+ CALL RECORRER_CADENA;
+ JMP FIN
+FIN: HLT
+END
+---------------------------E-----------------------------
+

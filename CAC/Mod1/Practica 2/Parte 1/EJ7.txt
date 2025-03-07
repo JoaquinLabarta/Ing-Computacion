@@ -1,0 +1,66 @@
+org 1000h
+VECES DB 0
+COUNT DB 0
+MSJ_ING DB "Ingrese una contrasena: "
+FIN_ING DB ?
+MSJ_PER DB "Acceso permitido"
+FIN_PER DB ?
+MSJ_DEN DB "Acceso denegado"
+FIN_DEN DB ?
+MSJ_BLO DB "Acceso BLOQUEADO"
+FIN_BLO DB ?
+PASS_DEF DB "hola"
+FIN_PASS DB ?
+PASS_USR DB ?
+org 3000h
+NO_PERMITIR: mov bx, OFFSET MSJ_DEN
+  mov al, OFFSET FIN_DEN - OFFSET MSJ_DEN
+  int 7
+  pop bx
+ret
+permitir: mov bx, OFFSET MSJ_PER
+  mov al, OFFSET FIN_PER - OFFSET MSJ_PER
+  int 7
+call FIN
+check: mov bx, OFFSET PASS_USR
+  push bx; pusheo dir usr
+  mov bx, OFFSET PASS_DEF
+  mov ax, bx; muevo dir def
+loop_check: mov dh , [bx]
+  pop bx
+  mov dl, [bx]
+  inc COUNT 
+  cmp COUNT,OFFSET FIN_PASS - OFFSET PASS_DEF  
+  jz PERMITIR
+  inc bx
+  inc ax
+  push bx
+  mov bx,ax
+  cmp dh,dl
+  jz loop_check
+  jmp NO_PERMITIR
+FIN_CHECK: ret
+BLOQUEAR: mov bx, OFFSET MSJ_BLO
+  mov al, OFFSET FIN_BLO - OFFSET MSJ_BLO
+  int 7
+ret
+org 2000h
+loop_5: mov COUNT, 0
+  mov bx, OFFSET MSJ_ING
+  mov al, OFFSET FIN_ING - OFFSET MSJ_ING
+  int 7
+  mov bx, OFFSET PASS_USR
+  loop:
+    int 6
+    inc COUNT
+    inc bx
+    cmp COUNT,OFFSET FIN_PASS - OFFSET PASS_DEF 
+  jnz loop
+  mov COUNT, 0
+  call check
+  inc VECES
+cmp VECES, 5
+jnz loop_5
+call BLOQUEAR
+FIN: hlt
+end

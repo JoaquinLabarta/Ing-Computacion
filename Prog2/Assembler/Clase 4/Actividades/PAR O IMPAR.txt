@@ -1,0 +1,43 @@
+ORG 1000H 
+VALOR DW 0FH 
+DIVISOR DW 2 
+	
+ORG 3000H  
+REST: PUSH AX
+  PUSH BX
+  PUSH CX
+  PUSH DX
+  ;push listos
+  MOV BX, SP 
+	ADD BX, 4; encuentro dir sp divisor 
+	MOV BX, [BX]; guardo dir divisor
+  MOV CX, [BX]; guardo divisor 
+  SUB BX, 2
+  MOV AX, [BX]; guardo valor
+  SUB BX, 2
+  MOV BX, [BX]
+  
+  DIV:	SUB AX, CX
+   	CMP AX, CX
+   	JNC DIV; division
+  	CMP AX,1; si esto es cero es impar
+    JNC IMPAR
+    MOV DX, 00H; numero par
+    JMP FIN
+    IMPAR: MOV DX, 01H; numero impar
+  FIN: POP DX
+  POP CX
+  POP BX
+  POP AX
+  RET
+ 
+ORG 2000H
+	MOV AX, OFFSET VALOR
+	MOV BX, OFFSET DIVISOR
+  PUSH BX; pusheo dir divisor
+  PUSH AX; pusheo dir valor
+	CALL REST
+  POP AX
+  POP BX
+HLT
+END

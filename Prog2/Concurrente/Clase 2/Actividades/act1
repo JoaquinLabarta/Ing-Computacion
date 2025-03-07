@@ -1,0 +1,41 @@
+{Realice un programa en el que un robot junta todas las flores de la avenida 1 y las deposite al finalizar dicha avenida. Al finalizar la avenida, debe informar la cantidad de flores depositadas y la cantidad de esquinas sin flores que encontró durante el recorrido.}
+
+programa clase2Act1 
+procesos
+  proceso RecorrerAvenida(ES CantFlores: numero; ES cantEsquinaSinFlores: numero)
+  comenzar
+    repetir 99
+      si (HayFlorEnLaEsquina)
+        mientras (HayFlorEnLaEsquina)
+          tomarFlor
+          CantFlores:=CantFlores+1
+      sino 
+        cantEsquinaSinFlores:=cantEsquinaSinFlores+1
+      mover
+  fin
+    
+areas 
+  Avenida1: AreaP(1,1,1,100)
+  
+robots
+  robot robot1
+  variables
+    cantFlores, cantEsquinaSinFlores: numero
+  comenzar
+    cantFlores:= 0
+    cantEsquinaSinFlores:= 0
+    RecorrerAvenida(cantFlores,cantEsquinaSinFlores)
+    repetir cantFlores
+      depositarFlor
+    Informar('cantidad_de_flores_depositadas',cantFlores)
+    Informar('cantidad_de_esquinas_sin_flores',cantEsquinaSinFlores)
+  fin
+  
+variables
+  Rinfo: robot1
+  
+comenzar
+  AsignarArea(Rinfo,Avenida1)
+  Iniciar(Rinfo,1,1)
+fin
+

@@ -1,0 +1,29 @@
+La 47º Feria Internacional del Libro congrega editoriales de todo el mundo. De cada editorial se conoce: el nombre, la
+cantidad de premios que ganó y sus 5 libros más vendidos. A su vez de cada libro se sabe: el ISBN, el nombre, la
+cantidad de páginas, el precio, la fecha de publicación (DD/MM/AAAA) y los datos del autor/a (DNI, apellido y nombre,
+nacionalidad).
+Existen diferentes tipos de libros:
+- Libro Divulgativo, de este libro se registra su tipo (biografía o divulgación científica).
+- Libro de Literatura, de este libro se registra el género al cual pertenece (cuento, poemario y novela), y si es una
+edición de bolsillo o no.
+
+Se pide:
+a) Implementar la clase Libro con sus respectivos atributos, constructores y métodos para acceder y modificar sus
+atributos (respecto a los métodos de acceso sólo implemente los que vaya a utilizar). Además de todos los
+elementos necesarios para manejar los diferentes tipos de libros.
+b) Implementar la clase Editorial, la cual necesita obtener cuál es el monto total de sus 5 mejores libros y que, en
+el marco de la Feria, se percibe de la siguiente manera:
+- En el caso de los Libros de Literatura, el precio depende de lo siguiente: si es de bolsillo el valor del
+libro es el 15% menos del precio original. Por otra parte, si el género es cuento o novela, la Feria del
+Libro aplica un 5% de descuento sobre el precio de dicho libro.
+- Para el caso de los Libros Divulgativos, el precio parte del siguiente cálculo: si el libro fue publicado
+entre el 15 de Marzo 2020 y el 15 de Diciembre 2022, la Feria del Libro aplica un descuento del 6,5%
+sobre el precio original. Por otro lado, si el libro es de divulgación científica de algún autor/a
+argentino/a, la Feria del Libro aplica un descuento del 10% sobre el precio original.
+
+*Para ambos casos los descuentos son acumulables.
+c) Implementar los métodos necesarios para imprimir toda la información de la editorial con sus libros.
+d) Implementar un programa principal que instancie una Editorial con sus 5 libros, entre los cuales contenga: un
+cuento, una divulgación científica, una novela (de bolsillo), una biografía y un poemario. Después de la carga,
+aplicar las promociones y finalmente, hacer la impresión de los datos utilizando lo implementado en el inciso
+c).

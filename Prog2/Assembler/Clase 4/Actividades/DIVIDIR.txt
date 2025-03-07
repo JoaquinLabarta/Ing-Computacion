@@ -1,0 +1,29 @@
+ORG 1000H 	; Datos
+DIVIDENDO 	DW 11
+DIVISOR		DW 2
+RESUL		DW  ?
+	
+ORG 3000H  ; Subrutina
+ REST:		PUSH BX; manda dir divisor a la pila
+		MOV BX, SP; se guarda posicion de la sp pila
+		ADD BX, 4; se mueve 4 pos hacia abajo en pila (dir sp resultado)
+		MOV DX, [BX]; guarda dir resultado en dx
+		
+  SIGO:		SUB AX, CX; resta divisor a dividendo
+ 		CMP AX, CX; los compara para que no de negativo
+ 		JNC SIGO; va realizando restas
+ 		MOV BX, DX; guarda dir resulado en bx 
+ 		MOV [BX],AX; manda a la dir de resultado el valor de la division
+ 		POP BX; desapila
+		RET
+		
+ORG 2000H 
+	 MOV DX, OFFSET RESUL; guarda dir para almacenar resultado
+		PUSH DX; manda dir resultado a la pila
+		MOV AX, DIVIDENDO; guarda dividendo
+		MOV BX, OFFSET DIVISOR; guarda dir divisor
+		MOV CX, [BX]; guarda valor del divisor en cx
+		CALL REST; subrutina resto
+		POP CX; desapila
+HLT
+FIN: END

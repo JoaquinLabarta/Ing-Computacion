@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="3">
+      <Unit0>
+        <Filename Value="actividad2.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="39"/>
+        <CursorPos Y="56"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="..\..\..\..\..\AppData\Local\Temp\Temp2_twitter.zip\twitter.pas"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="59"/>
+        <CursorPos X="6" Y="73"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="arbolesinrepetidos.pas"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="9" Y="24"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit2>
+    </Units>
+    <JumpHistory Count="12" HistoryIndex="11">
+      <Position1>
+        <Filename Value="actividad2.lpr"/>
+        <Caret Line="17"/>
+      </Position1>
+      <Position2>
+        <Filename Value="actividad2.lpr"/>
+        <Caret Line="56" TopLine="35"/>
+      </Position2>
+      <Position3>
+        <Filename Value="actividad2.lpr"/>
+        <Caret Line="80" Column="5" TopLine="65"/>
+      </Position3>
+      <Position4>
+        <Filename Value="actividad2.lpr"/>
+        <Caret Line="131" Column="20" TopLine="120"/>
+      </Position4>
+      <Position5>
+        <Filename Value="actividad2.lpr"/>
+        <Caret Line="135" Column="17" TopLine="113"/>
+      </Position5>
+      <Position6>
+        <Filename Value="actividad2.lpr"/>
+        <Caret Line="26" Column="20" TopLine="173"/>
+      </Position6>
+      <Position7>
+        <Filename Value="actividad2.lpr"/>
+        <Caret Line="177" Column="79" TopLine="146"/>
+      </Position7>
+      <Position8>
+        <Filename Value="actividad2.lpr"/>
+        <Caret Line="150" Column="11" TopLine="131"/>
+      </Position8>
+      <Position9>
+        <Filename Value="actividad2.lpr"/>
+        <Caret Line="175" Column="46" TopLine="139"/>
+      </Position9>
+      <Position10>
+        <Filename Value="actividad2.lpr"/>
+        <Caret Line="150" Column="20"/>
+      </Position10>
+      <Position11>
+        <Filename Value="actividad2.lpr"/>
+        <Caret Line="104" TopLine="98"/>
+      </Position11>
+      <Position12>
+        <Filename Value="actividad2.lpr"/>
+        <Caret Line="106" Column="20" TopLine="161"/>
+      </Position12>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

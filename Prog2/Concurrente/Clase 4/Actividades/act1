@@ -1,0 +1,117 @@
+programa act1
+procesos
+  proceso RecorrerAvenidaFlor(ES cant:numero)
+  comenzar
+    repetir 99
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+        cant:=cant+1
+      BloquearEsquina(PosAv,PosCa+1)
+      mover
+      LiberarEsquina(PosAv,PosCa - 1)
+  fin
+  proceso RecorrerCalleFlor(ES cant:numero)
+  comenzar
+    repetir 99
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+        cant:=cant+1
+      BloquearEsquina(PosAv+1,PosCa)
+      mover
+      LiberarEsquina(PosAv - 1,PosCa)
+  fin
+  proceso RecorrerAvenidaPapel(ES cant:numero)
+  comenzar
+    repetir 99
+      mientras HayPapelEnLaEsquina
+        tomarPapel
+        cant:=cant+1
+      BloquearEsquina(PosAv,PosCa+1)
+      mover
+      LiberarEsquina(PosAv,PosCa - 1)
+  fin
+  proceso RecorrerCallePapel(ES cant:numero)
+  comenzar
+    repetir 99
+      mientras HayPapelEnLaEsquina
+        tomarPapel
+        cant:=cant+1
+      BloquearEsquina(PosAv+1,PosCa)
+      mover
+      LiberarEsquina(PosAv - 1,PosCa)
+  fin
+{------------AREAS-----------------}
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  {------------Florero-----------}
+  robot florero
+  variables
+    cantFlores: numero
+  comenzar
+    cantFlores:=0
+    BloquearEsquina(1,1)
+    Pos(1,1)
+    RecorrerAvenidaFlor(cantFlores)
+    derecha
+    RecorrerCalleFlor(cantFlores)
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      cantFlores:=cantFlores+1
+    BloquearEsquina(100,1)
+    Pos(100,1)
+    LiberarEsquina(100,100)
+    repetir 3
+      derecha
+    RecorrerAvenidaFlor(cantFlores)
+    BloquearEsquina(1,1)
+    Pos(1,1)
+    LiberarEsquina(100,100)
+    derecha
+    RecorrerCalleFlor(cantFlores)
+    Pos(49,50)
+    LiberarEsquina(100,1)
+    Informar('CantidadFlores',cantFlores)
+  fin
+  {------------------Papelero-------------------}
+  robot papelero
+  variables
+    cantPapel:numero
+  comenzar
+    cantPapel:=0
+    BloquearEsquina(1,1)
+    Pos(1,1)
+    RecorrerAvenidaPapel(cantPapel)
+    derecha
+    RecorrerCallePapel(cantPapel)
+    mientras HayPapelEnLaEsquina
+      tomarPapel
+      cantPapel:=cantPapel+1
+    BloquearEsquina(100,1)
+    Pos(100,1)
+    LiberarEsquina(100,100)
+    repetir 3
+      derecha
+    RecorrerAvenidaPapel(cantPapel)
+    BloquearEsquina(1,1)
+    Pos(1,1)
+    LiberarEsquina(100,100)
+    derecha
+    RecorrerCallePapel(cantPapel)
+    Pos(50,49)
+    LiberarEsquina(100,1)
+    Informar('CantidadPapeles',cantPapel)
+  fin
+variables
+  Florero: florero
+  Papelero: papelero
+comenzar
+  AsignarArea(Florero,ciudad)
+  AsignarArea(Papelero,ciudad)
+  Iniciar(Papelero,50,49)
+  Iniciar(Florero,49,50)
+fin
+
+
+
+

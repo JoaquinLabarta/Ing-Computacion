@@ -1,0 +1,62 @@
+ORG 1000H 
+TABLA DW 2,3,4,5H 
+FIN_TABLA DB ?
+DIVISOR DW 2 
+
+	
+ORG 3000H  
+REST: PUSH AX
+  PUSH BX
+  PUSH CX
+  PUSH DX
+  ;push listos
+  MOV BX, SP 
+	ADD BX, 4; encuentro dir sp divisor 
+	MOV BX, [BX]; guardo dir divisor
+  MOV CX, [BX]; guardo divisor 
+  MOV BX, SP  
+  ADD BX, 6
+  MOV DX, [BX]; guardo TABLA
+  MOV BX, SP
+  ADD BX, 14
+  MOV AL, [BX]; guardo diml
+  MOV AH, 0; iniciar contador
+  MOV BX, DX
+  ;ARRANCA
+  MOV DX, [BX]
+  CALL DIV
+  RETURN: INC BX
+  INC BX
+  MOV DX, [BX]
+  DEC AL
+  DEC AL
+  JNZ DIV
+  POP DX
+  POP DX
+  POP DX
+  POP CX
+  POP BX
+  POP AX
+  JMP FIN 
+  
+  DIV: SUB DX, CX
+   	CMP DX, CX
+   	JNC DIV; division
+  	CMP DX, 1; 
+    JC RETURN
+    INC AH
+  JMP RETURN
+ 
+ORG 2000H
+  MOV AX, OFFSET FIN_TABLA - OFFSET TABLA
+  PUSH AX; pusheo dir diml
+	MOV AX, OFFSET TABLA
+	MOV BX, OFFSET DIVISOR
+  PUSH BX; pusheo dir divisor
+  PUSH AX; pusheo dir TABLA
+	CALL REST
+  FIN: POP AX
+  POP BX
+  POP AX
+HLT
+END

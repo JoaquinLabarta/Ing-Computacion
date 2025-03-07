@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="biblioteca.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="77"/>
+        <CursorPos X="39" Y="86"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\Parciales viejos\Repaso1.lpr"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\Ejercicio 1\twitter.lpr"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="154"/>
+        <CursorPos X="44" Y="173"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\Parciales viejos\project1.lpr"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="140"/>
+        <CursorPos X="31" Y="147"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="25">
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="38" Column="7" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="17" Column="7" TopLine="6"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="81" Column="40" TopLine="65"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="61" Column="32" TopLine="52"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="65" Column="10" TopLine="53"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="62" Column="35" TopLine="50"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="63" Column="40" TopLine="53"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="66" Column="38" TopLine="52"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="57" Column="37" TopLine="52"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="65" Column="7" TopLine="50"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="91" Column="15" TopLine="70"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="45" Column="42" TopLine="38"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="50" Column="25" TopLine="37"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="48" Column="13" TopLine="33"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="50" Column="36" TopLine="34"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="60" Column="22" TopLine="49"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="55" Column="60" TopLine="45"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="59" Column="35" TopLine="52"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="73" Column="3" TopLine="54"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="63" Column="33" TopLine="52"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="127" Column="3" TopLine="106"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="77" Column="24" TopLine="66"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="80" Column="26" TopLine="69"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="77" Column="38" TopLine="66"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="86" Column="40" TopLine="69"/>
+      </Position>
+      <Position>
+        <Filename Value="biblioteca.lpr"/>
+        <Caret Line="83" Column="7" TopLine="67"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

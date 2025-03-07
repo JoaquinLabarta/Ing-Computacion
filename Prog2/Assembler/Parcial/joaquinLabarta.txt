@@ -1,0 +1,94 @@
+ORG 1000H
+VOCALES DB "AEIOU"; 1000h - 1004h
+FIN_VOCALES DB ?; 1005h
+TABLA DB "**MI_cONTraSEñA.UnICa"; 1006h - 1020h
+FIN_TABLA DB ?; 101Ah
+CANT_VOC DB 0; 101B
+;----------------------------------
+ORG 3000H
+
+ENCRYPT: PUSH AX
+  PUSH BX
+  ;pusheo datos para que la rutina sea reutilizable
+  MOV BX, SP; busco posicion donde está la tabla en pila
+  MOV BX,[BX]
+  MOV AH, [BX]; paso caracter por referencia
+
+  ;chequeos para ver que vocal es
+  A: CMP AH, 41h; chequeo si es A
+  JNZ E
+  MOV BYTE PTR [BX], 40h
+  JMP FIN_ENCRYPT
+
+  E: CMP AH, 45h; chequeo si es E
+  JNZ I
+  MOV BYTE PTR [BX], 33h
+  JMP FIN_ENCRYPT
+
+  I: CMP AH, 49h; chequeo si es I
+  JNZ O
+  MOV BYTE PTR [BX], 21h
+  JMP FIN_ENCRYPT
+
+  O: CMP AH, 4Fh; chequeo si es O
+  JNZ U
+  MOV BYTE PTR [BX], 0h
+  JMP FIN_ENCRYPT
+
+  U: MOV BYTE PTR [BX], 75h; chequeo si es U
+  JMP FIN_ENCRYPT
+  
+  FIN_ENCRYPT: POP BX
+    POP AX
+    RET
+;-----------------------------------------------------  
+
+ES_VOCAL: PUSH AX
+  PUSH BX
+  PUSH CX
+  ;pusheo datos para que la rutina sea reutilizable
+  ;no pusheo dx ya que lo uso para traer y llevar datos
+  
+  MOV BX, OFFSET VOCALES
+  MOV CL, OFFSET FIN_VOCALES - OFFSET VOCALES
+  ;guardo en registros datos de la tabla de vocales
+  
+  LOOP2: MOV AH, [BX]; guardo vocal en registro
+    CMP AL,AH; comparo caracter de la tabla con vocal
+    JNZ SEGUIR
+    MOV DL, 1h
+    ;devuelvo 1h si el valor es una vocal
+    JMP FIN_ES_VOCAL
+    SEGUIR: INC BX; avanzo en tabla de vocales
+      DEC CL; chequeo no pasarme de tabla de vocales
+      JNZ LOOP2
+
+  FIN_ES_VOCAL: POP CX
+    POP BX
+    POP AX
+    RET
+;-------------------------------------
+ORG 2000H
+MOV BX, OFFSET TABLA
+MOV CL, OFFSET FIN_TABLA - OFFSET TABLA; guardo en registro datos de tabla
+
+LOOP: MOV DL, 0; lo uso para check
+  MOV AL, [BX]; me guardo valor tabla
+  CALL ES_VOCAL; llamo a subrutina
+  CMP DL, 1h
+  JNZ SALTAR ;solo sigue si es vocal
+  
+  INC DH; incremento contador
+  PUSH BX
+  CALL ENCRYPT
+  POP BX
+  ;-----------
+  SALTAR: INC BX
+  DEC CL
+  JNZ LOOP
+  ;FIN de encriptado
+  MOV BX, OFFSET CANT_VOC
+  MOV [BX], DH
+  
+FIN: HLT
+END

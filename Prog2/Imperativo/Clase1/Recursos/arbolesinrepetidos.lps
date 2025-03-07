@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="4">
+      <Unit0>
+        <Filename Value="arbolesinrepetidos.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="184"/>
+        <CursorPos X="9" Y="218"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="clase4\clase4_ejercicio.lpr"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="82"/>
+        <CursorPos Y="119"/>
+        <UsageCount Value="10"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="clase3\arbolesinrepetidos.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="2"/>
+        <UsageCount Value="10"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="clase3\programaArboles.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="187"/>
+        <CursorPos Y="195"/>
+        <UsageCount Value="10"/>
+      </Unit3>
+    </Units>
+    <JumpHistory Count="14" HistoryIndex="13">
+      <Position1>
+        <Filename Value="arbolesinrepetidos.pas"/>
+        <Caret Line="164" Column="68" TopLine="145"/>
+      </Position1>
+      <Position2>
+        <Filename Value="arbolesinrepetidos.pas"/>
+        <Caret Line="247" Column="24" TopLine="210"/>
+      </Position2>
+      <Position3>
+        <Filename Value="arbolesinrepetidos.pas"/>
+        <Caret Line="187" Column="29" TopLine="167"/>
+      </Position3>
+      <Position4>
+        <Filename Value="arbolesinrepetidos.pas"/>
+        <Caret Line="189" Column="27" TopLine="170"/>
+      </Position4>
+      <Position5>
+        <Filename Value="arbolesinrepetidos.pas"/>
+        <Caret Line="202" Column="24" TopLine="184"/>
+      </Position5>
+      <Position6>
+        <Filename Value="arbolesinrepetidos.pas"/>
+        <Caret Line="208" Column="24" TopLine="191"/>
+      </Position6>
+      <Position7>
+        <Filename Value="arbolesinrepetidos.pas"/>
+        <Caret Line="214" Column="34" TopLine="181"/>
+      </Position7>
+      <Position8>
+        <Filename Value="arbolesinrepetidos.pas"/>
+        <Caret Line="245" Column="37" TopLine="212"/>
+      </Position8>
+      <Position9>
+        <Filename Value="arbolesinrepetidos.pas"/>
+        <Caret Line="183" Column="6" TopLine="150"/>
+      </Position9>
+      <Position10>
+        <Filename Value="arbolesinrepetidos.pas"/>
+        <Caret Line="207" Column="56" TopLine="186"/>
+      </Position10>
+      <Position11>
+        <Filename Value="arbolesinrepetidos.pas"/>
+        <Caret Line="218" Column="5" TopLine="185"/>
+      </Position11>
+      <Position12>
+        <Filename Value="arbolesinrepetidos.pas"/>
+        <Caret Line="197" Column="12" TopLine="181"/>
+      </Position12>
+      <Position13>
+        <Filename Value="arbolesinrepetidos.pas"/>
+        <Caret Line="198" Column="23" TopLine="184"/>
+      </Position13>
+      <Position14>
+        <Filename Value="arbolesinrepetidos.pas"/>
+        <Caret Line="200" Column="27" TopLine="175"/>
+      </Position14>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

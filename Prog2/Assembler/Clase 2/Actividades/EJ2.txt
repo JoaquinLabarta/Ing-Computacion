@@ -1,0 +1,4 @@
+a) el registro CL actua como dimensión fisica, la cual se usara para recorrer el arreglo
+b) cuenta la cantidad de elementos menores a 11 en el arreglo
+c) si reemplazo JNS MINyEQ por JZ MINyEQ el total solo incrementa si se encuentra el 11
+d) si reemplazo JNS MINyEQ por JS MINyEQ el total solo incrementa los elementos mayores a 11

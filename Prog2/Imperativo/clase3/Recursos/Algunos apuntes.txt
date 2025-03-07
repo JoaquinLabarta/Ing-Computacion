@@ -1,0 +1,18 @@
+Una estructura de datos de tipo Arbol es homogenea, no lineal, secuancial y dinamica.
+El nodo padre se la llama raiz, a sus hijos nodos, y cada fila es un nivel distinto.
+
+Type
+	elemento = tipoelemento;
+	arbol:=^nodo;
+	nodo = record
+		elem: elemento;
+		hijoizq: arbol;
+		hijoder: arbol;
+	       end;
+----------------------------------------------------
+Los mas chicos van a ir al subarbol derecho, y los valores mas grandes a la izquierda.
+Para agregar un nodo voy comparando su valor con los otros nodos.
+
+NO EXISTEN LOS NUMEROS REPETIDOS.
+----------------------------------------------------
+ 	

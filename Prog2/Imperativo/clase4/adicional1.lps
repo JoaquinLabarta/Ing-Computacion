@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="5">
+      <Unit0>
+        <Filename Value="adicional1.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="75"/>
+        <CursorPos X="35" Y="106"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="..\clase3\programaArboles.pas"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="210"/>
+        <CursorPos X="24" Y="221"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="clase4_ejercicio.lpr"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="82"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="..\..\..\..\..\AppData\Local\Temp\Temp1_Clase 3 Programas en Pascal.zip\arbolesinrepetidos.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="157" Y="15"/>
+        <UsageCount Value="10"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="..\clase5\arbolesinrepetidos.pas"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="59" Y="12"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit4>
+    </Units>
+    <JumpHistory Count="2" HistoryIndex="1">
+      <Position1>
+        <Filename Value="adicional1.lpr"/>
+        <Caret Line="28" Column="6"/>
+      </Position1>
+      <Position2>
+        <Filename Value="adicional1.lpr"/>
+        <Caret Line="76" Column="100" TopLine="56"/>
+      </Position2>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

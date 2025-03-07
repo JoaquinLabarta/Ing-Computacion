@@ -1,0 +1,89 @@
+programa clase2Act3
+procesos
+  proceso checkEsquinas(ES florAct: numero; ES exito: boolean)
+  variables
+    cantPapel: numero
+  comenzar
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      florAct:=florAct + 1
+    mientras HayPapelEnLaEsquina
+      tomarPapel
+      cantPapel:=cantPapel + 1
+    mover
+    {----------------------Esquina2------------------------}
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      florAct:=florAct + 1
+    mientras HayPapelEnLaEsquina
+      tomarPapel
+      cantPapel:=cantPapel + 1
+    si (florAct > cantPapel)
+      exito:= V
+    sino 
+      exito:= F
+  fin
+{-----------------------------------------------------------------------------}
+areas 
+  Area1: AreaP(2,1,6,21)
+  Area2: AreaP(7,1,11,21)
+  Area3: AreaP(12,1,16,21)
+  Area4: AreaP(1,1,1,1)
+{-----------------------------------------------------------------------------}
+robots
+  robot robot1
+  variables
+    exito: boolean
+    florAct, Esq, alto: numero
+  comenzar
+    derecha
+    exito:= F
+    florAct:=0
+    Esq:=0
+    repetir 4
+      checkEsquinas(florAct,exito)
+      si (exito = V)
+        Esq:=Esq+1
+      florAct:=0
+      exito:=F
+      Random (alto,1,5)
+      repetir 3
+        derecha
+      repetir alto
+        mover
+      derecha
+    EnviarMensaje(Esq,Robot4)
+  fin
+
+  robot robot2
+  variables
+    cant, cantTotal: numero
+  comenzar
+    cantTotal:=0
+    repetir 3
+      RecibirMensaje(cant,*)
+      cantTotal:=cantTotal+cant
+    Informar(cantTotal)
+  fin
+{-----------------------------------------------------------------------------}
+variables
+  Robot1: robot1
+  Robot2: robot1
+  Robot3: robot1
+  Robot4: robot2
+{-----------------------------------------------------------------------------}
+comenzar
+  AsignarArea(Robot1,Area1)
+  AsignarArea(Robot2,Area2)
+  AsignarArea(Robot3,Area3)
+  AsignarArea(Robot4,Area4)
+  Iniciar(Robot1,2,1)
+  Iniciar(Robot2,7,1)
+  Iniciar(Robot3,12,1)
+  Iniciar(Robot4,1,1)
+fin
+
+
+
+
+
