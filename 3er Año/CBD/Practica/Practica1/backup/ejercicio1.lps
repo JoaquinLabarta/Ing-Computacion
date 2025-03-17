@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="ejercicio1.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos X="24" Y="12"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="4">
+      <Position>
+        <Filename Value="ejercicio1.lpr"/>
+        <Caret Line="14" Column="22"/>
+      </Position>
+      <Position>
+        <Filename Value="ejercicio1.lpr"/>
+        <Caret Line="26" Column="12"/>
+      </Position>
+      <Position>
+        <Filename Value="ejercicio1.lpr"/>
+        <Caret Line="12" Column="23"/>
+      </Position>
+      <Position>
+        <Filename Value="ejercicio1.lpr"/>
+        <Caret Line="19" Column="28" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="ejercicio1.lpr"/>
+        <Caret Line="18" Column="33" TopLine="3"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>
