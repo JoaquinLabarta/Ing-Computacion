@@ -112,7 +112,7 @@ var
   opc: string;
   nomCient: string;
 begin
-  seek(archivo,filesize(archivo)-1);
+  seek(archivo,filesize(archivo));
   opc:='si';
   while opc <> 'no' do
     begin
