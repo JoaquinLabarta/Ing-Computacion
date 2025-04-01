@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="tp2_ej2.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="53"/>
+        <CursorPos X="34" Y="75"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="7">
+      <Position>
+        <Filename Value="tp2_ej2.lpr"/>
+        <Caret Line="77" Column="23" TopLine="52"/>
+      </Position>
+      <Position>
+        <Filename Value="tp2_ej2.lpr"/>
+        <Caret Line="20" Column="21"/>
+      </Position>
+      <Position>
+        <Filename Value="tp2_ej2.lpr"/>
+        <Caret Line="23" Column="17" TopLine="15"/>
+      </Position>
+      <Position>
+        <Filename Value="tp2_ej2.lpr"/>
+        <Caret Line="55" Column="45" TopLine="41"/>
+      </Position>
+      <Position>
+        <Filename Value="tp2_ej2.lpr"/>
+        <Caret Line="59" Column="47" TopLine="46"/>
+      </Position>
+      <Position>
+        <Filename Value="tp2_ej2.lpr"/>
+        <Caret Line="58" Column="38" TopLine="53"/>
+      </Position>
+      <Position>
+        <Filename Value="tp2_ej2.lpr"/>
+        <Caret Line="59" Column="72" TopLine="45"/>
+      </Position>
+      <Position>
+        <Filename Value="tp2_ej2.lpr"/>
+        <Caret Line="61" Column="77" TopLine="47"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>
