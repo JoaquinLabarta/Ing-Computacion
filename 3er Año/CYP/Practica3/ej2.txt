@@ -1,0 +1,203 @@
+
+/* 2. Existen N personas que deben fotocopiar un documento cada una. Resolver cada ítem
+usando monitores*/
+
+/*a) Implemente una solución suponiendo que existe una única fotocopiadora compartida
+por todas las personas, y las mismas la deben usar de a una persona a la vez, sin
+importar el orden. Existe una función Fotocopiar() que simula el uso de la fotocopiadora.
+Sólo se deben usar los procesos que representan a las Personas (y los monitores que sean
+necesarios)*/
+
+process persona[id: 0..N-1]{
+    fotocopiadora.solicitar(id);
+}
+
+Monitor fotocopiadora{
+
+    Procedure solicitar(id: in int){
+        Fotocopiar(id);
+    }
+}
+
+/*b) Modifique la solución de (a) para el caso en que se deba respetar el orden de llegada.*/
+process persona[id: 0..N-1]{
+    fotocopiadora.solicitar(id);
+    Fotocopiar();
+    fotocopiadora.liberar();
+}
+
+Monitor fotocopiadora{
+    cond espera[N];
+    cola colaE;
+    int cantE = 0;
+    bool uso = false;
+    Procedure solicitar(id: in int){
+        if uso {
+            cantE++;
+            push(colaE,id);
+            wait(espera[id]);
+        }
+        uso=true;
+    }
+
+    Procedure liberar(){
+        int turno;
+        if cantE>0 {
+            pop(colaE,turno);
+            cantE--;
+            signal(espera[turno]);
+        }
+        else uso = false;
+    }
+}
+
+/*c) Modifique la solución de (b) para el caso en que se deba dar prioridad de acuerdo a la
+edad de cada persona (cuando la fotocopiadora está libre la debe usar la persona de
+mayor edad entre las que estén esperando para usarla).*/
+
+process persona[id: 0..N-1]{
+    int edad;
+    fotocopiadora.solicitar(id,edad);
+    Fotocopiar();
+    fotocopiadora.liberar();
+}
+
+Monitor fotocopiadora{
+    cond espera[N];
+    cola colaE;
+    int cantE = 0;
+    bool uso = false;
+    Procedure solicitar(id,edad: in int){
+        if uso {
+            cantE++;
+            insertarOrdenado(colaE,id,edad);
+            wait(espera[id]);
+        }
+        uso=true;
+    }
+
+    Procedure liberar(){
+        int turno;
+        if cantE>0 {
+            buscarMayor(colaE,turno);
+            cantE--;
+            signal(espera[turno]);
+        }
+        else uso = false;
+    }
+}
+
+/*d) Modifique la solución de (a) para el caso en que se deba respetar estrictamente el orden
+dado por el identificador del proceso (la persona X no puede usar la fotocopiadora
+hasta que no haya terminado de usarla la persona X-1).*/
+
+process persona[id: 0..N-1]{
+    fotocopiadora.solicitar(id);
+    Fotocopiar();
+    fotocopiadora.liberar();
+}
+
+Monitor fotocopiadora{
+    int count=0;
+    bool esperando[N] = ([N] false);
+    cond espera[N];
+
+    Procedure solicitar(id: in int){
+        if id != count {
+            esperando[id] = true;
+            wait(espera[id]);
+        } 
+    }
+
+    Procedure liberar(){
+        count++;
+        if esperando[count] signal(espera[count]);
+    }
+}
+
+/*e) Modifique la solución de (b) para el caso en que además haya un Empleado que le indica
+a cada persona cuando debe usar la fotocopiadora.*/
+
+process persona[id: 0..N-1]{
+    fotocopiadora.solicitar(id);
+    Fotocopiar();
+    fotocopiadora.liberar();
+}
+
+process empleado{
+    while true fotocopiadora.proximo();
+}
+
+Monitor fotocopiadora{
+    cond espera[N], empleado;
+    cola colaE;
+    int cantE = 0;
+    bool uso = false;
+    Procedure solicitar(id: in int){
+        cantE++;
+        push(colaE,id);
+        wait(espera[id]);
+    }
+
+    Procedure liberar(){
+        uso = false;
+        signal(empleado);
+    }
+
+    Procedure proximo(){
+        if cantE>0 and not uso {
+            int turno;
+            pop(colaE,turno);
+            cantE--;
+            signal(espera[turno]);
+            uso = true;
+        } else wait(empleado);
+    }
+}
+
+/*f) Modificar la solución (e) para el caso en que sean 10 fotocopiadoras. El empleado le
+indica a la persona cuando puede usar una fotocopiadora, y cual debe usar */
+
+process persona[id: 0..N-1]{
+    fotocopiadora.solicitar(id);
+    Fotocopiar();
+    fotocopiadora.liberar(id);
+}
+
+process empleado{
+    while true fotocopiadora.proximo();
+}
+
+Monitor fotocopiadora{
+    cond espera[N], empleado;
+    cola colaE;
+    int cantE = 0, disp = 10;
+    bool fot[10] = ([10] false);
+    int impAsignada[N];
+
+    Procedure solicitar(id: in int){
+        cantE++;
+        push(colaE,id);
+        signal(empleado);
+        wait(espera[id]);
+    }
+
+    Procedure liberar(id: in int){
+        fot[impAsignada[id]] = false;
+        disp++;
+        signal(empleado);
+    }
+
+    Procedure proximo(){
+        if cantE>0 and disp>0  {
+            int turno, idD = 0;
+            pop(colaE,turno);
+            cantE--;
+            while fot[idD] idD++;
+            impAsignada[turno] = idD;
+            disp--;
+            fot[idD] = true;
+            signal(espera[turno]);
+        } else wait(empleado);
+    }
+}

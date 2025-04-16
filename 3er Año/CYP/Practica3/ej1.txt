@@ -1,0 +1,17 @@
+/*1. Implementar el acceso a una base de datos de solo lectura que puede atender a lo sumo 5
+consultas simultáneas. */
+
+Monitor BD{
+    int uso=0;
+    cond espera;
+    Procedure read(id: in int){
+        while uso==5 wait(espera);
+        uso++;
+        Acceder(id); 
+    }
+
+    Procedure liberar(){
+        uso--;
+        signal(espera);
+    }
+}
