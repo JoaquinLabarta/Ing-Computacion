@@ -38,22 +38,6 @@ begin
     end;
   write(arch,vehiculo);
 end;
-{   regBorrado.descripcion := cab.descripcion;
-    write(arch, regBorrado);
-
-    // 2. La cabecera ahora apunta a este nuevo espacio libre
-    Str(pos, sLibre);
-    cab.descripcion := sLibre;
-    seek(arch, 0);
-    write(arch, cab);
-
-    writeln('Vehículo eliminado correctamente.');
-  end
-  else
-    writeln('Error: Código de vehículo no encontrado.');
-
-  close(arch);
-end;}
 procedure eliminar(var arch: tArchivo; codigoVehiculo:integer);
 var
   veh,cab: tVehiculo;
@@ -61,8 +45,8 @@ var
   posLibreStr: String;
 begin
   seek(arch,0);
-  leer(arch,cab);
-  veh:=cab;
+  leer(arch,veh);
+  cab:=veh;
   while ((veh.codigoVehiculo<>valorAlto) or (veh.codigoVehiculo<>codigoVehiculo)) do leer(arch,veh);
   if (veh.codigoVehiculo=codigoVehiculo) then begin
     pos:=Filepos(arch)-1;
