@@ -1,0 +1,65 @@
+/*3. En un corralón de materiales hay un empleado que debe atender a N clientes de acuerdo al
+orden de llegada. Cuando un cliente es llamado por el empleado para ser atendido, le da una
+lista con los productos que comprará, y espera a que el empleado le entregue el
+comprobante de la compra realizada.*/
+
+NOTA: hay que usar dos monitores, uno para corralon y otro para escritorio
+
+process cliente[id:0..N-1]{
+    lista L;
+    comprobante C;
+    corralon.llegada(id);
+    corralon.darLista(L);
+    corralon.agarrarComprobante(C);
+}
+
+process empleado{
+    while true {
+        corralon.atender();
+        corralon.generarComprobante();
+    }
+}
+
+Monitor corralon{
+    cola colaEsp;
+    cond espera[N],emp;
+    int cant = 0, atendiendo = -1;
+    lista L[N];
+    comprobante C[N];
+
+    Procedure llegada(id: in int){
+        // Llego y me encolo
+        cant++;
+        push(colaEsp,id);
+        signal(emp); // Por las dudas aviso que llegue
+        wait(espera[id]); // Espero a ser llamado
+    }
+
+    Procedure darLista(LC: in lista, id: in int){
+        L[id] = LC;
+        signal(emp); // Despierto al empleado avisandole que le deje una lista
+        wait(espera[id]); // Me duermo hasta que me entregue el comprobante
+    }
+
+    Procedure generarComprobante(){
+        C[atendiendo] = Generar(L);
+        signal(espera[atendiendo]); // Despierto al cliente y me duermo hasta que agarre el comprobante
+        wait(emp);
+    }
+
+    Procedure agarrarComprobante(cc: out comprobante){
+        cc = C[atendiendo];
+        signal(emp); // Despierto al empleado y me voy
+    }
+
+    Procedure atender(){
+        int turno;
+        if cant>0 {
+            pop(colaEsp,turno);
+            cant--;
+            atendiendo = turno;
+            signal(espera[turno]); // Despierto al cliente
+        } 
+        wait(emp);
+    }
+}

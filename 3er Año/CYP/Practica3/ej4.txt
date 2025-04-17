@@ -1,0 +1,79 @@
+/*4. En una mesa de exámenes hay 3 profesores que les deben tomar un examen oral a 30 alumnos
+de acuerdo al orden de llegada. Cada examen es tomado por un único profesor. Cuando un
+alumno llega, espera a que alguno de los profesores (cualquiera) lo llame y se dirige al
+escritorio correspondiente a ese profesor, donde le tomará el examen; al terminar el
+profesor le da la nota y el alumno se retira. Cuando un profesor está libre llama al siguiente
+alumno. Nota: todos los procesos deben terminar su ejecución.*/
+
+process alumno[id:0..29]{
+    int idProfe, nota;
+    aula.llegada(id);
+    aula.consultarEscritorio(id,idProfe);
+    // Hacer examen
+    escritorio.recibirNota(id,nota,idProfe);
+    aula.irse(idProfe);
+}
+
+process profesor[id:0..2]{
+    bool fin = false, esp;
+    int idAlum;
+
+    while not fin {
+        while not esp aula.llamarAlumno(idAlum,esp); // Mientras no haya nadie esperando mira la cola
+        escritorio[id].corregir(idAlum);
+        aula.chequearCantidad(fin) // Hasta que alumno no se va no continua ejecucion
+    }
+}
+
+Monitor aula{
+    cond esperando[30], profesor[3];
+    cola espera;
+    int cant = 0, atendidos = 0, escritorioAsignado[30];
+
+    Procedure llegada(id: in int){ // El alumno llega y se encola, duerme hasta ser llamado
+        cant++;
+        push(espera,id);
+        wait(esperando[id]);
+    }
+
+    Procedure llamarAlumno(idP: in int, idA: out int, esp: out bool){
+        if cant > 0 { // Si hay alumnos esperando
+            esp = true;
+            pop(espera,idA);
+            cant--;
+            escritorioAsignado[idA] = idP; // Le asigna un escritorio a un alumno
+            signal(esperando[idA]); // Despierta al alumno 
+            wait(profesor[idP]); // Se duerme hasta terminar el examen
+        } else esp = false; 
+    }
+
+    Procedure consultarEscritorio(idA: in int, idP: out int){
+        idP = escritorioAsignado[idA]; // Alumno ve el escritorio que le toca
+    }
+
+    Procedure irse(idP: in int){
+        atendidos++;
+        signal(profesor[idP]); 
+    }
+
+    Procedure chequearCantidad(fin: out bool){
+        if atendidos == 30 fin = true;
+    }
+}
+
+Monitor escritorio[id:0..2]{
+    cond esperando[30], profesor[3];
+    int notas[30];
+
+    Procedure corregir(idA,idP: in int){
+        notas[idA] = notaRandom();
+        signal(esperando[idA]); // Despierta al alumno para que vea la nota
+        wait(profesor[idP]); // Se duerme esperando a que el alumno se vaya del salon
+    }
+
+    Procedure recibirNota(id: in int, nota: out int, idP: in int){
+        signal(profesor[idP]); // Despierta al profesor para que le de una nota
+        wait(esperando[id]); // Se duerme hasta que este la nota
+        nota = notas[id];
+    }
+}
