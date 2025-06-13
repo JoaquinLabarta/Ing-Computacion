@@ -86,7 +86,10 @@ begin
     ventas:=0;
     minimo(det,arRegDet,min);
     while ((min.cod > prodM.cod) and (prodM.cod <> valorAlto) and (min.cod <> valorAlto)) do leerM(mae,prodM); // Me aseguro que si no hay registros para ese codigo no lo actualizo
-
+    while ((min.cod <> valorAlto) and (min.cod = prodM.cod)) do begin
+      ventas:=min.cantVend+ventas;
+      minimo(det,arRegDet,min);
+    end;
     if(prodM.mayorVenta<ventas) then begin
       writeln('Es mes el producto: ',prodM.cod, 'supero el record de ventas de: ', prodM.mayorVenta, ' con un total de: ', ventas);
       prodM.mayorVenta:=ventas;
