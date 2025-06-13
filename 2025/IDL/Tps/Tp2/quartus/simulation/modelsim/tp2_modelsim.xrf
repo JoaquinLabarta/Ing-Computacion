@@ -1,0 +1,15 @@
+vendor_name = ModelSim
+source_file = 1, C:/Users/joaquin/Documents/GitHub/Ing-Computacion/2025/IDL/Tps/Tp2/quartus/tp2.bdf
+source_file = 1, C:/Users/joaquin/Documents/GitHub/Ing-Computacion/2025/IDL/Tps/Tp2/quartus/db/tp2.cbx.xml
+source_file = 1, c:/altera/13.1/quartus/libraries/others/maxplus2/21mux.bdf
+design_name = tp2
+instance = comp, \B8~output\, B8~output, tp2, 1
+instance = comp, \B7~output\, B7~output, tp2, 1
+instance = comp, \B6~output\, B6~output, tp2, 1
+instance = comp, \B5~output\, B5~output, tp2, 1
+instance = comp, \B4~output\, B4~output, tp2, 1
+instance = comp, \B3~output\, B3~output, tp2, 1
+instance = comp, \B2~output\, B2~output, tp2, 1
+instance = comp, \B1~output\, B1~output, tp2, 1
+instance = comp, \B0~output\, B0~output, tp2, 1
+instance = comp, \pin_name1~input\, pin_name1~input, tp2, 1
