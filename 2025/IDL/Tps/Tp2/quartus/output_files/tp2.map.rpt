@@ -1,5 +1,5 @@
 Analysis & Synthesis report for tp2
-Fri Jun 13 18:20:45 2025
+Mon Jun 16 16:43:43 2025
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -13,10 +13,9 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Registers Removed During Synthesis
-  9. General Register Statistics
- 10. Elapsed Time Per Partition
- 11. Analysis & Synthesis Messages
+  8. General Register Statistics
+  9. Elapsed Time Per Partition
+ 10. Analysis & Synthesis Messages
 
 
 
@@ -42,16 +41,16 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Jun 13 18:20:45 2025      ;
+; Analysis & Synthesis Status        ; Successful - Mon Jun 16 16:43:43 2025      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; tp2                                        ;
 ; Top-level Entity Name              ; tp2                                        ;
 ; Family                             ; Cyclone IV GX                              ;
-; Total logic elements               ; 0                                          ;
-;     Total combinational functions  ; 0                                          ;
-;     Dedicated logic registers      ; 0                                          ;
-; Total registers                    ; 0                                          ;
-; Total pins                         ; 10                                         ;
+; Total logic elements               ; 23                                         ;
+;     Total combinational functions  ; 23                                         ;
+;     Dedicated logic registers      ; 9                                          ;
+; Total registers                    ; 9                                          ;
+; Total pins                         ; 20                                         ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
@@ -175,12 +174,12 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +--------------------------+------------------+
 ; Resource                 ; Usage            ;
 +--------------------------+------------------+
-; I/O pins                 ; 10               ;
+; I/O pins                 ; 20               ;
 ; DSP block 9-bit elements ; 0                ;
-; Maximum fan-out node     ; B8~output        ;
-; Maximum fan-out          ; 1                ;
-; Total fan-out            ; 10               ;
-; Average fan-out          ; 0.50             ;
+; Maximum fan-out node     ; D0               ;
+; Maximum fan-out          ; 9                ;
+; Total fan-out            ; 122              ;
+; Average fan-out          ; 1.69             ;
 +--------------------------+------------------+
 
 
@@ -189,21 +188,10 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+-----------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; DSP 36x36 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+-----------+------+--------------+---------------------+--------------+
-; |tp2                       ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 10   ; 0            ; |tp2                ; work         ;
+; |tp2                       ; 23 (22)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 20   ; 0            ; |tp2                ; work         ;
+;    |21mux:D0M|             ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |tp2|21mux:D0M      ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                           ;
-+---------------------------------------+--------------------------------------+
-; Register name                         ; Reason for Removal                   ;
-+---------------------------------------+--------------------------------------+
-; D2                                    ; Stuck at GND due to stuck port clock ;
-; D1                                    ; Stuck at GND due to stuck port clock ;
-; D0                                    ; Stuck at GND due to stuck port clock ;
-; Total Number of Removed Registers = 3 ;                                      ;
-+---------------------------------------+--------------------------------------+
 
 
 +------------------------------------------------------+
@@ -211,10 +199,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
+; Total registers                              ; 9     ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Clear ; 6     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 0     ;
 ; Number of registers using Preset             ; 0     ;
@@ -236,38 +224,27 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Fri Jun 13 18:20:42 2025
+    Info: Processing started: Mon Jun 16 16:43:41 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off tp2 -c tp2
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file tp2.bdf
     Info (12023): Found entity 1: tp2
+Info (12021): Found 1 design units, including 1 entities, in source file contador.bdf
+    Info (12023): Found entity 1: contador
 Info (12127): Elaborating entity "tp2" for the top level hierarchy
-Warning (275013): Port "CLK" of type DFF and instance "D2" is missing source signal
-Warning (275013): Port "CLK" of type DFF and instance "D1" is missing source signal
-Warning (275013): Port "CLK" of type DFF and instance "D0" is missing source signal
 Info (12128): Elaborating entity "21mux" for hierarchy "21mux:D2M"
 Info (12130): Elaborated megafunction instantiation "21mux:D2M"
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "B8" is stuck at VCC
-    Warning (13410): Pin "B7" is stuck at VCC
-    Warning (13410): Pin "B6" is stuck at GND
-    Warning (13410): Pin "B5" is stuck at GND
-    Warning (13410): Pin "B4" is stuck at VCC
-    Warning (13410): Pin "B3" is stuck at VCC
-    Warning (13410): Pin "B2" is stuck at GND
-    Warning (13410): Pin "B1" is stuck at VCC
-    Warning (13410): Pin "B0" is stuck at VCC
+Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "pin_name1"
-Info (21057): Implemented 10 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 43 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 1 input pins
-    Info (21059): Implemented 9 output pins
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 16 warnings
-    Info: Peak virtual memory: 4682 megabytes
-    Info: Processing ended: Fri Jun 13 18:20:45 2025
-    Info: Elapsed time: 00:00:03
+    Info (21059): Implemented 19 output pins
+    Info (21061): Implemented 23 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 4674 megabytes
+    Info: Processing ended: Mon Jun 16 16:43:43 2025
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 
 
