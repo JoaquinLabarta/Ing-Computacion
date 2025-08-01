@@ -1,0 +1,570 @@
+Analysis & Synthesis report for Integrador
+Wed Jul 30 19:01:28 2025
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis IP Cores Summary
+  9. General Register Statistics
+ 10. Parameter Settings for User Entity Instance: error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component
+ 11. Parameter Settings for User Entity Instance: mux2:inst13|LPM_MUX:LPM_MUX_component
+ 12. Parameter Settings for User Entity Instance: cmp12bit:inst1|lpm_compare:LPM_COMPARE_component
+ 13. Parameter Settings for User Entity Instance: mux12bit:inst20|LPM_MUX:LPM_MUX_component
+ 14. Elapsed Time Per Partition
+ 15. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                    ;
++------------------------------------+--------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Jul 30 19:01:28 2025      ;
+; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
+; Revision Name                      ; Integrador                                 ;
+; Top-level Entity Name              ; Integrador                                 ;
+; Family                             ; Cyclone IV GX                              ;
+; Total logic elements               ; 112                                        ;
+;     Total combinational functions  ; 88                                         ;
+;     Dedicated logic registers      ; 39                                         ;
+; Total registers                    ; 39                                         ;
+; Total pins                         ; 77                                         ;
+; Total virtual pins                 ; 0                                          ;
+; Total memory bits                  ; 0                                          ;
+; Embedded Multiplier 9-bit elements ; 0                                          ;
+; Total GXB Receiver Channel PCS     ; 0                                          ;
+; Total GXB Receiver Channel PMA     ; 0                                          ;
+; Total GXB Transmitter Channel PCS  ; 0                                          ;
+; Total GXB Transmitter Channel PMA  ; 0                                          ;
+; Total PLLs                         ; 0                                          ;
++------------------------------------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Top-level entity name                                                      ; Integrador         ; Integrador         ;
+; Family name                                                                ; Cyclone IV GX      ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-8         ;   0.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                         ;
++----------------------------------+-----------------+------------------------------------------+----------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                                ; File Name with Absolute Path                                                                                         ; Library ;
++----------------------------------+-----------------+------------------------------------------+----------------------------------------------------------------------------------------------------------------------+---------+
+; Integrador.bdf                   ; yes             ; User Block Diagram/Schematic File        ; D:/Users/W10/Documents/Ingenieria_UNLP/INTRODUCCION_AL_DISE—O_LOGICO/QuartusPrueba2/Quartus/Integrador.bdf           ;         ;
+; cmp12bit.vhd                     ; yes             ; User Wizard-Generated File               ; D:/Users/W10/Documents/Ingenieria_UNLP/INTRODUCCION_AL_DISE—O_LOGICO/QuartusPrueba2/Quartus/cmp12bit.vhd             ;         ;
+; mux12bit.vhd                     ; yes             ; User Wizard-Generated File               ; D:/Users/W10/Documents/Ingenieria_UNLP/INTRODUCCION_AL_DISE—O_LOGICO/QuartusPrueba2/Quartus/mux12bit.vhd             ;         ;
+; incremento.bdf                   ; yes             ; User Block Diagram/Schematic File        ; D:/Users/W10/Documents/Ingenieria_UNLP/INTRODUCCION_AL_DISE—O_LOGICO/QuartusPrueba2/Quartus/incremento.bdf           ;         ;
+; error_component.bdf              ; yes             ; User Block Diagram/Schematic File        ; D:/Users/W10/Documents/Ingenieria_UNLP/INTRODUCCION_AL_DISE—O_LOGICO/QuartusPrueba2/Quartus/error_component.bdf      ;         ;
+; maquina.bdf                      ; yes             ; User Block Diagram/Schematic File        ; D:/Users/W10/Documents/Ingenieria_UNLP/INTRODUCCION_AL_DISE—O_LOGICO/QuartusPrueba2/Quartus/maquina.bdf              ;         ;
+; mux2.vhd                         ; yes             ; User Wizard-Generated File               ; D:/Users/W10/Documents/Ingenieria_UNLP/INTRODUCCION_AL_DISE—O_LOGICO/QuartusPrueba2/Quartus/mux2.vhd                 ;         ;
+; Tristate12.bdf                   ; yes             ; User Block Diagram/Schematic File        ; D:/Users/W10/Documents/Ingenieria_UNLP/INTRODUCCION_AL_DISE—O_LOGICO/QuartusPrueba2/Quartus/Tristate12.bdf           ;         ;
+; lpm_compare.tdf                  ; yes             ; Megafunction                             ; d:/users/w10/desktop/quartus/libraries/megafunctions/lpm_compare.tdf                                                 ;         ;
+; comptree.inc                     ; yes             ; Megafunction                             ; d:/users/w10/desktop/quartus/libraries/megafunctions/comptree.inc                                                    ;         ;
+; altshift.inc                     ; yes             ; Megafunction                             ; d:/users/w10/desktop/quartus/libraries/megafunctions/altshift.inc                                                    ;         ;
+; aglobal131.inc                   ; yes             ; Megafunction                             ; d:/users/w10/desktop/quartus/libraries/megafunctions/aglobal131.inc                                                  ;         ;
+; db/cmpr_tfh.tdf                  ; yes             ; Auto-Generated Megafunction              ; D:/Users/W10/Documents/Ingenieria_UNLP/INTRODUCCION_AL_DISE—O_LOGICO/QuartusPrueba2/Quartus/db/cmpr_tfh.tdf          ;         ;
+; lpm_mux.tdf                      ; yes             ; Megafunction                             ; d:/users/w10/desktop/quartus/libraries/megafunctions/lpm_mux.tdf                                                     ;         ;
+; muxlut.inc                       ; yes             ; Megafunction                             ; d:/users/w10/desktop/quartus/libraries/megafunctions/muxlut.inc                                                      ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                             ; d:/users/w10/desktop/quartus/libraries/megafunctions/bypassff.inc                                                    ;         ;
+; db/mux_cbe.tdf                   ; yes             ; Auto-Generated Megafunction              ; D:/Users/W10/Documents/Ingenieria_UNLP/INTRODUCCION_AL_DISE—O_LOGICO/QuartusPrueba2/Quartus/db/mux_cbe.tdf           ;         ;
+; registros.bdf                    ; yes             ; Auto-Found Block Diagram/Schematic File  ; D:/Users/W10/Documents/Ingenieria_UNLP/INTRODUCCION_AL_DISE—O_LOGICO/QuartusPrueba2/Quartus/registros.bdf            ;         ;
+; db/mux_uce.tdf                   ; yes             ; Auto-Generated Megafunction              ; D:/Users/W10/Documents/Ingenieria_UNLP/INTRODUCCION_AL_DISE—O_LOGICO/QuartusPrueba2/Quartus/db/mux_uce.tdf           ;         ;
+; sumador12bitsposyneg.bdf         ; yes             ; Auto-Found Block Diagram/Schematic File  ; D:/Users/W10/Documents/Ingenieria_UNLP/INTRODUCCION_AL_DISE—O_LOGICO/QuartusPrueba2/Quartus/sumador12bitsposyneg.bdf ;         ;
+; sumador12bits.bdf                ; yes             ; Auto-Found Block Diagram/Schematic File  ; D:/Users/W10/Documents/Ingenieria_UNLP/INTRODUCCION_AL_DISE—O_LOGICO/QuartusPrueba2/Quartus/sumador12bits.bdf        ;         ;
+; sumadorcompleto.bdf              ; yes             ; Auto-Found Block Diagram/Schematic File  ; D:/Users/W10/Documents/Ingenieria_UNLP/INTRODUCCION_AL_DISE—O_LOGICO/QuartusPrueba2/Quartus/sumadorcompleto.bdf      ;         ;
+; xor3.bdf                         ; yes             ; Megafunction                             ; d:/users/w10/desktop/quartus/libraries/others/maxplus2/xor3.bdf                                                      ;         ;
+; moduloinversor.bdf               ; yes             ; Auto-Found Block Diagram/Schematic File  ; D:/Users/W10/Documents/Ingenieria_UNLP/INTRODUCCION_AL_DISE—O_LOGICO/QuartusPrueba2/Quartus/moduloinversor.bdf       ;         ;
++----------------------------------+-----------------+------------------------------------------+----------------------------------------------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary ;
++--------------------------+------------------+
+; Resource                 ; Usage            ;
++--------------------------+------------------+
+; I/O pins                 ; 77               ;
+; DSP block 9-bit elements ; 0                ;
+; Maximum fan-out node     ; inst122~0        ;
+; Maximum fan-out          ; 31               ;
+; Total fan-out            ; 551              ;
+; Average fan-out          ; 1.88             ;
++--------------------------+------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                   ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                   ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; DSP 36x36 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                             ; Library Name ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+--------------+
+; |Integrador                                  ; 88 (12)           ; 39 (0)       ; 0           ; 0            ; 0       ; 0         ; 0         ; 77   ; 0            ; |Integrador                                                                                                     ; work         ;
+;    |cmp12bit:inst1|                          ; 12 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|cmp12bit:inst1                                                                                      ; work         ;
+;       |lpm_compare:LPM_COMPARE_component|    ; 12 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|cmp12bit:inst1|lpm_compare:LPM_COMPARE_component                                                    ; work         ;
+;          |cmpr_tfh:auto_generated|           ; 12 (12)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|cmp12bit:inst1|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated                            ; work         ;
+;    |error_component:inst|                    ; 22 (10)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|error_component:inst                                                                                ; work         ;
+;       |cmp12bit:cmp12bits29|                 ; 12 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|error_component:inst|cmp12bit:cmp12bits29                                                           ; work         ;
+;          |lpm_compare:LPM_COMPARE_component| ; 12 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component                         ; work         ;
+;             |cmpr_tfh:auto_generated|        ; 12 (12)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated ; work         ;
+;    |incremento:inst3|                        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|incremento:inst3                                                                                    ; work         ;
+;    |maquina:inst6|                           ; 10 (10)           ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|maquina:inst6                                                                                       ; work         ;
+;    |mux12bit:inst20|                         ; 17 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|mux12bit:inst20                                                                                     ; work         ;
+;       |lpm_mux:LPM_MUX_component|            ; 17 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|mux12bit:inst20|lpm_mux:LPM_MUX_component                                                           ; work         ;
+;          |mux_uce:auto_generated|            ; 17 (17)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|mux12bit:inst20|lpm_mux:LPM_MUX_component|mux_uce:auto_generated                                    ; work         ;
+;    |registros:inst11|                        ; 0 (0)             ; 12 (12)      ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|registros:inst11                                                                                    ; work         ;
+;    |registros:valorFinal|                    ; 0 (0)             ; 12 (12)      ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|registros:valorFinal                                                                                ; work         ;
+;    |registros:valorInicial|                  ; 0 (0)             ; 12 (12)      ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|registros:valorInicial                                                                              ; work         ;
+;    |sumador12BitsPosyNeg:inst10|             ; 14 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|sumador12BitsPosyNeg:inst10                                                                         ; work         ;
+;       |sumador12Bits:inst2|                  ; 14 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2                                                     ; work         ;
+;          |sumadorCompleto:inst11|            ; 2 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst11                              ; work         ;
+;             |xor3:inst5|                     ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst11|xor3:inst5                   ; work         ;
+;          |sumadorCompleto:inst12|            ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst12                              ; work         ;
+;          |sumadorCompleto:inst2|             ; 2 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst2                               ; work         ;
+;             |xor3:inst5|                     ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst2|xor3:inst5                    ; work         ;
+;          |sumadorCompleto:inst3|             ; 2 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst3                               ; work         ;
+;             |xor3:inst5|                     ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst3|xor3:inst5                    ; work         ;
+;          |sumadorCompleto:inst5|             ; 2 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst5                               ; work         ;
+;             |xor3:inst5|                     ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst5|xor3:inst5                    ; work         ;
+;          |sumadorCompleto:inst7|             ; 2 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst7                               ; work         ;
+;             |xor3:inst5|                     ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst7|xor3:inst5                    ; work         ;
+;          |sumadorCompleto:inst9|             ; 2 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst9                               ; work         ;
+;             |xor3:inst5|                     ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst9|xor3:inst5                    ; work         ;
+;          |sumadorCompleto:inst|              ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst                                ; work         ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                                                                                                            ;
++--------+--------------+---------+--------------+--------------+-------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                                       ; IP Include File                                                                                          ;
++--------+--------------+---------+--------------+--------------+-------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+; Altera ; LPM_COMPARE  ; 13.1    ; N/A          ; N/A          ; |Integrador|error_component:inst|cmp12bit:cmp12bits29 ; D:/Users/W10/Documents/Ingenieria_UNLP/INTRODUCCION_AL_DISE—O_LOGICO/QuartusPrueba2/Quartus/cmp12bit.vhd ;
+; Altera ; LPM_COMPARE  ; 13.1    ; N/A          ; N/A          ; |Integrador|cmp12bit:inst1                            ; D:/Users/W10/Documents/Ingenieria_UNLP/INTRODUCCION_AL_DISE—O_LOGICO/QuartusPrueba2/Quartus/cmp12bit.vhd ;
+; Altera ; LPM_MUX      ; 13.1    ; N/A          ; N/A          ; |Integrador|mux2:inst13                               ; D:/Users/W10/Documents/Ingenieria_UNLP/INTRODUCCION_AL_DISE—O_LOGICO/QuartusPrueba2/Quartus/mux2.vhd     ;
+; Altera ; LPM_MUX      ; 13.1    ; N/A          ; N/A          ; |Integrador|mux12bit:inst20                           ; D:/Users/W10/Documents/Ingenieria_UNLP/INTRODUCCION_AL_DISE—O_LOGICO/QuartusPrueba2/Quartus/mux12bit.vhd ;
++--------+--------------+---------+--------------+--------------+-------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 39    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component ;
++------------------------+---------------+---------------------------------------------------------------------------------+
+; Parameter Name         ; Value         ; Type                                                                            ;
++------------------------+---------------+---------------------------------------------------------------------------------+
+; lpm_width              ; 12            ; Signed Integer                                                                  ;
+; LPM_REPRESENTATION     ; UNSIGNED      ; Untyped                                                                         ;
+; LPM_PIPELINE           ; 0             ; Untyped                                                                         ;
+; CHAIN_SIZE             ; 8             ; Untyped                                                                         ;
+; ONE_INPUT_IS_CONSTANT  ; NO            ; Untyped                                                                         ;
+; CARRY_CHAIN            ; MANUAL        ; Untyped                                                                         ;
+; CASCADE_CHAIN          ; MANUAL        ; Untyped                                                                         ;
+; CARRY_CHAIN_LENGTH     ; 48            ; CARRY_CHAIN_LENGTH                                                              ;
+; CASCADE_CHAIN_LENGTH   ; 2             ; CASCADE_CHAIN_LENGTH                                                            ;
+; DEVICE_FAMILY          ; Cyclone IV GX ; Untyped                                                                         ;
+; CBXI_PARAMETER         ; cmpr_tfh      ; Untyped                                                                         ;
+; AUTO_CARRY_CHAINS      ; ON            ; AUTO_CARRY                                                                      ;
+; IGNORE_CARRY_BUFFERS   ; OFF           ; IGNORE_CARRY                                                                    ;
+; AUTO_CASCADE_CHAINS    ; ON            ; AUTO_CASCADE                                                                    ;
+; IGNORE_CASCADE_BUFFERS ; OFF           ; IGNORE_CASCADE                                                                  ;
++------------------------+---------------+---------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: mux2:inst13|LPM_MUX:LPM_MUX_component ;
++------------------------+---------------+-------------------------------------------+
+; Parameter Name         ; Value         ; Type                                      ;
++------------------------+---------------+-------------------------------------------+
+; AUTO_CARRY_CHAINS      ; ON            ; AUTO_CARRY                                ;
+; IGNORE_CARRY_BUFFERS   ; OFF           ; IGNORE_CARRY                              ;
+; AUTO_CASCADE_CHAINS    ; ON            ; AUTO_CASCADE                              ;
+; IGNORE_CASCADE_BUFFERS ; OFF           ; IGNORE_CASCADE                            ;
+; LPM_WIDTH              ; 1             ; Signed Integer                            ;
+; LPM_SIZE               ; 2             ; Signed Integer                            ;
+; LPM_WIDTHS             ; 1             ; Signed Integer                            ;
+; LPM_PIPELINE           ; 0             ; Signed Integer                            ;
+; CBXI_PARAMETER         ; mux_cbe       ; Untyped                                   ;
+; DEVICE_FAMILY          ; Cyclone IV GX ; Untyped                                   ;
++------------------------+---------------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: cmp12bit:inst1|lpm_compare:LPM_COMPARE_component ;
++------------------------+---------------+------------------------------------------------------+
+; Parameter Name         ; Value         ; Type                                                 ;
++------------------------+---------------+------------------------------------------------------+
+; lpm_width              ; 12            ; Signed Integer                                       ;
+; LPM_REPRESENTATION     ; UNSIGNED      ; Untyped                                              ;
+; LPM_PIPELINE           ; 0             ; Untyped                                              ;
+; CHAIN_SIZE             ; 8             ; Untyped                                              ;
+; ONE_INPUT_IS_CONSTANT  ; NO            ; Untyped                                              ;
+; CARRY_CHAIN            ; MANUAL        ; Untyped                                              ;
+; CASCADE_CHAIN          ; MANUAL        ; Untyped                                              ;
+; CARRY_CHAIN_LENGTH     ; 48            ; CARRY_CHAIN_LENGTH                                   ;
+; CASCADE_CHAIN_LENGTH   ; 2             ; CASCADE_CHAIN_LENGTH                                 ;
+; DEVICE_FAMILY          ; Cyclone IV GX ; Untyped                                              ;
+; CBXI_PARAMETER         ; cmpr_tfh      ; Untyped                                              ;
+; AUTO_CARRY_CHAINS      ; ON            ; AUTO_CARRY                                           ;
+; IGNORE_CARRY_BUFFERS   ; OFF           ; IGNORE_CARRY                                         ;
+; AUTO_CASCADE_CHAINS    ; ON            ; AUTO_CASCADE                                         ;
+; IGNORE_CASCADE_BUFFERS ; OFF           ; IGNORE_CASCADE                                       ;
++------------------------+---------------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: mux12bit:inst20|LPM_MUX:LPM_MUX_component ;
++------------------------+---------------+-----------------------------------------------+
+; Parameter Name         ; Value         ; Type                                          ;
++------------------------+---------------+-----------------------------------------------+
+; AUTO_CARRY_CHAINS      ; ON            ; AUTO_CARRY                                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF           ; IGNORE_CARRY                                  ;
+; AUTO_CASCADE_CHAINS    ; ON            ; AUTO_CASCADE                                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF           ; IGNORE_CASCADE                                ;
+; LPM_WIDTH              ; 12            ; Signed Integer                                ;
+; LPM_SIZE               ; 2             ; Signed Integer                                ;
+; LPM_WIDTHS             ; 1             ; Signed Integer                                ;
+; LPM_PIPELINE           ; 0             ; Signed Integer                                ;
+; CBXI_PARAMETER         ; mux_uce       ; Untyped                                       ;
+; DEVICE_FAMILY          ; Cyclone IV GX ; Untyped                                       ;
++------------------------+---------------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+    Info: Processing started: Wed Jul 30 19:01:26 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Integrador -c Integrador
+Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
+Info (12021): Found 1 design units, including 1 entities, in source file /users/w10/documents/ingenieria_unlp/introduccion_al_dise—o_logico/quartusintegradorjoaco/quartus/zero12bits.bdf
+    Info (12023): Found entity 1: ZERO12bits
+Info (12021): Found 1 design units, including 1 entities, in source file integrador.bdf
+    Info (12023): Found entity 1: Integrador
+Info (12021): Found 2 design units, including 1 entities, in source file cmp12bit.vhd
+    Info (12022): Found design unit 1: cmp12bit-SYN
+    Info (12023): Found entity 1: cmp12bit
+Info (12021): Found 2 design units, including 1 entities, in source file mux12bit.vhd
+    Info (12022): Found design unit 1: mux12bit-SYN
+    Info (12023): Found entity 1: mux12bit
+Info (12021): Found 2 design units, including 1 entities, in source file sumador12bit.vhd
+    Info (12022): Found design unit 1: sumador12bit-SYN
+    Info (12023): Found entity 1: sumador12bit
+Info (12021): Found 1 design units, including 1 entities, in source file incremento.bdf
+    Info (12023): Found entity 1: incremento
+Info (12021): Found 1 design units, including 1 entities, in source file error_component.bdf
+    Info (12023): Found entity 1: error_component
+Warning (12019): Can't analyze file -- file tristate.vhd is missing
+Info (12021): Found 1 design units, including 1 entities, in source file maquina.bdf
+    Info (12023): Found entity 1: maquina
+Info (12021): Found 1 design units, including 1 entities, in source file pruebacomparador.bdf
+    Info (12023): Found entity 1: pruebaComparador
+Info (12021): Found 2 design units, including 1 entities, in source file mux2.vhd
+    Info (12022): Found design unit 1: mux2-SYN
+    Info (12023): Found entity 1: mux2
+Info (12021): Found 1 design units, including 1 entities, in source file tristate12.bdf
+    Info (12023): Found entity 1: Tristate12
+Info (12021): Found 1 design units, including 1 entities, in source file probandotristorbdf.bdf
+    Info (12023): Found entity 1: PROBANDOTRISTORbdf
+Info (12021): Found 1 design units, including 1 entities, in source file probandoerror.bdf
+    Info (12023): Found entity 1: probandoERROR
+Info (12127): Elaborating entity "Integrador" for the top level hierarchy
+Info (12128): Elaborating entity "incremento" for hierarchy "incremento:inst3"
+Info (12128): Elaborating entity "error_component" for hierarchy "error_component:inst"
+Info (12128): Elaborating entity "cmp12bit" for hierarchy "error_component:inst|cmp12bit:cmp12bits29"
+Info (12128): Elaborating entity "lpm_compare" for hierarchy "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component"
+Info (12130): Elaborated megafunction instantiation "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component"
+Info (12133): Instantiated megafunction "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component" with the following parameter:
+    Info (12134): Parameter "lpm_representation" = "UNSIGNED"
+    Info (12134): Parameter "lpm_type" = "LPM_COMPARE"
+    Info (12134): Parameter "lpm_width" = "12"
+Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr_tfh.tdf
+    Info (12023): Found entity 1: cmpr_tfh
+Info (12128): Elaborating entity "cmpr_tfh" for hierarchy "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated"
+Info (12128): Elaborating entity "maquina" for hierarchy "maquina:inst6"
+Info (12128): Elaborating entity "mux2" for hierarchy "mux2:inst13"
+Info (12128): Elaborating entity "LPM_MUX" for hierarchy "mux2:inst13|LPM_MUX:LPM_MUX_component"
+Info (12130): Elaborated megafunction instantiation "mux2:inst13|LPM_MUX:LPM_MUX_component"
+Info (12133): Instantiated megafunction "mux2:inst13|LPM_MUX:LPM_MUX_component" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTH" = "1"
+    Info (12134): Parameter "LPM_SIZE" = "2"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_PIPELINE" = "0"
+    Info (12134): Parameter "LPM_TYPE" = "LPM_MUX"
+    Info (12134): Parameter "LPM_HINT" = "UNUSED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mux_cbe.tdf
+    Info (12023): Found entity 1: mux_cbe
+Info (12128): Elaborating entity "mux_cbe" for hierarchy "mux2:inst13|LPM_MUX:LPM_MUX_component|mux_cbe:auto_generated"
+Warning (12125): Using design file registros.bdf, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: registros
+Info (12128): Elaborating entity "registros" for hierarchy "registros:inst11"
+Info (12128): Elaborating entity "mux12bit" for hierarchy "mux12bit:inst20"
+Info (12128): Elaborating entity "LPM_MUX" for hierarchy "mux12bit:inst20|LPM_MUX:LPM_MUX_component"
+Info (12130): Elaborated megafunction instantiation "mux12bit:inst20|LPM_MUX:LPM_MUX_component"
+Info (12133): Instantiated megafunction "mux12bit:inst20|LPM_MUX:LPM_MUX_component" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTH" = "12"
+    Info (12134): Parameter "LPM_SIZE" = "2"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_PIPELINE" = "0"
+    Info (12134): Parameter "LPM_TYPE" = "LPM_MUX"
+    Info (12134): Parameter "LPM_HINT" = "UNUSED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mux_uce.tdf
+    Info (12023): Found entity 1: mux_uce
+Info (12128): Elaborating entity "mux_uce" for hierarchy "mux12bit:inst20|LPM_MUX:LPM_MUX_component|mux_uce:auto_generated"
+Warning (12125): Using design file sumador12bitsposyneg.bdf, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: sumador12BitsPosyNeg
+Info (12128): Elaborating entity "sumador12BitsPosyNeg" for hierarchy "sumador12BitsPosyNeg:inst10"
+Warning (12125): Using design file sumador12bits.bdf, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: sumador12Bits
+Info (12128): Elaborating entity "sumador12Bits" for hierarchy "sumador12BitsPosyNeg:inst10|sumador12Bits:inst2"
+Warning (12125): Using design file sumadorcompleto.bdf, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: sumadorCompleto
+Info (12128): Elaborating entity "sumadorCompleto" for hierarchy "sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst12"
+Warning (275011): Block or symbol "AND2" of instance "inst" overlaps another block or symbol
+Info (12128): Elaborating entity "XOR3" for hierarchy "sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst12|XOR3:inst5"
+Info (12130): Elaborated megafunction instantiation "sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst12|XOR3:inst5"
+Warning (12125): Using design file moduloinversor.bdf, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: moduloInversor
+Info (12128): Elaborating entity "moduloInversor" for hierarchy "sumador12BitsPosyNeg:inst10|moduloInversor:inst"
+Info (12128): Elaborating entity "Tristate12" for hierarchy "Tristate12:inst5"
+Warning (13034): The following nodes have both tri-state and non-tri-state drivers
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaInicial[11]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaFinal[11]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaInicial[10]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaFinal[10]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaInicial[9]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaFinal[9]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaInicial[8]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaFinal[8]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaInicial[7]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaFinal[7]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaInicial[6]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaFinal[6]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaInicial[5]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaFinal[5]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaInicial[4]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaFinal[4]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaInicial[3]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaFinal[3]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaInicial[2]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaFinal[2]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaInicial[1]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaFinal[1]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaInicial[0]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "salidaFinal[0]" and its non-tri-state driver.
+Warning (13044): Always-enabled tri-state buffer(s) removed
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorInicial|REG_INIT" to the node "salidaInicial[11]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorFinal|REG_INIT" to the node "salidaFinal[11]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorInicial|REG_INIT" to the node "salidaInicial[10]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorFinal|REG_INIT" to the node "salidaFinal[10]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorInicial|REG_INIT" to the node "salidaInicial[9]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorFinal|REG_INIT" to the node "salidaFinal[9]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorInicial|REG_INIT" to the node "salidaInicial[8]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorFinal|REG_INIT" to the node "salidaFinal[8]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorInicial|REG_INIT" to the node "salidaInicial[7]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorFinal|REG_INIT" to the node "salidaFinal[7]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorInicial|REG_INIT" to the node "salidaInicial[6]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorFinal|REG_INIT" to the node "salidaFinal[6]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorInicial|REG_INIT" to the node "salidaInicial[5]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorFinal|REG_INIT" to the node "salidaFinal[5]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorInicial|REG_INIT" to the node "salidaInicial[4]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorFinal|REG_INIT" to the node "salidaFinal[4]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorInicial|REG_INIT" to the node "salidaInicial[3]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorFinal|REG_INIT" to the node "salidaFinal[3]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorInicial|REG_INIT" to the node "salidaInicial[2]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorFinal|REG_INIT" to the node "salidaFinal[2]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorInicial|REG_INIT" to the node "salidaInicial[1]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorFinal|REG_INIT" to the node "salidaFinal[1]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorInicial|REG_INIT" to the node "salidaInicial[0]" into a wire
+    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "registros:valorFinal|REG_INIT" to the node "salidaFinal[0]" into a wire
+Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorInicial|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorFinal|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorInicial|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorFinal|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorInicial|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorFinal|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorInicial|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorFinal|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorInicial|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorFinal|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorInicial|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorFinal|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorInicial|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorFinal|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorInicial|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorFinal|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorInicial|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorFinal|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorInicial|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorFinal|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorInicial|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorFinal|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorInicial|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "registros:valorFinal|REG_INIT" to the node "error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated|_" into an OR gate
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 201 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 10 input pins
+    Info (21059): Implemented 55 output pins
+    Info (21060): Implemented 12 bidirectional pins
+    Info (21061): Implemented 124 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 82 warnings
+    Info: Peak virtual memory: 4745 megabytes
+    Info: Processing ended: Wed Jul 30 19:01:28 2025
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
+
+

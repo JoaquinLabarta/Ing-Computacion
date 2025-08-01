@@ -1,0 +1,400 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "07/23/2025 15:12:46"
+                                                                        
+// Verilog Self-Checking Test Bench (with test vectors) for design :    Integrador
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module Integrador_vlg_sample_tst(
+	b0,
+	b1,
+	b2,
+	CLOCK,
+	CONTINUAR,
+	DATA,
+	LOADF,
+	LOADI,
+	RECARGAR,
+	START,
+	UP_DOWN,
+	sampler_tx
+);
+input  b0;
+input  b1;
+input  b2;
+input  CLOCK;
+input  CONTINUAR;
+input [11:0] DATA;
+input  LOADF;
+input  LOADI;
+input  RECARGAR;
+input  START;
+input  UP_DOWN;
+output sampler_tx;
+
+reg sample;
+time current_time;
+always @(b0 or b1 or b2 or CLOCK or CONTINUAR or DATA or LOADF or LOADI or RECARGAR or START or UP_DOWN)
+                                                                                
+begin                                                 
+ if ($realtime > 0)                                   
+ begin                                                
+	if ($realtime == 0 || $realtime != current_time)  
+	begin									          
+		if (sample === 1'bx)                          
+			sample = 0;                               
+		else                                          
+			sample = ~sample;                         
+	end										          
+	current_time = $realtime;					      
+ end                                                  
+end                                                   
+
+assign sampler_tx = sample;
+endmodule
+
+module Integrador_vlg_check_tst (
+	ERROR,
+	FIN,
+	PAUSE,
+	Q0,
+	Q1,
+	Q2,
+	salida,
+	salidaFinal,
+	salidaInicial,
+	sampler_rx
+);
+input  ERROR;
+input  FIN;
+input  PAUSE;
+input  Q0;
+input  Q1;
+input  Q2;
+input [11:0] salida;
+input [11:0] salidaFinal;
+input [11:0] salidaInicial;
+input sampler_rx;
+
+reg  ERROR_expected;
+reg  FIN_expected;
+reg  PAUSE_expected;
+reg  Q0_expected;
+reg  Q1_expected;
+reg  Q2_expected;
+reg [11:0] salida_expected;
+reg [11:0] salidaFinal_expected;
+reg [11:0] salidaInicial_expected;
+
+reg  ERROR_prev;
+reg  FIN_prev;
+reg  PAUSE_prev;
+reg  Q0_prev;
+reg  Q1_prev;
+reg  Q2_prev;
+reg [11:0] salida_prev;
+reg [11:0] salidaFinal_prev;
+reg [11:0] salidaInicial_prev;
+
+reg  Q0_expected_prev;
+reg  Q1_expected_prev;
+reg  Q2_expected_prev;
+
+reg  last_Q0_exp;
+reg  last_Q1_exp;
+reg  last_Q2_exp;
+
+reg trigger;
+
+integer i;
+integer nummismatches;
+
+reg [1:9] on_first_change ;
+
+
+initial
+begin
+trigger = 0;
+i = 0;
+nummismatches = 0;
+on_first_change = 9'b1;
+end
+
+// update real /o prevs
+
+always @(trigger)
+begin
+	ERROR_prev = ERROR;
+	FIN_prev = FIN;
+	PAUSE_prev = PAUSE;
+	Q0_prev = Q0;
+	Q1_prev = Q1;
+	Q2_prev = Q2;
+	salida_prev = salida;
+	salidaFinal_prev = salidaFinal;
+	salidaInicial_prev = salidaInicial;
+end
+
+// update expected /o prevs
+
+always @(trigger)
+begin
+	Q0_expected_prev = Q0_expected;
+	Q1_expected_prev = Q1_expected;
+	Q2_expected_prev = Q2_expected;
+end
+
+
+
+// expected Q2
+initial
+begin
+	Q2_expected = 1'bX;
+end 
+
+// expected Q1
+initial
+begin
+	Q1_expected = 1'bX;
+end 
+
+// expected Q0
+initial
+begin
+	Q0_expected = 1'bX;
+end 
+// generate trigger
+always @(ERROR_expected or ERROR or FIN_expected or FIN or PAUSE_expected or PAUSE or Q0_expected or Q0 or Q1_expected or Q1 or Q2_expected or Q2 or salida_expected or salida or salidaFinal_expected or salidaFinal or salidaInicial_expected or salidaInicial)
+begin
+	trigger <= ~trigger;
+end
+
+always @(posedge sampler_rx or negedge sampler_rx)
+begin
+`ifdef debug_tbench
+	$display("Scanning pattern %d @time = %t",i,$realtime );
+	i = i + 1;
+	$display("| expected ERROR = %b | expected FIN = %b | expected PAUSE = %b | expected Q0 = %b | expected Q1 = %b | expected Q2 = %b | expected salida = %b | expected salidaFinal = %b | expected salidaInicial = %b | ",ERROR_expected_prev,FIN_expected_prev,PAUSE_expected_prev,Q0_expected_prev,Q1_expected_prev,Q2_expected_prev,salida_expected_prev,salidaFinal_expected_prev,salidaInicial_expected_prev);
+	$display("| real ERROR = %b | real FIN = %b | real PAUSE = %b | real Q0 = %b | real Q1 = %b | real Q2 = %b | real salida = %b | real salidaFinal = %b | real salidaInicial = %b | ",ERROR_prev,FIN_prev,PAUSE_prev,Q0_prev,Q1_prev,Q2_prev,salida_prev,salidaFinal_prev,salidaInicial_prev);
+`endif
+	if (
+		( Q0_expected_prev !== 1'bx ) && ( Q0_prev !== Q0_expected_prev )
+		&& ((Q0_expected_prev !== last_Q0_exp) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port Q0 :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", Q0_expected_prev);
+		$display ("     Real value = %b", Q0_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_Q0_exp = Q0_expected_prev;
+	end
+	if (
+		( Q1_expected_prev !== 1'bx ) && ( Q1_prev !== Q1_expected_prev )
+		&& ((Q1_expected_prev !== last_Q1_exp) ||
+			on_first_change[5])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port Q1 :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", Q1_expected_prev);
+		$display ("     Real value = %b", Q1_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[5] = 1'b0;
+		last_Q1_exp = Q1_expected_prev;
+	end
+	if (
+		( Q2_expected_prev !== 1'bx ) && ( Q2_prev !== Q2_expected_prev )
+		&& ((Q2_expected_prev !== last_Q2_exp) ||
+			on_first_change[6])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port Q2 :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", Q2_expected_prev);
+		$display ("     Real value = %b", Q2_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[6] = 1'b0;
+		last_Q2_exp = Q2_expected_prev;
+	end
+
+	trigger <= ~trigger;
+end
+initial 
+
+begin 
+$timeformat(-12,3," ps",6);
+#1000000;
+if (nummismatches > 0)
+	$display ("%d mismatched vectors : Simulation failed !",nummismatches);
+else
+	$display ("Simulation passed !");
+$finish;
+end 
+endmodule
+
+module Integrador_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg b0;
+reg b1;
+reg b2;
+reg CLOCK;
+reg CONTINUAR;
+reg [11:0] DATA;
+reg LOADF;
+reg LOADI;
+reg RECARGAR;
+reg START;
+reg UP_DOWN;
+// wires                                               
+wire ERROR;
+wire FIN;
+wire PAUSE;
+wire Q0;
+wire Q1;
+wire Q2;
+wire [11:0] salida;
+wire [11:0] salidaFinal;
+wire [11:0] salidaInicial;
+
+wire sampler;                             
+
+// assign statements (if any)                          
+Integrador i1 (
+// port map - connection between master ports and signals/registers   
+	.b0(b0),
+	.b1(b1),
+	.b2(b2),
+	.CLOCK(CLOCK),
+	.CONTINUAR(CONTINUAR),
+	.DATA(DATA),
+	.ERROR(ERROR),
+	.FIN(FIN),
+	.LOADF(LOADF),
+	.LOADI(LOADI),
+	.PAUSE(PAUSE),
+	.Q0(Q0),
+	.Q1(Q1),
+	.Q2(Q2),
+	.RECARGAR(RECARGAR),
+	.salida(salida),
+	.salidaFinal(salidaFinal),
+	.salidaInicial(salidaInicial),
+	.START(START),
+	.UP_DOWN(UP_DOWN)
+);
+
+// CLOCK
+initial
+begin
+	CLOCK = 1'b1;
+	# 10000;
+	repeat(49)
+	begin
+		CLOCK = 1'b0;
+		CLOCK = #10000 1'b1;
+		# 10000;
+	end
+	CLOCK = 1'b0;
+end 
+
+// LOADI
+initial
+begin
+	LOADI = 1'b0;
+	LOADI = #150000 1'b1;
+	LOADI = #200000 1'b0;
+	LOADI = #250000 1'b1;
+	LOADI = #110000 1'b0;
+end 
+
+// LOADF
+initial
+begin
+	LOADF = 1'b0;
+	LOADF = #20000 1'b1;
+	LOADF = #100000 1'b0;
+	LOADF = #260000 1'b1;
+	LOADF = #210000 1'b0;
+end 
+
+// RECARGAR
+initial
+begin
+	RECARGAR = 1'b0;
+	RECARGAR = #10000 1'b1;
+	RECARGAR = #170000 1'b0;
+	RECARGAR = #230000 1'b1;
+	RECARGAR = #140000 1'b0;
+	RECARGAR = #120000 1'b1;
+	RECARGAR = #230000 1'b0;
+end 
+
+// START
+initial
+begin
+	START = 1'b0;
+end 
+
+// UP_DOWN
+initial
+begin
+	UP_DOWN = 1'b0;
+end 
+
+// CONTINUAR
+initial
+begin
+	CONTINUAR = 1'b0;
+end 
+
+Integrador_vlg_sample_tst tb_sample (
+	.b0(b0),
+	.b1(b1),
+	.b2(b2),
+	.CLOCK(CLOCK),
+	.CONTINUAR(CONTINUAR),
+	.DATA(DATA),
+	.LOADF(LOADF),
+	.LOADI(LOADI),
+	.RECARGAR(RECARGAR),
+	.START(START),
+	.UP_DOWN(UP_DOWN),
+	.sampler_tx(sampler)
+);
+
+Integrador_vlg_check_tst tb_out(
+	.ERROR(ERROR),
+	.FIN(FIN),
+	.PAUSE(PAUSE),
+	.Q0(Q0),
+	.Q1(Q1),
+	.Q2(Q2),
+	.salida(salida),
+	.salidaFinal(salidaFinal),
+	.salidaInicial(salidaInicial),
+	.sampler_rx(sampler)
+);
+endmodule
+

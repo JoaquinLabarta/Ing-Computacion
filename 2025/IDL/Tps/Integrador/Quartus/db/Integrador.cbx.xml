@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="Integrador">
+		<CBX_INST_ENTRY INSTANCE_NAME="|Integrador|cmp12bit:inst1|lpm_compare:LPM_COMPARE_component" CBX_FILE_NAME="cmpr_tfh.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Integrador|error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component" CBX_FILE_NAME="cmpr_tfh.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Integrador|mux12bit:inst20|LPM_MUX:LPM_MUX_component" CBX_FILE_NAME="mux_uce.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Integrador|mux2:inst13|LPM_MUX:LPM_MUX_component" CBX_FILE_NAME="mux_cbe.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

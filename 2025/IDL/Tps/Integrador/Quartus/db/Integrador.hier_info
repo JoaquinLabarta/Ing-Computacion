@@ -1,0 +1,1106 @@
+|Integrador
+PAUSE <= incremento:inst3.PAUSE
+b2 => incremento:inst3.b2
+b1 => incremento:inst3.b1
+b0 => incremento:inst3.b0
+ERROR <= err.DB_MAX_OUTPUT_PORT_TYPE
+UP_DOWN => error_component:inst.updown
+UP_DOWN => sumador12BitsPosyNeg:inst10.SUMARESTA
+UP_DOWN => mux2:inst13.sel
+Q2 <= maquina:inst6.Q2
+RECARGAR => maquina:inst6.RECARGAR
+CLOCK => maquina:inst6.clock
+CLOCK => registros:inst11.LOAD
+FIN <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+Q1 <= maquina:inst6.Q1
+Q0 <= maquina:inst6.Q0
+postRegSumador[0] <= registros:inst11.REG_INIT[0]
+postRegSumador[1] <= registros:inst11.REG_INIT[1]
+postRegSumador[2] <= registros:inst11.REG_INIT[2]
+postRegSumador[3] <= registros:inst11.REG_INIT[3]
+postRegSumador[4] <= registros:inst11.REG_INIT[4]
+postRegSumador[5] <= registros:inst11.REG_INIT[5]
+postRegSumador[6] <= registros:inst11.REG_INIT[6]
+postRegSumador[7] <= registros:inst11.REG_INIT[7]
+postRegSumador[8] <= registros:inst11.REG_INIT[8]
+postRegSumador[9] <= registros:inst11.REG_INIT[9]
+postRegSumador[10] <= registros:inst11.REG_INIT[10]
+postRegSumador[11] <= registros:inst11.REG_INIT[11]
+LOADI => inst11s.IN1
+LOADI => maquina:inst6.LOAD_I
+DATA[0] <> Tristate12:inst5.DATA[0]
+DATA[1] <> Tristate12:inst5.DATA[1]
+DATA[2] <> Tristate12:inst5.DATA[2]
+DATA[3] <> Tristate12:inst5.DATA[3]
+DATA[4] <> Tristate12:inst5.DATA[4]
+DATA[5] <> Tristate12:inst5.DATA[5]
+DATA[6] <> Tristate12:inst5.DATA[6]
+DATA[7] <> Tristate12:inst5.DATA[7]
+DATA[8] <> Tristate12:inst5.DATA[8]
+DATA[9] <> Tristate12:inst5.DATA[9]
+DATA[10] <> Tristate12:inst5.DATA[10]
+DATA[11] <> Tristate12:inst5.DATA[11]
+LOADF => inst8.IN1
+LOADF => maquina:inst6.LOAD_F
+CONTINUAR => maquina:inst6.CONTINUAR
+START => maquina:inst6.START
+CYOUT <= sumador12BitsPosyNeg:inst10.Cout
+postmux[0] <= mux12bit:inst20.result[0]
+postmux[1] <= mux12bit:inst20.result[1]
+postmux[2] <= mux12bit:inst20.result[2]
+postmux[3] <= mux12bit:inst20.result[3]
+postmux[4] <= mux12bit:inst20.result[4]
+postmux[5] <= mux12bit:inst20.result[5]
+postmux[6] <= mux12bit:inst20.result[6]
+postmux[7] <= mux12bit:inst20.result[7]
+postmux[8] <= mux12bit:inst20.result[8]
+postmux[9] <= mux12bit:inst20.result[9]
+postmux[10] <= mux12bit:inst20.result[10]
+postmux[11] <= mux12bit:inst20.result[11]
+salidaFinal[0] <= vFinal[0].DB_MAX_OUTPUT_PORT_TYPE
+salidaFinal[1] <= vFinal[1].DB_MAX_OUTPUT_PORT_TYPE
+salidaFinal[2] <= vFinal[2].DB_MAX_OUTPUT_PORT_TYPE
+salidaFinal[3] <= vFinal[3].DB_MAX_OUTPUT_PORT_TYPE
+salidaFinal[4] <= vFinal[4].DB_MAX_OUTPUT_PORT_TYPE
+salidaFinal[5] <= vFinal[5].DB_MAX_OUTPUT_PORT_TYPE
+salidaFinal[6] <= vFinal[6].DB_MAX_OUTPUT_PORT_TYPE
+salidaFinal[7] <= vFinal[7].DB_MAX_OUTPUT_PORT_TYPE
+salidaFinal[8] <= vFinal[8].DB_MAX_OUTPUT_PORT_TYPE
+salidaFinal[9] <= vFinal[9].DB_MAX_OUTPUT_PORT_TYPE
+salidaFinal[10] <= vFinal[10].DB_MAX_OUTPUT_PORT_TYPE
+salidaFinal[11] <= vFinal[11].DB_MAX_OUTPUT_PORT_TYPE
+salidaInicial[0] <= vInicial[0].DB_MAX_OUTPUT_PORT_TYPE
+salidaInicial[1] <= vInicial[1].DB_MAX_OUTPUT_PORT_TYPE
+salidaInicial[2] <= vInicial[2].DB_MAX_OUTPUT_PORT_TYPE
+salidaInicial[3] <= vInicial[3].DB_MAX_OUTPUT_PORT_TYPE
+salidaInicial[4] <= vInicial[4].DB_MAX_OUTPUT_PORT_TYPE
+salidaInicial[5] <= vInicial[5].DB_MAX_OUTPUT_PORT_TYPE
+salidaInicial[6] <= vInicial[6].DB_MAX_OUTPUT_PORT_TYPE
+salidaInicial[7] <= vInicial[7].DB_MAX_OUTPUT_PORT_TYPE
+salidaInicial[8] <= vInicial[8].DB_MAX_OUTPUT_PORT_TYPE
+salidaInicial[9] <= vInicial[9].DB_MAX_OUTPUT_PORT_TYPE
+salidaInicial[10] <= vInicial[10].DB_MAX_OUTPUT_PORT_TYPE
+salidaInicial[11] <= vInicial[11].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Integrador|incremento:inst3
+PAUSE <= inst26.DB_MAX_OUTPUT_PORT_TYPE
+b1 => inst26.IN0
+b1 => INCREMENTO[1].DATAIN
+b0 => inst26.IN1
+b0 => INCREMENTO[0].DATAIN
+b2 => inst26.IN2
+b2 => INCREMENTO[2].DATAIN
+INCREMENTO[0] <= b0.DB_MAX_OUTPUT_PORT_TYPE
+INCREMENTO[1] <= b1.DB_MAX_OUTPUT_PORT_TYPE
+INCREMENTO[2] <= b2.DB_MAX_OUTPUT_PORT_TYPE
+INCREMENTO[3] <= <GND>
+INCREMENTO[4] <= <GND>
+INCREMENTO[5] <= <GND>
+INCREMENTO[6] <= <GND>
+INCREMENTO[7] <= <GND>
+INCREMENTO[8] <= <GND>
+INCREMENTO[9] <= <GND>
+INCREMENTO[10] <= <GND>
+INCREMENTO[11] <= <GND>
+
+
+|Integrador|error_component:inst
+ERROR <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+Q2 => inst5.IN0
+Q2 => inst3.IN0
+Q1 => inst6.IN0
+Q1 => inst2.IN1
+Q0 => inst4.IN0
+valorFinal[0] => cmp12bit:cmp12bits29.dataa[0]
+valorFinal[1] => cmp12bit:cmp12bits29.dataa[1]
+valorFinal[2] => cmp12bit:cmp12bits29.dataa[2]
+valorFinal[3] => cmp12bit:cmp12bits29.dataa[3]
+valorFinal[4] => cmp12bit:cmp12bits29.dataa[4]
+valorFinal[5] => cmp12bit:cmp12bits29.dataa[5]
+valorFinal[6] => cmp12bit:cmp12bits29.dataa[6]
+valorFinal[7] => cmp12bit:cmp12bits29.dataa[7]
+valorFinal[8] => cmp12bit:cmp12bits29.dataa[8]
+valorFinal[9] => cmp12bit:cmp12bits29.dataa[9]
+valorFinal[10] => cmp12bit:cmp12bits29.dataa[10]
+valorFinal[11] => cmp12bit:cmp12bits29.dataa[11]
+valorInicial[0] => cmp12bit:cmp12bits29.datab[0]
+valorInicial[1] => cmp12bit:cmp12bits29.datab[1]
+valorInicial[2] => cmp12bit:cmp12bits29.datab[2]
+valorInicial[3] => cmp12bit:cmp12bits29.datab[3]
+valorInicial[4] => cmp12bit:cmp12bits29.datab[4]
+valorInicial[5] => cmp12bit:cmp12bits29.datab[5]
+valorInicial[6] => cmp12bit:cmp12bits29.datab[6]
+valorInicial[7] => cmp12bit:cmp12bits29.datab[7]
+valorInicial[8] => cmp12bit:cmp12bits29.datab[8]
+valorInicial[9] => cmp12bit:cmp12bits29.datab[9]
+valorInicial[10] => cmp12bit:cmp12bits29.datab[10]
+valorInicial[11] => cmp12bit:cmp12bits29.datab[11]
+updown => inst7.IN1
+updown => inst9.IN0
+
+
+|Integrador|error_component:inst|cmp12bit:cmp12bits29
+dataa[0] => lpm_compare:LPM_COMPARE_component.dataa[0]
+dataa[1] => lpm_compare:LPM_COMPARE_component.dataa[1]
+dataa[2] => lpm_compare:LPM_COMPARE_component.dataa[2]
+dataa[3] => lpm_compare:LPM_COMPARE_component.dataa[3]
+dataa[4] => lpm_compare:LPM_COMPARE_component.dataa[4]
+dataa[5] => lpm_compare:LPM_COMPARE_component.dataa[5]
+dataa[6] => lpm_compare:LPM_COMPARE_component.dataa[6]
+dataa[7] => lpm_compare:LPM_COMPARE_component.dataa[7]
+dataa[8] => lpm_compare:LPM_COMPARE_component.dataa[8]
+dataa[9] => lpm_compare:LPM_COMPARE_component.dataa[9]
+dataa[10] => lpm_compare:LPM_COMPARE_component.dataa[10]
+dataa[11] => lpm_compare:LPM_COMPARE_component.dataa[11]
+datab[0] => lpm_compare:LPM_COMPARE_component.datab[0]
+datab[1] => lpm_compare:LPM_COMPARE_component.datab[1]
+datab[2] => lpm_compare:LPM_COMPARE_component.datab[2]
+datab[3] => lpm_compare:LPM_COMPARE_component.datab[3]
+datab[4] => lpm_compare:LPM_COMPARE_component.datab[4]
+datab[5] => lpm_compare:LPM_COMPARE_component.datab[5]
+datab[6] => lpm_compare:LPM_COMPARE_component.datab[6]
+datab[7] => lpm_compare:LPM_COMPARE_component.datab[7]
+datab[8] => lpm_compare:LPM_COMPARE_component.datab[8]
+datab[9] => lpm_compare:LPM_COMPARE_component.datab[9]
+datab[10] => lpm_compare:LPM_COMPARE_component.datab[10]
+datab[11] => lpm_compare:LPM_COMPARE_component.datab[11]
+aeb <= lpm_compare:LPM_COMPARE_component.aeb
+agb <= lpm_compare:LPM_COMPARE_component.agb
+alb <= lpm_compare:LPM_COMPARE_component.alb
+
+
+|Integrador|error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component
+dataa[0] => cmpr_tfh:auto_generated.dataa[0]
+dataa[1] => cmpr_tfh:auto_generated.dataa[1]
+dataa[2] => cmpr_tfh:auto_generated.dataa[2]
+dataa[3] => cmpr_tfh:auto_generated.dataa[3]
+dataa[4] => cmpr_tfh:auto_generated.dataa[4]
+dataa[5] => cmpr_tfh:auto_generated.dataa[5]
+dataa[6] => cmpr_tfh:auto_generated.dataa[6]
+dataa[7] => cmpr_tfh:auto_generated.dataa[7]
+dataa[8] => cmpr_tfh:auto_generated.dataa[8]
+dataa[9] => cmpr_tfh:auto_generated.dataa[9]
+dataa[10] => cmpr_tfh:auto_generated.dataa[10]
+dataa[11] => cmpr_tfh:auto_generated.dataa[11]
+datab[0] => cmpr_tfh:auto_generated.datab[0]
+datab[1] => cmpr_tfh:auto_generated.datab[1]
+datab[2] => cmpr_tfh:auto_generated.datab[2]
+datab[3] => cmpr_tfh:auto_generated.datab[3]
+datab[4] => cmpr_tfh:auto_generated.datab[4]
+datab[5] => cmpr_tfh:auto_generated.datab[5]
+datab[6] => cmpr_tfh:auto_generated.datab[6]
+datab[7] => cmpr_tfh:auto_generated.datab[7]
+datab[8] => cmpr_tfh:auto_generated.datab[8]
+datab[9] => cmpr_tfh:auto_generated.datab[9]
+datab[10] => cmpr_tfh:auto_generated.datab[10]
+datab[11] => cmpr_tfh:auto_generated.datab[11]
+clock => ~NO_FANOUT~
+aclr => ~NO_FANOUT~
+clken => ~NO_FANOUT~
+alb <= cmpr_tfh:auto_generated.alb
+aeb <= cmpr_tfh:auto_generated.aeb
+agb <= cmpr_tfh:auto_generated.agb
+aleb <= <GND>
+aneb <= <GND>
+ageb <= <GND>
+
+
+|Integrador|error_component:inst|cmp12bit:cmp12bits29|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated
+aeb <= aeb_int.DB_MAX_OUTPUT_PORT_TYPE
+agb <= agb.DB_MAX_OUTPUT_PORT_TYPE
+alb <= alb_int.DB_MAX_OUTPUT_PORT_TYPE
+dataa[0] => _.IN0
+dataa[0] => op_1.IN23
+dataa[1] => _.IN0
+dataa[1] => op_1.IN21
+dataa[2] => _.IN0
+dataa[2] => op_1.IN19
+dataa[3] => _.IN0
+dataa[3] => op_1.IN17
+dataa[4] => _.IN0
+dataa[4] => op_1.IN15
+dataa[5] => _.IN0
+dataa[5] => op_1.IN13
+dataa[6] => _.IN0
+dataa[6] => op_1.IN11
+dataa[7] => _.IN0
+dataa[7] => op_1.IN9
+dataa[8] => _.IN0
+dataa[8] => op_1.IN7
+dataa[9] => _.IN0
+dataa[9] => op_1.IN5
+dataa[10] => _.IN0
+dataa[10] => op_1.IN3
+dataa[11] => _.IN0
+dataa[11] => op_1.IN1
+datab[0] => _.IN1
+datab[0] => op_1.IN24
+datab[1] => _.IN1
+datab[1] => op_1.IN22
+datab[2] => _.IN1
+datab[2] => op_1.IN20
+datab[3] => _.IN1
+datab[3] => op_1.IN18
+datab[4] => _.IN1
+datab[4] => op_1.IN16
+datab[5] => _.IN1
+datab[5] => op_1.IN14
+datab[6] => _.IN1
+datab[6] => op_1.IN12
+datab[7] => _.IN1
+datab[7] => op_1.IN10
+datab[8] => _.IN1
+datab[8] => op_1.IN8
+datab[9] => _.IN1
+datab[9] => op_1.IN6
+datab[10] => _.IN1
+datab[10] => op_1.IN4
+datab[11] => _.IN1
+datab[11] => op_1.IN2
+
+
+|Integrador|maquina:inst6
+Q2 <= inst22.DB_MAX_OUTPUT_PORT_TYPE
+clock => inst22.CLK
+clock => inst23.CLK
+clock => inst24.CLK
+RECARGAR => not1.IN0
+RECARGAR => not3.IN0
+RECARGAR => not2.IN0
+Q1 <= inst23.DB_MAX_OUTPUT_PORT_TYPE
+LOAD_F => and30.IN0
+LOAD_F => inst35.IN0
+Q0 <= inst24.DB_MAX_OUTPUT_PORT_TYPE
+LOAD_I => and099.IN1
+CONTINUAR => and6.IN1
+CONTINUAR => and5.IN0
+ERROR => inst36.IN0
+ERROR => not15.IN0
+ERROR => and3.IN0
+START => and13.IN2
+FIN => inst6.IN0
+FIN => and4.IN1
+
+
+|Integrador|mux2:inst13
+data0 => LPM_MUX:LPM_MUX_component.DATA[0][0]
+data1 => LPM_MUX:LPM_MUX_component.DATA[1][0]
+sel => LPM_MUX:LPM_MUX_component.SEL[0]
+result <= LPM_MUX:LPM_MUX_component.RESULT[0]
+
+
+|Integrador|mux2:inst13|LPM_MUX:LPM_MUX_component
+data[0][0] => mux_cbe:auto_generated.data[0]
+data[1][0] => mux_cbe:auto_generated.data[1]
+sel[0] => mux_cbe:auto_generated.sel[0]
+clock => ~NO_FANOUT~
+aclr => ~NO_FANOUT~
+clken => ~NO_FANOUT~
+result[0] <= mux_cbe:auto_generated.result[0]
+
+
+|Integrador|mux2:inst13|LPM_MUX:LPM_MUX_component|mux_cbe:auto_generated
+data[0] => result_node[0].IN1
+data[1] => result_node[0].IN1
+result[0] <= result_node[0].DB_MAX_OUTPUT_PORT_TYPE
+sel[0] => result_node[0].IN0
+sel[0] => _.IN0
+
+
+|Integrador|cmp12bit:inst1
+dataa[0] => lpm_compare:LPM_COMPARE_component.dataa[0]
+dataa[1] => lpm_compare:LPM_COMPARE_component.dataa[1]
+dataa[2] => lpm_compare:LPM_COMPARE_component.dataa[2]
+dataa[3] => lpm_compare:LPM_COMPARE_component.dataa[3]
+dataa[4] => lpm_compare:LPM_COMPARE_component.dataa[4]
+dataa[5] => lpm_compare:LPM_COMPARE_component.dataa[5]
+dataa[6] => lpm_compare:LPM_COMPARE_component.dataa[6]
+dataa[7] => lpm_compare:LPM_COMPARE_component.dataa[7]
+dataa[8] => lpm_compare:LPM_COMPARE_component.dataa[8]
+dataa[9] => lpm_compare:LPM_COMPARE_component.dataa[9]
+dataa[10] => lpm_compare:LPM_COMPARE_component.dataa[10]
+dataa[11] => lpm_compare:LPM_COMPARE_component.dataa[11]
+datab[0] => lpm_compare:LPM_COMPARE_component.datab[0]
+datab[1] => lpm_compare:LPM_COMPARE_component.datab[1]
+datab[2] => lpm_compare:LPM_COMPARE_component.datab[2]
+datab[3] => lpm_compare:LPM_COMPARE_component.datab[3]
+datab[4] => lpm_compare:LPM_COMPARE_component.datab[4]
+datab[5] => lpm_compare:LPM_COMPARE_component.datab[5]
+datab[6] => lpm_compare:LPM_COMPARE_component.datab[6]
+datab[7] => lpm_compare:LPM_COMPARE_component.datab[7]
+datab[8] => lpm_compare:LPM_COMPARE_component.datab[8]
+datab[9] => lpm_compare:LPM_COMPARE_component.datab[9]
+datab[10] => lpm_compare:LPM_COMPARE_component.datab[10]
+datab[11] => lpm_compare:LPM_COMPARE_component.datab[11]
+aeb <= lpm_compare:LPM_COMPARE_component.aeb
+agb <= lpm_compare:LPM_COMPARE_component.agb
+alb <= lpm_compare:LPM_COMPARE_component.alb
+
+
+|Integrador|cmp12bit:inst1|lpm_compare:LPM_COMPARE_component
+dataa[0] => cmpr_tfh:auto_generated.dataa[0]
+dataa[1] => cmpr_tfh:auto_generated.dataa[1]
+dataa[2] => cmpr_tfh:auto_generated.dataa[2]
+dataa[3] => cmpr_tfh:auto_generated.dataa[3]
+dataa[4] => cmpr_tfh:auto_generated.dataa[4]
+dataa[5] => cmpr_tfh:auto_generated.dataa[5]
+dataa[6] => cmpr_tfh:auto_generated.dataa[6]
+dataa[7] => cmpr_tfh:auto_generated.dataa[7]
+dataa[8] => cmpr_tfh:auto_generated.dataa[8]
+dataa[9] => cmpr_tfh:auto_generated.dataa[9]
+dataa[10] => cmpr_tfh:auto_generated.dataa[10]
+dataa[11] => cmpr_tfh:auto_generated.dataa[11]
+datab[0] => cmpr_tfh:auto_generated.datab[0]
+datab[1] => cmpr_tfh:auto_generated.datab[1]
+datab[2] => cmpr_tfh:auto_generated.datab[2]
+datab[3] => cmpr_tfh:auto_generated.datab[3]
+datab[4] => cmpr_tfh:auto_generated.datab[4]
+datab[5] => cmpr_tfh:auto_generated.datab[5]
+datab[6] => cmpr_tfh:auto_generated.datab[6]
+datab[7] => cmpr_tfh:auto_generated.datab[7]
+datab[8] => cmpr_tfh:auto_generated.datab[8]
+datab[9] => cmpr_tfh:auto_generated.datab[9]
+datab[10] => cmpr_tfh:auto_generated.datab[10]
+datab[11] => cmpr_tfh:auto_generated.datab[11]
+clock => ~NO_FANOUT~
+aclr => ~NO_FANOUT~
+clken => ~NO_FANOUT~
+alb <= cmpr_tfh:auto_generated.alb
+aeb <= cmpr_tfh:auto_generated.aeb
+agb <= cmpr_tfh:auto_generated.agb
+aleb <= <GND>
+aneb <= <GND>
+ageb <= <GND>
+
+
+|Integrador|cmp12bit:inst1|lpm_compare:LPM_COMPARE_component|cmpr_tfh:auto_generated
+aeb <= aeb_int.DB_MAX_OUTPUT_PORT_TYPE
+agb <= agb.DB_MAX_OUTPUT_PORT_TYPE
+alb <= alb_int.DB_MAX_OUTPUT_PORT_TYPE
+dataa[0] => _.IN0
+dataa[0] => op_1.IN23
+dataa[1] => _.IN0
+dataa[1] => op_1.IN21
+dataa[2] => _.IN0
+dataa[2] => op_1.IN19
+dataa[3] => _.IN0
+dataa[3] => op_1.IN17
+dataa[4] => _.IN0
+dataa[4] => op_1.IN15
+dataa[5] => _.IN0
+dataa[5] => op_1.IN13
+dataa[6] => _.IN0
+dataa[6] => op_1.IN11
+dataa[7] => _.IN0
+dataa[7] => op_1.IN9
+dataa[8] => _.IN0
+dataa[8] => op_1.IN7
+dataa[9] => _.IN0
+dataa[9] => op_1.IN5
+dataa[10] => _.IN0
+dataa[10] => op_1.IN3
+dataa[11] => _.IN0
+dataa[11] => op_1.IN1
+datab[0] => _.IN1
+datab[0] => op_1.IN24
+datab[1] => _.IN1
+datab[1] => op_1.IN22
+datab[2] => _.IN1
+datab[2] => op_1.IN20
+datab[3] => _.IN1
+datab[3] => op_1.IN18
+datab[4] => _.IN1
+datab[4] => op_1.IN16
+datab[5] => _.IN1
+datab[5] => op_1.IN14
+datab[6] => _.IN1
+datab[6] => op_1.IN12
+datab[7] => _.IN1
+datab[7] => op_1.IN10
+datab[8] => _.IN1
+datab[8] => op_1.IN8
+datab[9] => _.IN1
+datab[9] => op_1.IN6
+datab[10] => _.IN1
+datab[10] => op_1.IN4
+datab[11] => _.IN1
+datab[11] => op_1.IN2
+
+
+|Integrador|registros:inst11
+REG_INIT[0] <> inst6
+REG_INIT[1] <> inst5
+REG_INIT[2] <> inst1
+REG_INIT[3] <> inst
+REG_INIT[4] <> inst17
+REG_INIT[5] <> inst16
+REG_INIT[6] <> inst15
+REG_INIT[7] <> inst14
+REG_INIT[8] <> inst13
+REG_INIT[9] <> inst12
+REG_INIT[10] <> inst2
+REG_INIT[11] <> inst11
+LOAD => inst11.CLK
+LOAD => inst2.CLK
+LOAD => inst12.CLK
+LOAD => inst13.CLK
+LOAD => inst14.CLK
+LOAD => inst15.CLK
+LOAD => inst16.CLK
+LOAD => inst17.CLK
+LOAD => inst.CLK
+LOAD => inst1.CLK
+LOAD => inst6.CLK
+LOAD => inst5.CLK
+DATA[0] => inst6.DATAIN
+DATA[1] => inst5.DATAIN
+DATA[2] => inst1.DATAIN
+DATA[3] => inst.DATAIN
+DATA[4] => inst17.DATAIN
+DATA[5] => inst16.DATAIN
+DATA[6] => inst15.DATAIN
+DATA[7] => inst14.DATAIN
+DATA[8] => inst13.DATAIN
+DATA[9] => inst12.DATAIN
+DATA[10] => inst2.DATAIN
+DATA[11] => inst11.DATAIN
+
+
+|Integrador|mux12bit:inst20
+data0x[0] => LPM_MUX:LPM_MUX_component.DATA[0][0]
+data0x[1] => LPM_MUX:LPM_MUX_component.DATA[0][1]
+data0x[2] => LPM_MUX:LPM_MUX_component.DATA[0][2]
+data0x[3] => LPM_MUX:LPM_MUX_component.DATA[0][3]
+data0x[4] => LPM_MUX:LPM_MUX_component.DATA[0][4]
+data0x[5] => LPM_MUX:LPM_MUX_component.DATA[0][5]
+data0x[6] => LPM_MUX:LPM_MUX_component.DATA[0][6]
+data0x[7] => LPM_MUX:LPM_MUX_component.DATA[0][7]
+data0x[8] => LPM_MUX:LPM_MUX_component.DATA[0][8]
+data0x[9] => LPM_MUX:LPM_MUX_component.DATA[0][9]
+data0x[10] => LPM_MUX:LPM_MUX_component.DATA[0][10]
+data0x[11] => LPM_MUX:LPM_MUX_component.DATA[0][11]
+data1x[0] => LPM_MUX:LPM_MUX_component.DATA[1][0]
+data1x[1] => LPM_MUX:LPM_MUX_component.DATA[1][1]
+data1x[2] => LPM_MUX:LPM_MUX_component.DATA[1][2]
+data1x[3] => LPM_MUX:LPM_MUX_component.DATA[1][3]
+data1x[4] => LPM_MUX:LPM_MUX_component.DATA[1][4]
+data1x[5] => LPM_MUX:LPM_MUX_component.DATA[1][5]
+data1x[6] => LPM_MUX:LPM_MUX_component.DATA[1][6]
+data1x[7] => LPM_MUX:LPM_MUX_component.DATA[1][7]
+data1x[8] => LPM_MUX:LPM_MUX_component.DATA[1][8]
+data1x[9] => LPM_MUX:LPM_MUX_component.DATA[1][9]
+data1x[10] => LPM_MUX:LPM_MUX_component.DATA[1][10]
+data1x[11] => LPM_MUX:LPM_MUX_component.DATA[1][11]
+sel => LPM_MUX:LPM_MUX_component.SEL[0]
+result[0] <= LPM_MUX:LPM_MUX_component.RESULT[0]
+result[1] <= LPM_MUX:LPM_MUX_component.RESULT[1]
+result[2] <= LPM_MUX:LPM_MUX_component.RESULT[2]
+result[3] <= LPM_MUX:LPM_MUX_component.RESULT[3]
+result[4] <= LPM_MUX:LPM_MUX_component.RESULT[4]
+result[5] <= LPM_MUX:LPM_MUX_component.RESULT[5]
+result[6] <= LPM_MUX:LPM_MUX_component.RESULT[6]
+result[7] <= LPM_MUX:LPM_MUX_component.RESULT[7]
+result[8] <= LPM_MUX:LPM_MUX_component.RESULT[8]
+result[9] <= LPM_MUX:LPM_MUX_component.RESULT[9]
+result[10] <= LPM_MUX:LPM_MUX_component.RESULT[10]
+result[11] <= LPM_MUX:LPM_MUX_component.RESULT[11]
+
+
+|Integrador|mux12bit:inst20|LPM_MUX:LPM_MUX_component
+data[0][0] => mux_uce:auto_generated.data[0]
+data[0][1] => mux_uce:auto_generated.data[1]
+data[0][2] => mux_uce:auto_generated.data[2]
+data[0][3] => mux_uce:auto_generated.data[3]
+data[0][4] => mux_uce:auto_generated.data[4]
+data[0][5] => mux_uce:auto_generated.data[5]
+data[0][6] => mux_uce:auto_generated.data[6]
+data[0][7] => mux_uce:auto_generated.data[7]
+data[0][8] => mux_uce:auto_generated.data[8]
+data[0][9] => mux_uce:auto_generated.data[9]
+data[0][10] => mux_uce:auto_generated.data[10]
+data[0][11] => mux_uce:auto_generated.data[11]
+data[1][0] => mux_uce:auto_generated.data[12]
+data[1][1] => mux_uce:auto_generated.data[13]
+data[1][2] => mux_uce:auto_generated.data[14]
+data[1][3] => mux_uce:auto_generated.data[15]
+data[1][4] => mux_uce:auto_generated.data[16]
+data[1][5] => mux_uce:auto_generated.data[17]
+data[1][6] => mux_uce:auto_generated.data[18]
+data[1][7] => mux_uce:auto_generated.data[19]
+data[1][8] => mux_uce:auto_generated.data[20]
+data[1][9] => mux_uce:auto_generated.data[21]
+data[1][10] => mux_uce:auto_generated.data[22]
+data[1][11] => mux_uce:auto_generated.data[23]
+sel[0] => mux_uce:auto_generated.sel[0]
+clock => ~NO_FANOUT~
+aclr => ~NO_FANOUT~
+clken => ~NO_FANOUT~
+result[0] <= mux_uce:auto_generated.result[0]
+result[1] <= mux_uce:auto_generated.result[1]
+result[2] <= mux_uce:auto_generated.result[2]
+result[3] <= mux_uce:auto_generated.result[3]
+result[4] <= mux_uce:auto_generated.result[4]
+result[5] <= mux_uce:auto_generated.result[5]
+result[6] <= mux_uce:auto_generated.result[6]
+result[7] <= mux_uce:auto_generated.result[7]
+result[8] <= mux_uce:auto_generated.result[8]
+result[9] <= mux_uce:auto_generated.result[9]
+result[10] <= mux_uce:auto_generated.result[10]
+result[11] <= mux_uce:auto_generated.result[11]
+
+
+|Integrador|mux12bit:inst20|LPM_MUX:LPM_MUX_component|mux_uce:auto_generated
+data[0] => result_node[0].IN1
+data[1] => result_node[1].IN1
+data[2] => result_node[2].IN1
+data[3] => result_node[3].IN1
+data[4] => result_node[4].IN1
+data[5] => result_node[5].IN1
+data[6] => result_node[6].IN1
+data[7] => result_node[7].IN1
+data[8] => result_node[8].IN1
+data[9] => result_node[9].IN1
+data[10] => result_node[10].IN1
+data[11] => result_node[11].IN1
+data[12] => result_node[0].IN1
+data[13] => result_node[1].IN1
+data[14] => result_node[2].IN1
+data[15] => result_node[3].IN1
+data[16] => result_node[4].IN1
+data[17] => result_node[5].IN1
+data[18] => result_node[6].IN1
+data[19] => result_node[7].IN1
+data[20] => result_node[8].IN1
+data[21] => result_node[9].IN1
+data[22] => result_node[10].IN1
+data[23] => result_node[11].IN1
+result[0] <= result_node[0].DB_MAX_OUTPUT_PORT_TYPE
+result[1] <= result_node[1].DB_MAX_OUTPUT_PORT_TYPE
+result[2] <= result_node[2].DB_MAX_OUTPUT_PORT_TYPE
+result[3] <= result_node[3].DB_MAX_OUTPUT_PORT_TYPE
+result[4] <= result_node[4].DB_MAX_OUTPUT_PORT_TYPE
+result[5] <= result_node[5].DB_MAX_OUTPUT_PORT_TYPE
+result[6] <= result_node[6].DB_MAX_OUTPUT_PORT_TYPE
+result[7] <= result_node[7].DB_MAX_OUTPUT_PORT_TYPE
+result[8] <= result_node[8].DB_MAX_OUTPUT_PORT_TYPE
+result[9] <= result_node[9].DB_MAX_OUTPUT_PORT_TYPE
+result[10] <= result_node[10].DB_MAX_OUTPUT_PORT_TYPE
+result[11] <= result_node[11].DB_MAX_OUTPUT_PORT_TYPE
+sel[0] => result_node[11].IN0
+sel[0] => _.IN0
+sel[0] => result_node[10].IN0
+sel[0] => _.IN0
+sel[0] => result_node[9].IN0
+sel[0] => _.IN0
+sel[0] => result_node[8].IN0
+sel[0] => _.IN0
+sel[0] => result_node[7].IN0
+sel[0] => _.IN0
+sel[0] => result_node[6].IN0
+sel[0] => _.IN0
+sel[0] => result_node[5].IN0
+sel[0] => _.IN0
+sel[0] => result_node[4].IN0
+sel[0] => _.IN0
+sel[0] => result_node[3].IN0
+sel[0] => _.IN0
+sel[0] => result_node[2].IN0
+sel[0] => _.IN0
+sel[0] => result_node[1].IN0
+sel[0] => _.IN0
+sel[0] => result_node[0].IN0
+sel[0] => _.IN0
+
+
+|Integrador|registros:valorInicial
+REG_INIT[0] <> inst6
+REG_INIT[1] <> inst5
+REG_INIT[2] <> inst1
+REG_INIT[3] <> inst
+REG_INIT[4] <> inst17
+REG_INIT[5] <> inst16
+REG_INIT[6] <> inst15
+REG_INIT[7] <> inst14
+REG_INIT[8] <> inst13
+REG_INIT[9] <> inst12
+REG_INIT[10] <> inst2
+REG_INIT[11] <> inst11
+LOAD => inst11.CLK
+LOAD => inst2.CLK
+LOAD => inst12.CLK
+LOAD => inst13.CLK
+LOAD => inst14.CLK
+LOAD => inst15.CLK
+LOAD => inst16.CLK
+LOAD => inst17.CLK
+LOAD => inst.CLK
+LOAD => inst1.CLK
+LOAD => inst6.CLK
+LOAD => inst5.CLK
+DATA[0] => inst6.DATAIN
+DATA[1] => inst5.DATAIN
+DATA[2] => inst1.DATAIN
+DATA[3] => inst.DATAIN
+DATA[4] => inst17.DATAIN
+DATA[5] => inst16.DATAIN
+DATA[6] => inst15.DATAIN
+DATA[7] => inst14.DATAIN
+DATA[8] => inst13.DATAIN
+DATA[9] => inst12.DATAIN
+DATA[10] => inst2.DATAIN
+DATA[11] => inst11.DATAIN
+
+
+|Integrador|sumador12BitsPosyNeg:inst10
+Cout <= sumador12Bits:inst2.Cout
+SUMARESTA => sumador12Bits:inst2.Cin
+SUMARESTA => moduloInversor:inst.SumaResta
+A[0] => sumador12Bits:inst2.A[0]
+A[1] => sumador12Bits:inst2.A[1]
+A[2] => sumador12Bits:inst2.A[2]
+A[3] => sumador12Bits:inst2.A[3]
+A[4] => sumador12Bits:inst2.A[4]
+A[5] => sumador12Bits:inst2.A[5]
+A[6] => sumador12Bits:inst2.A[6]
+A[7] => sumador12Bits:inst2.A[7]
+A[8] => sumador12Bits:inst2.A[8]
+A[9] => sumador12Bits:inst2.A[9]
+A[10] => sumador12Bits:inst2.A[10]
+A[11] => sumador12Bits:inst2.A[11]
+B[0] => moduloInversor:inst.EB[0]
+B[1] => moduloInversor:inst.EB[1]
+B[2] => moduloInversor:inst.EB[2]
+B[3] => moduloInversor:inst.EB[3]
+B[4] => moduloInversor:inst.EB[4]
+B[5] => moduloInversor:inst.EB[5]
+B[6] => moduloInversor:inst.EB[6]
+B[7] => moduloInversor:inst.EB[7]
+B[8] => moduloInversor:inst.EB[8]
+B[9] => moduloInversor:inst.EB[9]
+B[10] => moduloInversor:inst.EB[10]
+B[11] => moduloInversor:inst.EB[11]
+S[0] <= sumador12Bits:inst2.S[0]
+S[1] <= sumador12Bits:inst2.S[1]
+S[2] <= sumador12Bits:inst2.S[2]
+S[3] <= sumador12Bits:inst2.S[3]
+S[4] <= sumador12Bits:inst2.S[4]
+S[5] <= sumador12Bits:inst2.S[5]
+S[6] <= sumador12Bits:inst2.S[6]
+S[7] <= sumador12Bits:inst2.S[7]
+S[8] <= sumador12Bits:inst2.S[8]
+S[9] <= sumador12Bits:inst2.S[9]
+S[10] <= sumador12Bits:inst2.S[10]
+S[11] <= sumador12Bits:inst2.S[11]
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2
+Cout <= sumadorCompleto:inst12.CyOUT
+A[0] => sumadorCompleto:inst.A
+A[1] => sumadorCompleto:inst2.A
+A[2] => sumadorCompleto:inst3.A
+A[3] => sumadorCompleto:inst4.A
+A[4] => sumadorCompleto:inst5.A
+A[5] => sumadorCompleto:inst6.A
+A[6] => sumadorCompleto:inst7.A
+A[7] => sumadorCompleto:inst8.A
+A[8] => sumadorCompleto:inst9.A
+A[9] => sumadorCompleto:inst10.A
+A[10] => sumadorCompleto:inst11.A
+A[11] => sumadorCompleto:inst12.A
+B[0] => sumadorCompleto:inst.B
+B[1] => sumadorCompleto:inst2.B
+B[2] => sumadorCompleto:inst3.B
+B[3] => sumadorCompleto:inst4.B
+B[4] => sumadorCompleto:inst5.B
+B[5] => sumadorCompleto:inst6.B
+B[6] => sumadorCompleto:inst7.B
+B[7] => sumadorCompleto:inst8.B
+B[8] => sumadorCompleto:inst9.B
+B[9] => sumadorCompleto:inst10.B
+B[10] => sumadorCompleto:inst11.B
+B[11] => sumadorCompleto:inst12.B
+Cin => sumadorCompleto:inst.CyIN
+S[0] <= sumadorCompleto:inst.S
+S[1] <= sumadorCompleto:inst2.S
+S[2] <= sumadorCompleto:inst3.S
+S[3] <= sumadorCompleto:inst4.S
+S[4] <= sumadorCompleto:inst5.S
+S[5] <= sumadorCompleto:inst6.S
+S[6] <= sumadorCompleto:inst7.S
+S[7] <= sumadorCompleto:inst8.S
+S[8] <= sumadorCompleto:inst9.S
+S[9] <= sumadorCompleto:inst10.S
+S[10] <= sumadorCompleto:inst11.S
+S[11] <= sumadorCompleto:inst12.S
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst12
+CyOUT <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+A => inst1.IN0
+A => inst.IN0
+A => XOR3:inst5.IN1
+CyIN => inst1.IN1
+CyIN => inst2.IN1
+CyIN => XOR3:inst5.IN3
+B => inst2.IN0
+B => inst.IN1
+B => XOR3:inst5.IN2
+S <= XOR3:inst5.OUT
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst12|XOR3:inst5
+OUT <= 1.DB_MAX_OUTPUT_PORT_TYPE
+IN1 => 1.IN0
+IN2 => 3.IN0
+IN3 => 3.IN1
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst11
+CyOUT <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+A => inst1.IN0
+A => inst.IN0
+A => XOR3:inst5.IN1
+CyIN => inst1.IN1
+CyIN => inst2.IN1
+CyIN => XOR3:inst5.IN3
+B => inst2.IN0
+B => inst.IN1
+B => XOR3:inst5.IN2
+S <= XOR3:inst5.OUT
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst11|XOR3:inst5
+OUT <= 1.DB_MAX_OUTPUT_PORT_TYPE
+IN1 => 1.IN0
+IN2 => 3.IN0
+IN3 => 3.IN1
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst10
+CyOUT <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+A => inst1.IN0
+A => inst.IN0
+A => XOR3:inst5.IN1
+CyIN => inst1.IN1
+CyIN => inst2.IN1
+CyIN => XOR3:inst5.IN3
+B => inst2.IN0
+B => inst.IN1
+B => XOR3:inst5.IN2
+S <= XOR3:inst5.OUT
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst10|XOR3:inst5
+OUT <= 1.DB_MAX_OUTPUT_PORT_TYPE
+IN1 => 1.IN0
+IN2 => 3.IN0
+IN3 => 3.IN1
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst9
+CyOUT <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+A => inst1.IN0
+A => inst.IN0
+A => XOR3:inst5.IN1
+CyIN => inst1.IN1
+CyIN => inst2.IN1
+CyIN => XOR3:inst5.IN3
+B => inst2.IN0
+B => inst.IN1
+B => XOR3:inst5.IN2
+S <= XOR3:inst5.OUT
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst9|XOR3:inst5
+OUT <= 1.DB_MAX_OUTPUT_PORT_TYPE
+IN1 => 1.IN0
+IN2 => 3.IN0
+IN3 => 3.IN1
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst8
+CyOUT <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+A => inst1.IN0
+A => inst.IN0
+A => XOR3:inst5.IN1
+CyIN => inst1.IN1
+CyIN => inst2.IN1
+CyIN => XOR3:inst5.IN3
+B => inst2.IN0
+B => inst.IN1
+B => XOR3:inst5.IN2
+S <= XOR3:inst5.OUT
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst8|XOR3:inst5
+OUT <= 1.DB_MAX_OUTPUT_PORT_TYPE
+IN1 => 1.IN0
+IN2 => 3.IN0
+IN3 => 3.IN1
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst7
+CyOUT <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+A => inst1.IN0
+A => inst.IN0
+A => XOR3:inst5.IN1
+CyIN => inst1.IN1
+CyIN => inst2.IN1
+CyIN => XOR3:inst5.IN3
+B => inst2.IN0
+B => inst.IN1
+B => XOR3:inst5.IN2
+S <= XOR3:inst5.OUT
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst7|XOR3:inst5
+OUT <= 1.DB_MAX_OUTPUT_PORT_TYPE
+IN1 => 1.IN0
+IN2 => 3.IN0
+IN3 => 3.IN1
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst6
+CyOUT <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+A => inst1.IN0
+A => inst.IN0
+A => XOR3:inst5.IN1
+CyIN => inst1.IN1
+CyIN => inst2.IN1
+CyIN => XOR3:inst5.IN3
+B => inst2.IN0
+B => inst.IN1
+B => XOR3:inst5.IN2
+S <= XOR3:inst5.OUT
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst6|XOR3:inst5
+OUT <= 1.DB_MAX_OUTPUT_PORT_TYPE
+IN1 => 1.IN0
+IN2 => 3.IN0
+IN3 => 3.IN1
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst5
+CyOUT <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+A => inst1.IN0
+A => inst.IN0
+A => XOR3:inst5.IN1
+CyIN => inst1.IN1
+CyIN => inst2.IN1
+CyIN => XOR3:inst5.IN3
+B => inst2.IN0
+B => inst.IN1
+B => XOR3:inst5.IN2
+S <= XOR3:inst5.OUT
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst5|XOR3:inst5
+OUT <= 1.DB_MAX_OUTPUT_PORT_TYPE
+IN1 => 1.IN0
+IN2 => 3.IN0
+IN3 => 3.IN1
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst4
+CyOUT <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+A => inst1.IN0
+A => inst.IN0
+A => XOR3:inst5.IN1
+CyIN => inst1.IN1
+CyIN => inst2.IN1
+CyIN => XOR3:inst5.IN3
+B => inst2.IN0
+B => inst.IN1
+B => XOR3:inst5.IN2
+S <= XOR3:inst5.OUT
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst4|XOR3:inst5
+OUT <= 1.DB_MAX_OUTPUT_PORT_TYPE
+IN1 => 1.IN0
+IN2 => 3.IN0
+IN3 => 3.IN1
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst3
+CyOUT <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+A => inst1.IN0
+A => inst.IN0
+A => XOR3:inst5.IN1
+CyIN => inst1.IN1
+CyIN => inst2.IN1
+CyIN => XOR3:inst5.IN3
+B => inst2.IN0
+B => inst.IN1
+B => XOR3:inst5.IN2
+S <= XOR3:inst5.OUT
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst3|XOR3:inst5
+OUT <= 1.DB_MAX_OUTPUT_PORT_TYPE
+IN1 => 1.IN0
+IN2 => 3.IN0
+IN3 => 3.IN1
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst2
+CyOUT <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+A => inst1.IN0
+A => inst.IN0
+A => XOR3:inst5.IN1
+CyIN => inst1.IN1
+CyIN => inst2.IN1
+CyIN => XOR3:inst5.IN3
+B => inst2.IN0
+B => inst.IN1
+B => XOR3:inst5.IN2
+S <= XOR3:inst5.OUT
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst2|XOR3:inst5
+OUT <= 1.DB_MAX_OUTPUT_PORT_TYPE
+IN1 => 1.IN0
+IN2 => 3.IN0
+IN3 => 3.IN1
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst
+CyOUT <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+A => inst1.IN0
+A => inst.IN0
+A => XOR3:inst5.IN1
+CyIN => inst1.IN1
+CyIN => inst2.IN1
+CyIN => XOR3:inst5.IN3
+B => inst2.IN0
+B => inst.IN1
+B => XOR3:inst5.IN2
+S <= XOR3:inst5.OUT
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|sumador12Bits:inst2|sumadorCompleto:inst|XOR3:inst5
+OUT <= 1.DB_MAX_OUTPUT_PORT_TYPE
+IN1 => 1.IN0
+IN2 => 3.IN0
+IN3 => 3.IN1
+
+
+|Integrador|sumador12BitsPosyNeg:inst10|moduloInversor:inst
+SB[0] <= inst.DB_MAX_OUTPUT_PORT_TYPE
+SB[1] <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+SB[2] <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+SB[3] <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+SB[4] <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+SB[5] <= inst5.DB_MAX_OUTPUT_PORT_TYPE
+SB[6] <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+SB[7] <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+SB[8] <= inst8.DB_MAX_OUTPUT_PORT_TYPE
+SB[9] <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+SB[10] <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+SB[11] <= inst11.DB_MAX_OUTPUT_PORT_TYPE
+EB[0] => inst.IN0
+EB[1] => inst1.IN0
+EB[2] => inst2.IN0
+EB[3] => inst3.IN0
+EB[4] => inst4.IN0
+EB[5] => inst5.IN0
+EB[6] => inst6.IN0
+EB[7] => inst7.IN0
+EB[8] => inst8.IN0
+EB[9] => inst9.IN0
+EB[10] => inst10.IN0
+EB[11] => inst11.IN0
+SumaResta => inst.IN1
+SumaResta => inst1.IN1
+SumaResta => inst2.IN1
+SumaResta => inst3.IN1
+SumaResta => inst4.IN1
+SumaResta => inst5.IN1
+SumaResta => inst6.IN1
+SumaResta => inst7.IN1
+SumaResta => inst8.IN1
+SumaResta => inst9.IN1
+SumaResta => inst10.IN1
+SumaResta => inst11.IN1
+
+
+|Integrador|registros:valorFinal
+REG_INIT[0] <> inst6
+REG_INIT[1] <> inst5
+REG_INIT[2] <> inst1
+REG_INIT[3] <> inst
+REG_INIT[4] <> inst17
+REG_INIT[5] <> inst16
+REG_INIT[6] <> inst15
+REG_INIT[7] <> inst14
+REG_INIT[8] <> inst13
+REG_INIT[9] <> inst12
+REG_INIT[10] <> inst2
+REG_INIT[11] <> inst11
+LOAD => inst11.CLK
+LOAD => inst2.CLK
+LOAD => inst12.CLK
+LOAD => inst13.CLK
+LOAD => inst14.CLK
+LOAD => inst15.CLK
+LOAD => inst16.CLK
+LOAD => inst17.CLK
+LOAD => inst.CLK
+LOAD => inst1.CLK
+LOAD => inst6.CLK
+LOAD => inst5.CLK
+DATA[0] => inst6.DATAIN
+DATA[1] => inst5.DATAIN
+DATA[2] => inst1.DATAIN
+DATA[3] => inst.DATAIN
+DATA[4] => inst17.DATAIN
+DATA[5] => inst16.DATAIN
+DATA[6] => inst15.DATAIN
+DATA[7] => inst14.DATAIN
+DATA[8] => inst13.DATAIN
+DATA[9] => inst12.DATAIN
+DATA[10] => inst2.DATAIN
+DATA[11] => inst11.DATAIN
+
+
+|Integrador|Tristate12:inst5
+DATA[0] <= inst.DB_MAX_OUTPUT_PORT_TYPE
+DATA[1] <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+DATA[2] <= inst5.DB_MAX_OUTPUT_PORT_TYPE
+DATA[3] <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+DATA[4] <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+DATA[5] <= inst8.DB_MAX_OUTPUT_PORT_TYPE
+DATA[6] <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+DATA[7] <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+DATA[8] <= inst11.DB_MAX_OUTPUT_PORT_TYPE
+DATA[9] <= inst12.DB_MAX_OUTPUT_PORT_TYPE
+DATA[10] <= inst13.DB_MAX_OUTPUT_PORT_TYPE
+DATA[11] <= inst14.DB_MAX_OUTPUT_PORT_TYPE
+I[0] => inst.DATAIN
+I[1] => inst4.DATAIN
+I[2] => inst5.DATAIN
+I[3] => inst6.DATAIN
+I[4] => inst7.DATAIN
+I[5] => inst8.DATAIN
+I[6] => inst9.DATAIN
+I[7] => inst10.DATAIN
+I[8] => inst11.DATAIN
+I[9] => inst12.DATAIN
+I[10] => inst13.DATAIN
+I[11] => inst14.DATAIN
+enable => inst11.OE
+enable => inst8.OE
+enable => inst7.OE
+enable => inst6.OE
+enable => inst5.OE
+enable => inst4.OE
+enable => inst.OE
+enable => inst14.OE
+enable => inst13.OE
+enable => inst12.OE
+enable => inst10.OE
+enable => inst9.OE
+
+
