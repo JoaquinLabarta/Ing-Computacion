@@ -1,0 +1,11 @@
+[Version]
+Version=15.0
+[Designs]
+desing1=.\desing1\desing1.adf
+[Browser]
+sort=order
+mode=none
+[Order]
+order=1
+[Expand]
+desing1=1
