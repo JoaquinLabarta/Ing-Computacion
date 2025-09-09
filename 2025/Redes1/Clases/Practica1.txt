@@ -1,0 +1,54 @@
+1) Identifique la capa del modelo OSI que maneja los siguientes aspectos:
+a) Establece el método de acceso al medio. -> Capa de enlace de datos.
+b) Determinar que ruta seguirán los paquetes a través de la red. -> Capa de red.
+c) Codificación de datos en forma estándar. -> Capa de presentacion.
+
+2) Indique con que capa se identifican estos términos:
+a) Frame
+b) Datagrama
+c) Segmento
+d) Paquete
+
+Rta:
+Datagrama: paquete de red. Frame: Enlace. Segmento: transporte
+
+3) ¿Cuál es la capa del modelo OSI que se encarga de la comunicación de red confiable entre nodos finales y proporciona mecanismos para establecer, mantener y terminar circuitos virtuales, detección y recuperación de errores de transporte y control de flujo de información? Justifique su respuesta.
+a) Capa física
+b) Capa de enlace de datos
+c) Capa de red
+d) Capa de transporte
+
+Rta:
+Capa de transporte, es el protocolo TCP/IP que brinda estos servicios, estableciendo una direccion entre los destinatarios y encargandose de que todo llegue en terminus correctos.
+
+4) ¿Cuál de las siguientes opciones describe mejor la función de la capa de presentación? Justifique su respuesta.
+a) Es responsable de la comunicación confiable de red entre nodos finales
+b) Se ocupa de las estructuras de datos y de la sintaxis de transferencia de datos de negociación
+c) Proporciona conectividad y selección de rutas entre dos sistemas finales
+d) Administra el intercambio de datos entre capas
+
+Rta:
+Respuesta B
+
+5) En el modelo TCP/IP ¿qué capa se encarga de resolver los conflictos que se generan cuando se intenta enviar un paquete a través de distintas redes?
+a) Transporte
+b) Internet
+c) Red
+d) Aplicación
+
+Rta:
+Respuesta B, la capa de red en modelo OSI se encarga de otra cosa, en este modelo se encarga la de red REVISAR CAPAS
+
+6) ¿Qué capas del modelo OSI debe implementar una tarjeta de red (NIC)?
+
+Rta:
+Una notebook tiene una placa para internet y otra para ethernet, debe implementar al menos de la capa de red para abajo
+
+7) ¿Cuál es el orden correcto de los pasos del proceso de encapsulamiento? Justifique su respuesta.
+a) Bits, datos, paquetes, tramas
+b) Datos, tramas, paquetes, segmentos, bits
+c) Datos, segmentos, paquetes, tramas, bits
+d) Bits, tramas, datos, paquetes
+
+Rta:
+Respuesta C, desde aplicacion hasta mas abajo.
