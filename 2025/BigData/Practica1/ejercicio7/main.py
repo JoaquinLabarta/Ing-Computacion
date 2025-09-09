@@ -31,10 +31,11 @@ def fred(key, values, context):
     current_day = hoy.day
 
     for v in values:
+        if len(v) != 5:
+            continue
         nombre = v[0]
-        dni = v[1]
-        fecha_nacimiento = (int(v[2]), int(v[3]), int(v[4]))
-        importe = float(v[5])
+        fecha_nacimiento = [int(v[1]), int(v[2]), int(v[3])]  # día, mes, año
+        importe = float(v[4])
 
         # más joven
         if fechaMasJoven == (0,0,0) or \
@@ -54,12 +55,8 @@ def fred(key, values, context):
         count += 1
 
     # promedio de edad
-    if count > 0:
-        promedioEdad = sumaEdad / count
-        context.write("Promedio edad", promedioEdad)
-    else:
-        context.write("Promedio edad", 0)
-
+    promedioEdad = sumaEdad / count
+    context.write("Promedio edad", promedioEdad)
     context.write("Mas joven", nombreMasJoven)
     context.write("Total invertido", sumaImportes)
 
