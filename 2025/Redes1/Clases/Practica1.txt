@@ -4,13 +4,13 @@ b) Determinar que ruta seguirán los paquetes a través de la red. -> Capa de re
 c) Codificación de datos en forma estándar. -> Capa de presentacion.
 
 2) Indique con que capa se identifican estos términos:
-a) Frame
+a) Frame (trama)
 b) Datagrama
 c) Segmento
 d) Paquete
 
 Rta:
-Datagrama: paquete de red. Frame: Enlace. Segmento: transporte
+Frame: Enlace. Datagrama: red. Segmento: transporte. Paquete: red
 
 3) ¿Cuál es la capa del modelo OSI que se encarga de la comunicación de red confiable entre nodos finales y proporciona mecanismos para establecer, mantener y terminar circuitos virtuales, detección y recuperación de errores de transporte y control de flujo de información? Justifique su respuesta.
 a) Capa física
