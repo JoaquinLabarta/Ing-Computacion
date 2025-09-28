@@ -10,8 +10,9 @@ tmpDir = "\output"
 def fmap(key, value, context):
     words = value.split()
     for w in words:
-        context.write(w, 1)     
-        
+        context.write(w, 1)  
+   
+#Key es la palabra y Values las ocurrencias        
 def fred(key, values, context):
     c=0
     for v in values:
@@ -25,6 +26,7 @@ def fmap2(key, value, context):
     # Enviar la ocurrencia como valor para calcular estadísticas
     context.write(1, (palabra,ocurrencias))
         
+# recibo 1 como clave siempre y una lista de (palabra,ocurrencias)
 def fred2(key, values, context):
     nomMaximo = ""
     nomMinimo = ""
@@ -33,6 +35,8 @@ def fred2(key, values, context):
     suma = 0
     # Calcular estadísticas de las ocurrencias
     lista = list(values)
+
+    # no puedo usar directamente values como iterador, ya que debo recorrer varias veces la lista (porque nose si ya terminoo supongo)
     for i in lista:
         palabra = i[0]
         ocurrencias = i[1]
