@@ -1,3 +1,7 @@
+-----RESPUESTAS-----
+---A: el minimo periodo de reloj o maxima frecuencia de trabajo (tiempo de estabilizacion ante un evento) es: 2ns o 0.5MHz---
+---B: minimo ancho de pulso de preset y de clear.
+
 entity DFF is
 port (Preset: in Bit; Clear: in Bit; Clock: in Bit; Data: in Bit; Q:out Bit;
 QBar: out Bit);
@@ -29,14 +33,6 @@ architecture Driver of Test_DFF is
 	end component;
 	signal Preset, Clear: Bit := '1';
 	signal Clock, Data, Q, QBar: Bit; 
-	------A
-	signal minimoPeriodo : time := 1 sec;  -- valor inicial muy grande
-	------B
-	signal minimoAnchoPreset : time := 1 sec;
-	signal ultimoFlancoPreset : time := 0 ns; 
-	signal minimoAnchoClear : time := 1 sec;
-	signal ultimoFlancoClear : time := 0 ns;
-
 begin
   UUT: DFF port map (Preset, Clear, Clock, Data, Q, Qbar);
 
@@ -60,46 +56,4 @@ begin
 		  Clock <= '0', '1' after 5 ns; wait for 10 ns;
 		  Wait;	 
 	 end process;
-
-	  ------- a) minimo periodo de reloj (o máxima frecuencia de trabajo), 
-	Periodo_calc: process(Clock)
-	  begin
-	    if Clock'event then
-	      if Clock'last_event < minimoPeriodo then
-	        minimoPeriodo <= Clock'last_event;
-	      end if;
-	    end if;
-	 end process;	
-	 
-	  ------- b) minimo ancho de pulso de preset y de clear,
-	MINAnchoPulsoPreset: process(Preset)
-		begin
-		  if Preset'event then
-		    if Preset = '1' then
-		      -- guardo instante del flanco ascendente
-		      ultimoFlancoPreset <= Preset'last_event;
-		    elsif Preset = '0' then
-		      -- cuando baja, calculo ancho
-		      if (Preset'last_event - ultimoFlancoPreset) < minimoAnchoPreset then
-		        minimoAnchoPreset <= (Preset'last_event - ultimoFlancoPreset);
-		      end if;
-		    end if;
-		  end if;
-		end process;  
-	MINAnchoPulsoClear: process(Clear)
-		begin
-		  if Clear'event then
-		    if Clear = '1' then
-		      -- guardo instante del flanco ascendente
-		      ultimoFlancoClear <= Clear'last_event;
-		    elsif Clear = '0' then
-		      -- cuando baja, calculo ancho
-		      if (Clear'last_event - ultimoFlancoClear) < minimoAnchoClear then
-		        minimoAnchoClear <= (Clear'last_event - ultimoFlancoClear);
-		      end if;
-		    end if;
-		  end if;
-		end process; 
-		
-	------- c) minimo tiempo de 'setup' y de 'hold' de datos.
 end;
