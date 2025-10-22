@@ -1,0 +1,10 @@
+Top 1: Jugador numero: 48	con puntaje heroico: 1442.6110242362188
+Top 2: Jugador numero: 1	con puntaje heroico: 334.70551683195566
+Top 3: Jugador numero: 72	con puntaje heroico: 322.9018922457462
+Top 4: Jugador numero: 89	con puntaje heroico: 302.7169625763571
+Top 5: Jugador numero: 47	con puntaje heroico: 297.3886726579642
+Top 6: Jugador numero: 57	con puntaje heroico: 264.7984241669018
+Top 7: Jugador numero: 43	con puntaje heroico: 250.45535464718768
+Top 8: Jugador numero: 50	con puntaje heroico: 195.04676163806266
+Top 9: Jugador numero: 31	con puntaje heroico: 191.6414834161794
+Top 10: Jugador numero: 39	con puntaje heroico: 187.36072778251042

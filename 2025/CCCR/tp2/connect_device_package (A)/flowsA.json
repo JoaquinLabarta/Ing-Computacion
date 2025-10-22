@@ -1,0 +1,281 @@
+[
+    {
+        "id": "569605bbfad90781",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "74fb664d14e6ff57",
+        "type": "mqtt out",
+        "z": "569605bbfad90781",
+        "name": "",
+        "topic": "led_A11",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "46151b5afa26855b",
+        "x": 800,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "a98b44af9c0deddb",
+        "type": "ui_button",
+        "z": "569605bbfad90781",
+        "name": "",
+        "group": "a54f1933bdb54943",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "ON",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 510,
+        "y": 180,
+        "wires": [
+            [
+                "74fb664d14e6ff57"
+            ]
+        ]
+    },
+    {
+        "id": "cb162e5d61ba0ff9",
+        "type": "ui_button",
+        "z": "569605bbfad90781",
+        "name": "",
+        "group": "a54f1933bdb54943",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "OFF",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "0",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 510,
+        "y": 220,
+        "wires": [
+            [
+                "74fb664d14e6ff57"
+            ]
+        ]
+    },
+    {
+        "id": "b83a499bfbab5451",
+        "type": "ui_switch",
+        "z": "569605bbfad90781",
+        "name": "",
+        "label": "Timer 5s",
+        "tooltip": "",
+        "group": "a54f1933bdb54943",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 520,
+        "y": 260,
+        "wires": [
+            [
+                "19c4f048787df8ef"
+            ]
+        ]
+    },
+    {
+        "id": "19c4f048787df8ef",
+        "type": "mqtt out",
+        "z": "569605bbfad90781",
+        "name": "",
+        "topic": "timer_A11",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "46151b5afa26855b",
+        "x": 700,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "c14a1e5ac66ebe96",
+        "type": "mqtt in",
+        "z": "569605bbfad90781",
+        "name": "",
+        "topic": "led_A11_status",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "46151b5afa26855b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 520,
+        "y": 80,
+        "wires": [
+            [
+                "14445662667f9adb"
+            ]
+        ]
+    },
+    {
+        "id": "79094089320ec53d",
+        "type": "ui_text",
+        "z": "569605bbfad90781",
+        "group": "a54f1933bdb54943",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Estado LED",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1010,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "14445662667f9adb",
+        "type": "change",
+        "z": "569605bbfad90781",
+        "name": "statudLed",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "Apagado",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "num",
+                "to": "Encendido",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 80,
+        "wires": [
+            [
+                "79094089320ec53d"
+            ]
+        ]
+    },
+    {
+        "id": "46151b5afa26855b",
+        "type": "mqtt-broker",
+        "name": "AwsIOT",
+        "broker": "a19dtnoi0vf30n-ats.iot.us-west-2.amazonaws.com",
+        "port": "8883",
+        "tls": "7618ab1f8e6ecfad",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "a54f1933bdb54943",
+        "type": "ui_group",
+        "name": "Control Remoto",
+        "tab": "b92f49477a25fc43",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7618ab1f8e6ecfad",
+        "type": "tls-config",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "InstanciaA-A11-2025.cert.pem",
+        "keyname": "InstanciaA-A11-2025.private.key",
+        "caname": "AmazonRootCA1.pem.txt",
+        "servername": "",
+        "verifyservercert": true,
+        "alpnprotocol": ""
+    },
+    {
+        "id": "b92f49477a25fc43",
+        "type": "ui_tab",
+        "name": "demo",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
