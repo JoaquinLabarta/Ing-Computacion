@@ -1,5 +1,4 @@
-'''
-Usando  el  dataset Banco, escriba  un  script  en Python  usando  Spark  para  responder  a 
+'''Usando  el  dataset Banco, escriba  un  script  en Python  usando  Spark  para  responder  a 
 las siguientes preguntas: 
     a. Nombre y apellidos de los clientes capricornianos. 
     b. Nombre y apellido de los clientes de nacionalidad argentina. 
@@ -12,6 +11,7 @@ las siguientes preguntas:
     g. Del  dataset  Movimientos,  el  monto  del  mayor  movimiento  y  el  id  de  caja  del 
     último movimiento.'''
 
+from re import split
 import os, sys
 os.environ["PYSPARK_PYTHON"] = sys.executable
 os.environ["PYSPARK_DRIVER_PYTHON"] = sys.executable
@@ -21,14 +21,14 @@ from pyspark import SparkContext
 sc = SparkContext("local[*]", "Banco-RDD")
 
 #Lectura de archivos
-cajas = sc.textFile("Practica5\Banco\CajasDeAhorro.txt")
-clientes = sc.textFile("Practica5\Banco\Clientes.txt") #ID	NOMBRE	APELLIDO	DNI	AAAA-MM-DD	PAIS
+cajas = sc.textFile("Practica5\Banco\CajasDeAhorro.txt") 
+clientes = sc.textFile("Practica5\Banco\Clientes.txt") 
 movimientos = sc.textFile("Practica5\Banco\Movimientos.txt")
-prestamos = sc.textFile("Practica5\Banco\Prestamos.txt")
+prestamos = sc.textFile("Practica5\Banco\Prestamos.txt") 
 
 #mapeo a los clientes para separarlos y poder trabajar con los valores
 clientes = clientes.map(lambda t: t.split("\t"))
-clientes = clientes.map(lambda t : (int(t[0]), t[1] + " " + t[2], int(t[3]), t[4], t[5]))
+clientes = clientes.map(lambda t : (int(t[0]), t[1] + " " + t[2], int(t[3]), t[4], t[5])) #ID	NOMBRE	APELLIDO	DNI	AAAA-MM-DD	PAIS
 
 #a. Nombre y apellidos de los clientes capricornianos. 22 de diciembre al 19 de enero
 clienCapricornio = clientes.filter(
@@ -65,5 +65,16 @@ clienMasViejo = clienARG.reduce(lambda t1, t2: t1 if t1[3]>t2[3] else t2)
 print("Mas viejo: " + clienMasViejo[1] + clienMasViejo[3])'''
 
 #e. El ID de la caja que tiene asociado el préstamo con mayor cantidad de cuotas y entre las que tienen la misma cantidad, el de mayor monto.
+prestamos = prestamos.map(lambda t: t.split("\t"))
+prestamos = prestamos.map(lambda t: (int(t[0]), int(t[1]), float(t[2]))) #ID_Caja Cuotas Monto
+IDcuotasMax = prestamos.reduce(lambda t1, t2: t1 if (t1[1] > t2[1] or (t1[1] == t2[1] and t1[2] > t2[2])) else t2)[0]
+
 #f. Los ID de clientes (únicos) con al menos una caja de ahorro (en positivo) cuyo saldo es mayor a 300 U$S. 
+cajas = cajas.map(lambda t: t.split("\t"))
+cajas = cajas.map(lambda t: (int(t[0]), int(t[1]), float(t[2]))) #ID_Caja ID_Cliente Saldo
+cajas2 = cajas.filter(lambda t: t[2] > 300).map(lambda t: t[1]).distinct()
+
 #g. Del  dataset  Movimientos,  el  monto  del  mayor  movimiento  y  el  id  de  caja  del último movimiento
+movimientos = movimientos.map(lambda t: t.split("\t")).map(lambda t: (int(t[0]), float(t[1]), str(t[2])))
+maxMov = movimientos.reduce(lambda t1, t2: t1 if t1[1]>t2[1] else t2)
+ultimoMov = movimientos.reduce(lambda t1, t2: t1 if t1[2] > t2[2] else t2)[0]

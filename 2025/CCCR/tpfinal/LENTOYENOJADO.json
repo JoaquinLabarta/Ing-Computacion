@@ -1,0 +1,377 @@
+[
+    {
+        "id": "cf08dd28739ab3ba",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c24a47138cb8ec4c",
+        "type": "inject",
+        "z": "cf08dd28739ab3ba",
+        "name": "Derecha",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "15",
+        "payloadType": "num",
+        "x": 220,
+        "y": 120,
+        "wires": [
+            [
+                "e50cbdc420e258f7"
+            ]
+        ]
+    },
+    {
+        "id": "e50cbdc420e258f7",
+        "type": "rpi-gpio out",
+        "z": "cf08dd28739ab3ba",
+        "name": "",
+        "pin": "14",
+        "set": "",
+        "level": "0",
+        "freq": "50",
+        "out": "pwm",
+        "bcm": true,
+        "x": 460,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "3a3e5c0992769ab1",
+        "type": "inject",
+        "z": "cf08dd28739ab3ba",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 190,
+        "y": 240,
+        "wires": [
+            [
+                "e50cbdc420e258f7"
+            ]
+        ]
+    },
+    {
+        "id": "3a8323565829c8e5",
+        "type": "inject",
+        "z": "cf08dd28739ab3ba",
+        "name": "Izquierda",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5",
+        "payloadType": "num",
+        "x": 220,
+        "y": 60,
+        "wires": [
+            [
+                "e50cbdc420e258f7"
+            ]
+        ]
+    },
+    {
+        "id": "09aa145cf9046814",
+        "type": "inject",
+        "z": "cf08dd28739ab3ba",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "8.7",
+        "payloadType": "num",
+        "x": 170,
+        "y": 180,
+        "wires": [
+            [
+                "e50cbdc420e258f7"
+            ]
+        ]
+    },
+    {
+        "id": "722286f2cd4bda0f",
+        "type": "inject",
+        "z": "cf08dd28739ab3ba",
+        "name": "Adelante",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "90",
+        "payloadType": "num",
+        "x": 140,
+        "y": 340,
+        "wires": [
+            [
+                "824aa472f9d23b74",
+                "988bbff5f57b945c"
+            ]
+        ]
+    },
+    {
+        "id": "23d3194f6bf814b6",
+        "type": "inject",
+        "z": "cf08dd28739ab3ba",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 150,
+        "y": 440,
+        "wires": [
+            [
+                "824aa472f9d23b74",
+                "5e2892e633b2cffc"
+            ]
+        ]
+    },
+    {
+        "id": "824aa472f9d23b74",
+        "type": "rpi-gpio out",
+        "z": "cf08dd28739ab3ba",
+        "name": "",
+        "pin": "17",
+        "set": false,
+        "level": "0",
+        "freq": "500",
+        "out": "pwm",
+        "bcm": true,
+        "x": 480,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "5e2892e633b2cffc",
+        "type": "rpi-gpio out",
+        "z": "cf08dd28739ab3ba",
+        "name": "",
+        "pin": "24",
+        "set": false,
+        "level": "0",
+        "freq": "500",
+        "out": "out",
+        "bcm": true,
+        "x": 480,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "988bbff5f57b945c",
+        "type": "function",
+        "z": "cf08dd28739ab3ba",
+        "name": "function 1",
+        "func": "msg.payload=1;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 340,
+        "wires": [
+            [
+                "5e2892e633b2cffc"
+            ]
+        ]
+    },
+    {
+        "id": "484f53f9f56cc215",
+        "type": "ui_slider",
+        "z": "cf08dd28739ab3ba",
+        "name": "",
+        "label": "km/h",
+        "tooltip": "",
+        "group": "6a8b6e8a9930f74e",
+        "order": 1,
+        "width": "1",
+        "height": "6",
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": "0",
+        "max": "95",
+        "step": 1,
+        "className": "",
+        "x": 130,
+        "y": 520,
+        "wires": [
+            [
+                "988bbff5f57b945c",
+                "824aa472f9d23b74",
+                "61084c7c0d64a041"
+            ]
+        ],
+        "icon": "font-awesome/fa-clock-o"
+    },
+    {
+        "id": "810bf6648ad8a018",
+        "type": "ui_slider",
+        "z": "cf08dd28739ab3ba",
+        "name": "",
+        "label": "direccion",
+        "tooltip": "",
+        "group": "28b64514df886cd8",
+        "order": 2,
+        "width": "6",
+        "height": "1",
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": "5",
+        "max": "15",
+        "step": 1,
+        "className": "",
+        "x": 240,
+        "y": 280,
+        "wires": [
+            [
+                "e50cbdc420e258f7"
+            ]
+        ],
+        "icon": "font-awesome/fa-arrows"
+    },
+    {
+        "id": "61084c7c0d64a041",
+        "type": "ui_gauge",
+        "z": "cf08dd28739ab3ba",
+        "name": "",
+        "group": "28b64514df886cd8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Velocimetro",
+        "label": "km/h",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "375",
+        "colors": [
+            "#ff0000",
+            "#ff0000",
+            "#ff0000"
+        ],
+        "seg1": "1",
+        "seg2": "95",
+        "diff": false,
+        "className": "",
+        "x": 410,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "6a8b6e8a9930f74e",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "b9a299282ccf316d",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "28b64514df886cd8",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "b9a299282ccf316d",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b9a299282ccf316d",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "849a7c34232eb420",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-node-pi-gpio": "2.0.6",
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]

@@ -1,0 +1,363 @@
+[
+    {
+        "id": "cf08dd28739ab3ba",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e50cbdc420e258f7",
+        "type": "rpi-gpio out",
+        "z": "cf08dd28739ab3ba",
+        "name": "",
+        "pin": "14",
+        "set": "",
+        "level": "0",
+        "freq": "50",
+        "out": "pwm",
+        "bcm": true,
+        "x": 460,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "824aa472f9d23b74",
+        "type": "rpi-gpio out",
+        "z": "cf08dd28739ab3ba",
+        "name": "Adelante",
+        "pin": "17",
+        "set": false,
+        "level": "0",
+        "freq": "500",
+        "out": "pwm",
+        "bcm": true,
+        "x": 740,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "484f53f9f56cc215",
+        "type": "ui_slider",
+        "z": "cf08dd28739ab3ba",
+        "name": "",
+        "label": "km/h",
+        "tooltip": "",
+        "group": "6a8b6e8a9930f74e",
+        "order": 1,
+        "width": "1",
+        "height": "6",
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": "0",
+        "max": "95",
+        "step": 1,
+        "className": "",
+        "x": 110,
+        "y": 560,
+        "wires": [
+            [
+                "1cc42342389ebba1",
+                "61084c7c0d64a041",
+                "9841e77c832ca4d0"
+            ]
+        ],
+        "icon": "font-awesome/fa-clock-o"
+    },
+    {
+        "id": "810bf6648ad8a018",
+        "type": "ui_slider",
+        "z": "cf08dd28739ab3ba",
+        "name": "",
+        "label": "direccion",
+        "tooltip": "",
+        "group": "28b64514df886cd8",
+        "order": 2,
+        "width": "6",
+        "height": "1",
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": "5",
+        "max": "15",
+        "step": 1,
+        "className": "",
+        "x": 240,
+        "y": 120,
+        "wires": [
+            [
+                "e50cbdc420e258f7"
+            ]
+        ],
+        "icon": "font-awesome/fa-arrows"
+    },
+    {
+        "id": "61084c7c0d64a041",
+        "type": "ui_gauge",
+        "z": "cf08dd28739ab3ba",
+        "name": "",
+        "group": "28b64514df886cd8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Velocimetro",
+        "label": "km/h",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "375",
+        "colors": [
+            "#ff0000",
+            "#ff0000",
+            "#ff0000"
+        ],
+        "seg1": "1",
+        "seg2": "95",
+        "diff": false,
+        "className": "",
+        "x": 750,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "6f27208d8f2ab3ab",
+        "type": "rpi-gpio out",
+        "z": "cf08dd28739ab3ba",
+        "name": "Reserva",
+        "pin": "4",
+        "set": false,
+        "level": "0",
+        "freq": "500",
+        "out": "pwm",
+        "bcm": true,
+        "x": 740,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "5e2892e633b2cffc",
+        "type": "rpi-gpio out",
+        "z": "cf08dd28739ab3ba",
+        "name": "Encendido",
+        "pin": "24",
+        "set": false,
+        "level": "0",
+        "freq": "500",
+        "out": "out",
+        "bcm": true,
+        "x": 570,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "a55d381c21623a89",
+        "type": "inject",
+        "z": "cf08dd28739ab3ba",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 250,
+        "y": 260,
+        "wires": [
+            [
+                "5e2892e633b2cffc"
+            ]
+        ]
+    },
+    {
+        "id": "40b2f19a0c47f0d4",
+        "type": "function",
+        "z": "cf08dd28739ab3ba",
+        "name": "function 1",
+        "func": "if (flow.get(\"reversa\") == 0) {\n    return msg.payload;\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4c01e91898163e37",
+        "type": "ui_switch",
+        "z": "cf08dd28739ab3ba",
+        "name": "",
+        "label": "Modo reversa",
+        "tooltip": "",
+        "group": "6a8b6e8a9930f74e",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "reversa",
+        "topicType": "flow",
+        "style": "",
+        "onvalue": "1",
+        "onvalueType": "num",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "0",
+        "offvalueType": "num",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 160,
+        "y": 400,
+        "wires": [
+            [
+                "79f10c148faf6dc3",
+                "0727d263eddd1ba3"
+            ]
+        ]
+    },
+    {
+        "id": "79f10c148faf6dc3",
+        "type": "function",
+        "z": "cf08dd28739ab3ba",
+        "name": "function 2",
+        "func": "if (msg.payload == 0) {\n    global.set(\"direccion\",10)\n}\nglobal.set(\"direccion\",20)\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1cc42342389ebba1",
+        "type": "debug",
+        "z": "cf08dd28739ab3ba",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "0727d263eddd1ba3",
+        "type": "debug",
+        "z": "cf08dd28739ab3ba",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "9841e77c832ca4d0",
+        "type": "switch",
+        "z": "cf08dd28739ab3ba",
+        "name": "",
+        "property": "direccion",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "10",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "20",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 470,
+        "y": 500,
+        "wires": [
+            [
+                "6f27208d8f2ab3ab"
+            ],
+            [
+                "824aa472f9d23b74"
+            ]
+        ]
+    },
+    {
+        "id": "6a8b6e8a9930f74e",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "b9a299282ccf316d",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "28b64514df886cd8",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "b9a299282ccf316d",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b9a299282ccf316d",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "996981368a4f216c",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-node-pi-gpio": "2.0.6",
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]
