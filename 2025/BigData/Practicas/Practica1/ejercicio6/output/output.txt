@@ -1,0 +1,5 @@
+algo satisfecho	1846
+disconforme	1864
+muy disconforme	1821
+muy satisfecho	1832
+poco satisfecho	1812

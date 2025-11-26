@@ -1,1 +1,0 @@
-El jugador con mas puntos en promedio:	53	con un promedio de: 3504.4285714285716

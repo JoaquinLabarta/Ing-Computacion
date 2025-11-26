@@ -1,0 +1,3 @@
+Promedio edad	44.34770373705538
+Mas joven	Zuhccg
+Total invertido	44460755976.0

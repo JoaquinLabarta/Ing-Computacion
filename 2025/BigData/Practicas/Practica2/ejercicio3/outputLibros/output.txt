@@ -1,0 +1,3 @@
+maximo:	de	833
+minimo:	!ah!	1
+promedio:	2.757091185988959
