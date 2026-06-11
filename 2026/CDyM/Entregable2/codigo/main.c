@@ -46,10 +46,7 @@ static volatile uint8_t flag_Blink_500ms = 0;
 static volatile uint8_t flag_OneSecond = 0;
 
 //Variables privadas del teclado
-static char teclado_event = TECLA_NONE;
-static char teclado_candidate = TECLA_NONE;
-static uint8_t teclado_stable_count = 0;
-static uint8_t teclado_pressed_lock = false;
+static char evento_teclado = TECLA_NONE;
 
 //Variables privadas de la aplicacion
 static micro_estados_t Estado_sistema = LIBRE;
@@ -64,10 +61,11 @@ static uint8_t Mensaje_code = MSG_NONE;
 static uint8_t Mensaje_ticks_100ms = 0;
 
 //Prototipos privados
-static void MCU_Init(void);
-static void TIMER0_Init_1ms(void);
+static void Ports_Init(void);
+static void TIMER0_Init(void);
 static void teclado_Init(void);
 static void teclado_Actualizar(void);
+static uint8_t teclado_Escanear(char *tecla_presionada);
 static char teclado_ObtenerEvento(void);
 static char teclado_LeerMatriz(void);
 static void teclado_FilasHigh(void);
@@ -114,11 +112,11 @@ ISR(TIMER0_COMPA_vect) {
 int main(void) {
 	cli();
 
-	MCU_Init();
+	Ports_Init();
 	LCD_Init();
 	teclado_Init();
 	micro_Init();
-	TIMER0_Init_1ms();
+	TIMER0_Init();
 
 	sei();
 
@@ -136,10 +134,10 @@ int main(void) {
 
 //Inicializa los puertos del microcontrolador
 //Apaga los LEDs del magnetron, interior y alarma al arrancar
-static void MCU_Init(void) {
-	DDRB = 0x00; DDRC = 0x00; DDRD = 0x00;
+static void Ports_Init(void) {
+	DDRB = 0x00; DDRC = 0x00; DDRD = 0x00; //Todos los pines como entrada
 
-	PORTB = 0x00; PORTC = 0x00; PORTD = 0x00;
+	PORTB = 0x00; PORTC = 0x00; PORTD = 0x00; //En 0 la salidas
 
 	DDRB |= (1 << LED_MAGNETRON_PIN);
 	DDRC |= (1 << LED_ALARMA_PIN) | (1 << LED_INTERIOR_PIN);
@@ -150,68 +148,80 @@ static void MCU_Init(void) {
 
 //Configura el Timer0 en modo CTC para generar una interrupcion cada 1 ms
 //Ese tick se usa como base de tiempo para teclado, MEF, parpadeo y cuenta de segundos
-static void TIMER0_Init_1ms(void) {
-	TCCR0A = 0x00; TCCR0B = 0x00; 
-	TCNT0 = 0; //Tope minimo
+static void TIMER0_Init(void) {
+	TCNT0 = 0; //Inicializa en 0
+	
+	OCR0A = 249; //fOC0x = fclkTn / (OCR0x + 1) //1000 Hz = 250000 Hz / (OCR0x + 1)
 
-	/*
-	Como el timer0 es de 8 bits, solo puede contar hasta 255, debo elegir un prescaler acorde que permita dividir el reloj de 16MHz 
-	en partes exactas para que un timer de 8 bits genere un retraso de 1ms sin usar decimales.
-	OCROA = 16MHz / (Prescaler * Fclk) = 16MHz / (P * 1mS) = 249
-	*/
-	OCR0A = 249; //Tope maximo
-	TCCR0A |= (1 << WGM01); //Modo CTC -> Clear Timer on Compare Match
-	TIMSK0 |= (1 << OCIE0A); // Habilita interrupcion por evento, no por desbordamiento (filmina)
-	TCCR0B |= (1 << CS01) | (1 << CS00); //Configuracion de prescaler = 64
+	TCCR0A = (1 << WGM01); //Modo CTC //WGM01 = 1, WGM00 = 0
+	TIMSK0 |= (1 << OCIE0A); // Habilita interrupcion por coincidencia, no por desbordamiento
+	TCCR0B |= (1 << CS01) | (1 << CS00); //CS02 = 0, CS01 = 1, CS00 = 1 //Prescaler = 64
 }
 
 //Configura el teclado matricial: filas como salidas y columnas como entradas con pullup
 //Al final deja todas las filas en alto, que es el estado de reposo del teclado
 static void teclado_Init(void) {
-	DDRB |= (1 << teclado_FILA0_PIN) | (1 << teclado_FILA1_PIN) | (1 << teclado_FILA2_PIN);
-	DDRD |= (1 << teclado_FILA3_PIN);
+	DDRB |= (1 << teclado_FILA0_PIN) | (1 << teclado_FILA1_PIN) | (1 << teclado_FILA2_PIN); DDRD |= (1 << teclado_FILA3_PIN); //Salida
 
-	DDRD &= ~((1 << teclado_COL0_PIN) | (1 << teclado_COL1_PIN) |
-	(1 << teclado_COL2_PIN) | (1 << teclado_COL3_PIN));
+	DDRD &= ~((1 << teclado_COL0_PIN) | (1 << teclado_COL1_PIN) | (1 << teclado_COL2_PIN) | (1 << teclado_COL3_PIN)); //Entrada
 
-	PORTD |= (1 << teclado_COL0_PIN) | (1 << teclado_COL1_PIN) |
-	(1 << teclado_COL2_PIN) | (1 << teclado_COL3_PIN);
+	PORTD |= (1 << teclado_COL0_PIN) | (1 << teclado_COL1_PIN) | (1 << teclado_COL2_PIN) | (1 << teclado_COL3_PIN); //Pullup
 
 	teclado_FilasHigh();
 }
 
-//Lee el teclado cada 10 ms y aplica antirrebote por software
-//Solo genera un evento cuando una tecla se mantiene estable varias lecturas
+//Se llama cada 10 ms desde el programa principal
+//Si el escaneo detecta una tecla nueva, la guarda como evento
 static void teclado_Actualizar(void) {
-	char raw_tecla = teclado_LeerMatriz();
+	char tecla_presionada;
 
-	if (raw_tecla == TECLA_NONE) {teclado_pressed_lock = false; teclado_candidate = TECLA_NONE; teclado_stable_count = 0;}
-	else {
-		if (raw_tecla == teclado_candidate) {
-			if (teclado_stable_count < 10) {teclado_stable_count++;}
-
-			if ((teclado_stable_count >= 3) && (teclado_pressed_lock == false)) {
-				if (teclado_event == TECLA_NONE) {teclado_event = raw_tecla;}
-				teclado_pressed_lock = true;
-			}
-		}
-		else {teclado_candidate = raw_tecla; teclado_stable_count = 1;
+	if (teclado_Escanear(&tecla_presionada) == true) { //tecla nueva
+		if (evento_teclado == TECLA_NONE) {
+			evento_teclado = tecla_presionada;
 		}
 	}
 }
 
-//Devuelve la ultima tecla validada por el antirrebote
-//Despues de leerla, borra el evento para no procesar la misma tecla dos veces
+//Escanea el teclado y devuelve true solo cuando hay una nueva tecla valida
+//Usa doble verificacion y evita detectar muchas veces la misma tecla mantenida
+static uint8_t teclado_Escanear(char *tecla_presionada) {
+	static char tecla_anterior = TECLA_NONE;
+	static char ultima_tecla_valida = TECLA_NONE;
+	char tecla_leida;
+
+	tecla_leida = teclado_LeerMatriz();
+
+	if (tecla_leida == TECLA_NONE) { // no hay tecla presionada
+		tecla_anterior = TECLA_NONE;
+		ultima_tecla_valida = TECLA_NONE;
+		return false;
+	}
+
+	if (tecla_leida == tecla_anterior) { // segunda verificacion
+		if (tecla_leida != ultima_tecla_valida) {
+			*tecla_presionada = tecla_leida;
+			ultima_tecla_valida = tecla_leida;
+			return true;
+		}
+	}
+
+	tecla_anterior = tecla_leida;
+	return false;
+}
+
+//Devuelve la tecla validada y borra el evento guardado
 static char teclado_ObtenerEvento(void) {
-	char tecla = teclado_event;
-	teclado_event = TECLA_NONE;
+	char tecla;
+
+	tecla = evento_teclado;
+	evento_teclado = TECLA_NONE;
 	return tecla;
 }
 
 //Escanea la matriz del teclado activando una fila por vez
 //Si detecta una columna en bajo, devuelve el caracter correspondiente
 static char teclado_LeerMatriz(void) {
-	static const char TECLAmap[4][4] =
+	static const char keymap[4][4] =
 	{
 		{'1', '2', '3', 'A'},
 		{'4', '5', '6', 'B'},
@@ -219,17 +229,17 @@ static char teclado_LeerMatriz(void) {
 		{'*', '0', '#', 'D'}
 	};
 
-	uint8_t row;
-	uint8_t column;
-	char found_tecla=found_tecla = TECLA_NONE;
+	uint8_t fila;
+	uint8_t columna;
+	char found_tecla = TECLA_NONE;
 
-	for (row = 0; row < 4; row++) {
+	for (fila = 0; fila < 4; fila++) {
 		teclado_FilasHigh();
-		teclado_FilaLow(row);
+		teclado_FilaLow(fila);
 		teclado_Estabilizar();
 
-		for (column = 0; column < 4; column++) {
-			if (teclado_IsColumnaLow(column) != false) {found_tecla = TECLAmap[row][column]; break;}
+		for (columna = 0; columna < 4; columna++) {
+			if (teclado_IsColumnaLow(columna) != false) {found_tecla = keymap[fila][columna]; break;}
 		}
 
 		if (found_tecla != TECLA_NONE){
@@ -447,22 +457,22 @@ static void micro_LimpiarTiempo(void) {
 //Ingresa un digito nuevo en formato MMSS desplazando los anteriores
 //Si el campo de segundos queda mayor a 59, rechaza el ingreso y muestra error
 static void micro_IngresarDigito(uint8_t digit) {
-	uint8_t new_digits[4];
-	uint8_t segundos_field;
+	uint8_t digito_sig[4];
+	uint8_t segundos;
 
-	new_digits[0] = Tiempo_digitos[1];
-	new_digits[1] = Tiempo_digitos[2];
-	new_digits[2] = Tiempo_digitos[3];
-	new_digits[3] = digit;
+	digito_sig[0] = Tiempo_digitos[1];
+	digito_sig[1] = Tiempo_digitos[2];
+	digito_sig[2] = Tiempo_digitos[3];
+	digito_sig[3] = digit;
 
-	segundos_field = (uint8_t)((new_digits[2] * 10) + new_digits[3]);
+	segundos = (uint8_t)((digito_sig[2] * 10) + digito_sig[3]);
 
-	if (segundos_field > 59) {micro_Escribir(MSG_INVALIDO); return;}
+	if (segundos > 59) {micro_Escribir(MSG_INVALIDO); return;}
 
-	Tiempo_digitos[0] = new_digits[0];
-	Tiempo_digitos[1] = new_digits[1];
-	Tiempo_digitos[2] = new_digits[2];
-	Tiempo_digitos[3] = new_digits[3];
+	Tiempo_digitos[0] = digito_sig[0];
+	Tiempo_digitos[1] = digito_sig[1];
+	Tiempo_digitos[2] = digito_sig[2];
+	Tiempo_digitos[3] = digito_sig[3];
 
 	Tiempo_coccion_segundos = micro_DigitoASegundos();
 	Pantalla_sucia = true;
@@ -471,28 +481,28 @@ static void micro_IngresarDigito(uint8_t digit) {
 //Convierte los cuatro digitos MMSS a segundos totales
 //Se usa para trabajar internamente con una sola variable de tiempo
 static uint16_t micro_DigitoASegundos(void) {
-	uint16_t minutes;
+	uint16_t minutos;
 	uint16_t segundos;
 
-	minutes = (uint16_t)((Tiempo_digitos[0] * 10) + Tiempo_digitos[1]);
+	minutos = (uint16_t)((Tiempo_digitos[0] * 10) + Tiempo_digitos[1]);
 	segundos = (uint16_t)((Tiempo_digitos[2] * 10) + Tiempo_digitos[3]);
 
-	return (uint16_t)((minutes * 60U) + segundos);
+	return (uint16_t)((minutos * 60U) + segundos);
 }
 
 //Carga los cuatro digitos MMSS a partir de una cantidad total de segundos
 //Sirve para actualizar el display cuando se descuenta tiempo o se suma +30 s
 static void micro_CargarDigitos(uint16_t total_segundos) {
-	uint8_t minutes;
+	uint8_t minutos;
 	uint8_t segundos;
 
 	if (total_segundos > MAX_TIEMPO_SEGUNDOS) {total_segundos = MAX_TIEMPO_SEGUNDOS;}
 
-	minutes = (uint8_t)(total_segundos / 60U);
+	minutos = (uint8_t)(total_segundos / 60U);
 	segundos = (uint8_t)(total_segundos % 60U);
 
-	Tiempo_digitos[0] = (uint8_t)(minutes / 10U);
-	Tiempo_digitos[1] = (uint8_t)(minutes % 10U);
+	Tiempo_digitos[0] = (uint8_t)(minutos / 10U);
+	Tiempo_digitos[1] = (uint8_t)(minutos % 10U);
 	Tiempo_digitos[2] = (uint8_t)(segundos / 10U);
 	Tiempo_digitos[3] = (uint8_t)(segundos % 10U);
 }
@@ -550,9 +560,7 @@ static void micro_ActualizarDisplay(void) {
 	line1[3] = (char)('0' + (segundos / 10U));
 	line1[4] = (char)('0' + (segundos % 10U));
 
-	for (i = 5; i < 16; i++) {line1[i] = ' ';} 
-
-	line1[16] = '\0';
+	for (i = 5; i < 16; i++) {line1[i] = ' ';} line1[16] = '\0';
 
 	if (Mensaje_ticks_100ms != 0) {
 		if (Mensaje_code == MSG_PUERTA_ABIERTA) {line2 = "PUERTA ABIERTA";}
@@ -570,7 +578,7 @@ static void micro_ActualizarDisplay(void) {
 
 			case TERMINADO: line2 = "FIN COCCION"; break;
 
-			default: line2 = "ERROR ESTADO"; break;
+			default: line2 = "ERROR"; break;
 		}
 	}
 
