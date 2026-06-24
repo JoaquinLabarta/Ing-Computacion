@@ -1,0 +1,45 @@
+### Punto 1: Planificación Cooperativa de Tareas (Sistemas Operativos Embebidos)
+
+**El concepto general:** Un microcontrolador solo tiene un núcleo, hace una sola cosa a la vez. El examen evalúa si sabés organizar múltiples tareas (ej. leer un botón, parpadear un LED, actualizar una pantalla) para que parezca que se ejecutan en simultáneo sin trabar el sistema usando la técnica de "Super Loop" o planificador cooperativo.
+
+**Qué tenés que saber hacer para el examen:**
+
+* **Matemática de planificación:** Te van a dar un listado de tareas con sus tiempos de ejecución requeridos (ej. Tarea 1 cada 5ms, Tarea 2 cada 20ms, Tarea 3 cada 30ms). Tenés que saber calcular el **Tick del sistema** usando el MCD (Máximo Común Divisor) de esos tiempos, y el **Hiperperíodo** usando el MCM (Mínimo Común Múltiplo).
+* **Diseño de Software:** Entender la estructura genérica. Cómo se configura una interrupción de Timer para generar el *Tick*, cómo esa interrupción levanta "banderas" o decrementa contadores, y cómo el bucle principal (`main`) revisa esas banderas y despacha las funciones.
+* **Clases a devorar:** Clase 11 (Planificación de tareas).
+
+### Punto 2: Máquina de Estados Finitos (MEF) y Algoritmos Antirrebote
+
+**El concepto general:** Es la forma de programar lógica secuencial. Un sistema reacciona distinto a una misma entrada dependiendo del estado en el que esté.  A esto se le suma el problema físico de los botones mecánicos: al apretarlos, la chapa metálica vibra y genera múltiples falsos contactos ("rebotes").
+
+**Qué tenés que saber hacer para el examen:**
+
+* **Diagramación pura:** Te van a dar un problema de la vida real (un portón automático, una grúa de carga, un semáforo). Tenés que saber dibujar las burbujas (los estados posibles) y las flechas (las transiciones), etiquetando claramente qué evento dispara la flecha y qué acción física se ejecuta al transicionar.
+* **Implementación en C:** Saber traducir ese dibujo de burbujas a un bloque `switch(estado_actual)` donde cada `case` representa una burbuja.
+* **Antirrebote (Debounce):** Entender la lógica teórica de cómo leer un botón varias veces separadas por unos milisegundos para asegurar que el usuario realmente lo apretó y estabilizó el dedo, evitando leer basura eléctrica.
+* **Clases a devorar:** Clase 09 y 10 (Máquinas de Estados), Clase 08_KEYPAD (específicamente la parte de ruido mecánico).
+
+### Punto 3: TIMERS (Generación de Señales y Medición de Eventos)
+
+**El concepto general:** Usar los contadores de hardware internos del microcontrolador. Cuentan pulsos de reloj de forma independiente a la CPU. Sirven para generar demoras exactas, crear frecuencias o medir cuánto tarda una señal externa.
+
+**Qué tenés que saber hacer para el examen:**
+
+* **Generación (Modo Normal o CTC):** El profe te pide calcular cómo generar una frecuencia exacta (ej. 440Hz para afinar una guitarra). Tenés que saber usar la fórmula de frecuencia, elegir un "Prescalador" válido (una división del reloj principal) para que el contador no se desborde, y calcular el valor tope ($OCRnx$).
+* Fórmula clave CTC: $OCRnx = \frac{f_{CPU}}{Prescaler \times 2 \times f_{deseada}} - 1$
+
+
+* **Captura de Entrada (Input Capture):** Si te dan un sensor de temperatura o de revoluciones por minuto (RPM) que emite pulsos digitales, tenés que saber cómo el Timer guarda "marcas de tiempo" cada vez que detecta un flanco de subida o bajada en un pin específico para calcular el período de esa señal externa.
+* **Gráficos temporales:** Te exigen siempre dibujar cómo avanza el contador (una rampa de sierra), dónde corta al llegar al tope y dónde se disparan las interrupciones.
+* **Clases a devorar:** Clase 07 (Timer 0), Clase 12a y 12b (Timer 1 Output Compare e Input Capture).
+
+### Punto 4: Generación de Señal PWM
+
+**El concepto general:** La Modulación por Ancho de Pulso (PWM) engaña a los dispositivos. Como un pin digital solo saca 0V o 5V, el PWM apaga y prende el pin a altísima velocidad. Si está el 50% del tiempo prendido y 50% apagado, un LED conectado ahí brillará a la mitad de su fuerza o un motor girará a mitad de velocidad.
+
+**Qué tenés que saber hacer para el examen:**
+
+* **Diferencias de hardware:** Te va a pedir que expliques y grafiques la diferencia entre "Fast PWM" (el contador sube como rampa y cae de golpe) y "Phase Correct PWM" (el contador sube y baja como un triángulo).
+* **Cálculo de Duty Cycle:** Si te dice que quiere un pulso de 2 milisegundos dentro de una ventana de 20 milisegundos (típico para controlar motores servo), tenés que saber calcular qué número cargar en el registro de comparación para que el pin cambie de estado exactamente en ese tiempo.
+* **PWM por software:** Si no se usa el hardware dedicado, cómo harías vos para parpadear un pin rapidísimo usando solo interrupciones comunes para simular un PWM.
+* **Clases a devorar:** Las del TP4 que todavía no se dictaron (pero son cruciales).

@@ -1,0 +1,36 @@
+🥇 Categoría 1: Oro Puro (Estudiá esto a muerte)
+Si no entendés estas clases, vas al muere en el parcial. Son el corazón de la evaluación.
+
+Clase11.pdf - Planificación de tareas: El Punto 1 del parcial sale de acá. Tenés que entender cómo sacar el MCD (para el tick del Timer) y el MCM (para el hyperperiodo).
+
+Clase09_MEF.pdf y Clase10.pdf - Ejemplos MEF: El Punto 2 completo. Entendé cómo pasar del dibujo de burbujas a un switch-case en C.
+
+Clase07.pdf - Periferico TIMER 0: Fundamental. Sin esto no hacés el Punto 1 (el Tick del planificador) ni el Punto 3 (generar señales). Memorizá la fórmula de cálculo del prescalador y cómo configurar el Modo CTC (WGM01 = 1).
+
+Clase12b.pdf - Timer 1 Input Capture: Esto es una fija para el Punto 3. Siempre te pide medir las RPM de un motor o un período externo. El Input Capture (ICP1) sirve exactamente para eso: guarda la "foto" del timer cuando hay un flanco en un pin.
+
+Clase08_KEYPAD.pdf - Teclado matricial: Pero atención, no leas cómo armar la matriz. Andá directo a la parte donde explica el Anti-rebote por software. En la Fecha 2 te pidió una MEF específica para "determinar el cambio de estado de un pulsador" con 500ms de rebote.
+
+🥈 Categoría 2: Base Obligatoria (Lectura rápida, sin perder el día)
+Son las herramientas que usás para escribir el código. No te van a tomar teoría de esto, pero si no sabés la sintaxis, no podés escribir las respuestas.
+
+Clase04.pdf - Programación de puertos I/O: Lectura táctica. Si no sabés prender un LED (PORTB |= (1<<PB5)) o leer un botón (PIND & (1<<PD3)), no podés hacer la MEF.
+
+Clase06.pdf - Uso de Interrupciones en AVR: Tenés que saber qué es la rutina ISR(TIMER0_COMPA_vect) y por qué las variables que se usan ahí y en el main llevan la palabra volatile.
+
+Clase12a.pdf - Timer 1 Output compare: Dale una mirada por si en el Punto 3 te pide generar una señal lenta que el Timer0 (8 bits) no llega a cubrir y tenés que usar el Timer1 (16 bits).
+
+Clase13.pdf - Periferico serie asincrónico: Ojo acá. En la Fecha 1 que me pasaste, la MEF pedía "retransmite el valor lógico de PB5 cada 500ms y cualquier valor recibido por UART". Pegale una leída a cómo chequear si llegó un dato (polling) y cómo mandarlo. Nada más.
+
+🗑️ Categoría 3: Olvidate (Descartables para el parcial)
+Estas clases son interesantes para la vida real, pero en un parcial en papel te van a comer el tiempo y la cabeza de gusto.
+
+Clase05.pdf - Caracteristicas eléctricas ATMEGA328: Tachala. No te van a preguntar cuántos miliamperios soporta un pin ni gráficos de tensión de silicio en este tipo de evaluación de firmware.
+
+Clase07.pdf - TIMER2 (RTC) y WATCHDOG TIMER: Descartala. En tres fechas seguidas no tocó el Timer2 ni el Watchdog. Todo el enfoque está en el Timer0 y el Timer1.
+
+Clase08_LCD.pdf - Display LCD: En los parciales rara vez te piden que escribas la inicialización del LCD a bajo nivel. A lo sumo te dan una librería hipotética (LCD_Escribir()). No pierdas tiempo aprendiendo los comandos I2C o de 4 bits.
+
+Clase09.pdf - Modularización: Ya sabés hacer esto. Separar en .c y .h es útil para el TP, pero en el parcial vas a escribir el código de corrido en la hoja.
+
+Clase11.pdf - Sistema de reloj y consumo: Tachala. Los "Sleep modes" (modo de bajo consumo) son teoría dura que rara vez se mete en el código de un parcial cooperativo clásico.
