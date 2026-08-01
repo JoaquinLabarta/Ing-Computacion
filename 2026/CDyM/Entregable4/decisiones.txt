@@ -1,0 +1,47 @@
+¿Por qué fase correcta?
+Porque ofrece 8 bits y permite representar 0 % y 100 % usando modo invertido con el LED de ánodo común.
+
+¿Por qué modo invertido?
+Porque el LED se enciende con nivel bajo; así OCR=255 sigue significando máxima intensidad para el usuario.
+
+¿Por qué TIMER0 para rojo?
+PB5 no posee salida OC. TIMER0 proporciona desborde y comparación para generar por software los dos flancos.
+
+¿Por qué TIMER2?
+TIMER0 y TIMER1 ya están ocupados con PWM; TIMER2 genera una base independiente de 1 ms.
+
+¿Por qué las frecuencias son distintas?
+La consigna sólo exige más de 30 Hz. Se priorizó una implementación clara y buenos extremos de PWM.
+
+¿Cómo obtiene 8 bits el PWM rojo?
+TIMER0 cuenta 256 posiciones y OCR0A puede ubicar el flanco en cualquiera de ellas, con tratamiento especial para 0 y 255.
+
+¿Por qué una MEF?
+Porque el comportamiento posee fases claramente diferenciadas con transiciones temporales y permite evitar retardos bloqueantes.
+
+¿Por qué el apagado dura T-3 s?
+Subida, máximo y bajada consumen tres segundos; el resto completa el período total.
+
+¿Qué pasa cuando T=3 s?
+No queda tiempo para una meseta apagada; comienza inmediatamente la siguiente subida.
+
+¿Por qué el ADC se lee cada 100 ms?
+La luz ambiente cambia lentamente y diez lecturas por segundo son suficientes con muy poca carga.
+
+¿Por qué ADC por polling?
+La conversión es interna, dura aproximadamente 104 μs y sólo se realiza cada 100 ms.
+
+¿Por qué el mapeo es lineal?
+La consigna sólo fija dos extremos; es la interpolación más simple y comprobable.
+
+¿Por qué el período cambia en el ciclo siguiente?
+Para no cortar ni prolongar de manera brusca un ciclo que ya comenzó.
+
+¿Por qué se multiplican los tres colores por el mismo nivel?
+Para variar la intensidad total conservando la proporción y el tono elegidos.
+
+¿Por qué UART por interrupciones?
+Para recibir y transmitir sin bloquear la temporización del desvanecimiento.
+
+¿Por qué no se aplicó gamma?
+Porque el TP pide proporciones PWM eléctricas, no luminosidad perceptualmente lineal.
