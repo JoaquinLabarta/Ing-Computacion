@@ -254,3 +254,11 @@ Entregable4/
 - `<string.h>` — `strncmp` para validar prefijos de comandos.
 
 No se usan bibliotecas externas ni frameworks: es firmware bare metal compilado con AVR-GCC.
+
+## Mecánica Interna (Defensa de Código)
+
+Para garantizar la robustez del sistema bare-metal, se implementaron técnicas avanzadas a nivel de registros:
+
+- **PWM por software (Rojo en PB5):** Se basa en dos interrupciones del TIMER0. `TIMER0_OVF_vect` marca el inicio del ciclo (enciende el LED poniendo el pin en LOW) y carga el límite en `OCR0A`. El hardware cuenta en background hasta igualar `OCR0A`, disparando `TIMER0_COMPA_vect`, que apaga el LED (pin en HIGH). Esto emula un comportamiento idéntico al hardware PWM.
+- **Protección de variables compartidas (Atomicidad):** Las variables compartidas entre ISRs y el main loop (como el contador de milisegundos o los buffers UART) se leen/escriben deshabilitando momentáneamente las interrupciones (`cli()`). Para no alterar el estado general del sistema, se guarda una copia del registro de estado (`SREG`) y se restaura al finalizar, en lugar de forzar un `sei()`.
+- **Mapeo del ADC sin punto flotante:** Para mapear el valor del ADC (0-1023) al rango de tiempo (3000-6000 ms) se utilizó matemática de punto fijo (enteros de 32 bits). Para evitar el error de truncamiento típico de la división entera en C, se sumó la mitad del divisor (`ADC_MAX / 2`) antes de efectuar la división matemática, logrando un redondeo perfecto sin importar la librería `math.h` ni usar variables `float`, ahorrando drásticamente recursos del microcontrolador.
