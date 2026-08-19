@@ -82,24 +82,24 @@ void uart_enviar_cadena (const char *cadena) {
 }
 
 // Extrae un byte del buffer RX; devuelve 1 si habia un dato y 0 si estaba vacio
-uint8_t uart_leer_caracter (char *dato) {
+uint8_t uart_leer_caracter (char *dato) { 
     uint8_t hay_dato = 0;
     uint8_t estado_interrupciones = SREG;
 
     cli();
 
-    if (uart_rx_lectura < uart_rx_escritura) {
+    if (uart_rx_lectura < uart_rx_escritura) { // Si hay un dato en el buffer, se lee y se actualiza el indice de lectura
         *dato = uart_rx_buffer[uart_rx_lectura];
         uart_rx_lectura++;
         hay_dato = 1;
 
-        if (uart_rx_lectura >= uart_rx_escritura) {
+        if (uart_rx_lectura >= uart_rx_escritura) { // Si se llego al final del buffer, se reinicia el indice de lectura y escritura
             uart_rx_lectura = 0;
             uart_rx_escritura = 0;
         }
     }
 
-    SREG = estado_interrupciones;
+    SREG = estado_interrupciones; // Se restaura el estado de las interrupciones
 
     return hay_dato;
 }

@@ -1,0 +1,17 @@
+{
+    "C_Cpp.default.configurationProvider": "",
+    "C_Cpp.default.compilerPath": "/usr/bin/avr-gcc",
+    "C_Cpp.default.intelliSenseMode": "linux-gcc-x64",
+    "C_Cpp.default.cStandard": "gnu11",
+    "C_Cpp.default.defines": [
+        "__AVR_ATmega328P__",
+        "F_CPU=16000000UL"
+    ],
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/TP_LED_RGB",
+        "/usr/lib/avr/include",
+        "/usr/lib/gcc/avr/14.3.0/include",
+        "/usr/lib/gcc/avr/14.3.0/include-fixed"
+    ],
+    "C_Cpp.errorSquiggles": "enabled"
+}

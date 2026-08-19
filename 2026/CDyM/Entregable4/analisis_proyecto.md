@@ -1,264 +1,224 @@
-# Análisis del proyecto — TP4 Control LED RGB
+# Análisis y justificación del proyecto — TP4 Control LED RGB
 
-Documento de referencia para la exposición presencial y la entrega del TP4 (Circuitos Digitales y Microcontroladores, UNLP 2026).
-
----
-
-## Qué hace el sistema
-
-Es un firmware **bare metal** para AVR (ATmega, 16 MHz) que controla un **LED RGB de ánodo común** con tres funciones simultáneas:
-
-1. **PWM de 8 bits** en R, G y B para fijar el color.
-2. **Desvanecimiento periódico** (subida → máximo → bajada → apagado) con período **T** entre 6 s (poca luz) y 3 s (mucha luz), según el LDR en ADC3.
-3. **Comandos por UART** (`SET_COLOR=R,G,B`) para cambiar el color sin cortar el ciclo de fade.
-
-El hardware en Proteus: LED en PB5/PB2/PB1 con 220 Ω, LDR + 100 kΩ a GND en PC3, terminal serie 9600 8N1.
+Documento orientado a la **exposición presencial** y a la defensa del trabajo. El foco está en **cumplir la consigna** y en el **por qué** de cada decisión, no en el detalle de implementación del código.
 
 ---
 
-## Arquitectura y metodología
+## 1. Objetivo según la consigna
 
-### Descomposición modular
+El TP pide controlar un **LED RGB** de forma que:
 
-El código está partido por **responsabilidad**, no por un único archivo monolítico:
+- Se **encienda y apague periódicamente** con un efecto de **desvanecimiento**.
+- El **ritmo** (período total *T*) lo fije la **luz ambiente** medida con un LDR.
+- El **color** lo elija el usuario por **interfaz serie**.
 
-| Módulo | Rol |
-|--------|-----|
-| `main.c` | Orquestación: init, loop principal, sincronización |
-| `pwm_rgb.c` | Generación PWM (hardware + software) |
-| `control_rgb.c` | MEF del desvanecimiento y escalado de color |
-| `sensor_luz.c` | ADC + mapeo lineal ADC → período |
-| `timer.c` | Base de tiempo de 1 ms (TIMER2) |
-| `uart.c` | UART0 con buffers e interrupciones |
-| `comandos.c` | Parser de líneas y validación |
-
-**Metodología:** diseño **event-driven cooperativo**. Las ISRs solo hacen lo mínimo (PWM, tick de 1 ms, RX/TX UART). La lógica pesada corre en **background** dentro del `while(1)`.
-
-### Flujo del loop principal
-
-```c
-while (1) {
-    procesar_comandos_uart();
-
-    while (obtener_milisegundo_pendiente()) {
-        control_rgb_actualizar_1ms();
-
-        contador_lectura_luz_ms++;
-
-        if (contador_lectura_luz_ms >= INTERVALO_LECTURA_LUZ_MS) {
-            contador_lectura_luz_ms = 0;
-
-            lectura_luz = sensor_luz_leer();
-            control_rgb_establecer_periodo(sensor_luz_calcular_periodo_ms(lectura_luz));
-        }
-    }
-}
-```
-
-- **Comandos UART:** se procesan siempre que hay datos (no bloquean el tiempo).
-- **Desvanecimiento:** avanza **1 ms por tick** de TIMER2.
-- **LDR:** se lee cada **100 ms** por polling (no hace falta ISR de ADC).
-
-Esto evita `_delay_ms()` y mantiene la temporización del fade estable.
+Eso implica coordinar **hardware** (conexionado en Proteus / kit), **periféricos del MCU** (PWM, ADC, UART, timers) y **lógica de aplicación** (desvanecimiento + comandos) sin bloquear el sistema. Todo el razonamiento del proyecto gira en torno a satisfacer esos tres ejes de forma simultánea y estable.
 
 ---
 
-## Cumplimiento de la consigna
 
-### 1. PWM > 30 Hz, 8 bits en los tres canales
 
-**Verde y azul (PB2, PB1):** TIMER1 en **modo PWM fase correcta de 8 bits**, **modo invertido** (ánodo común: nivel bajo = encendido).
+## 2. Cumplimiento del esquema electrónico (Proteus)
 
-- Prescaler 64 → f ≈ **490 Hz** (>> 30 Hz).
-- OCR1A/B dan 256 niveles (0–255).
+La consigna fija el conexionado. No es arbitrario: cada elección condiciona cómo hay que programar el firmware.
 
-**Rojo (PB5):** no tiene salida OC hardware. Se usa **PWM por software** con TIMER0:
+### 2.1 LED RGB de ánodo común en PB5 (R), PB2 (G) y PB1 (B)
 
-- Modo normal, 8 bits, prescaler 256 → f ≈ **244 Hz**.
-- ISR de overflow inicia el pulso; ISR de comparación lo corta.
-- Casos especiales: intensidad 0 = siempre apagado; 255 = sin flanco de apagado (100 % duty).
 
-**Decisión clave:** fase correcta + invertido permite **0 % y 100 % reales**, algo que fast PWM no garantiza igual de bien con ánodo común.
+| Requisito de la consigna      | Cómo se cumple                                                   | Por qué importa                                                                        |
+| ----------------------------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Modelo RGBLED-CA, ánodo común | LED conectado con ánodo a Vcc; cátodos a PB5, PB2, PB1 vía 220 Ω | Con ánodo común el LED **enciende con nivel bajo** en el pin del MCU                   |
+| Resistencias de 220 Ω         | Una por canal, limitación de corriente                           | Protege el LED y cumple el esquema pedido para simulación y kit                        |
+| PB5 = R, PB2 = G, PB1 = B     | Pines configurados como salida en el firmware                    | Respeta exactamente la asignación del TP; cualquier otro pin invalidaría la corrección |
 
-### 2. Comando serie `SET_COLOR=R,G,B`
 
-- Parser estricto en `comandos.c`: valida prefijo, comas, rango 0–255, tolera espacios.
-- Al cambiar color, **no reinicia la MEF**: reaplica el nivel actual de fade sobre el nuevo color base (`control_rgb_establecer_color`).
-- Respuestas `[CMD_OK]` / `[CMD_ERROR]` por UART.
+**Justificación central:** el hecho de que sea **ánodo común** no es un detalle menor. Obliga a invertir la lógica del PWM respecto de un cátodo común: lo que el usuario entiende como “más intensidad” debe corresponder a un mayor duty cycle **eléctrico** hacia GND. Por eso se eligió **PWM en modo invertido** en hardware y la misma convención en el PWM por software del rojo: así **0 = apagado** y **255 = máximo**, alineado con lo que pide el comando `SET_COLOR`.
 
-### 3. Efecto de desvanecimiento
+### 2.2 LDR en PC3 con divisor resistivo (100 kΩ a GND)
 
-MEF de **4 estados** en `control_rgb.c`:
 
-```
-SUBIDA (1 s) → MÁXIMO (1 s) → BAJADA (1 s) → APAGADO (T − 3 s) → repite
-```
+| Requisito de la consigna | Cómo se cumple                                   | Por qué importa                                                                               |
+| ------------------------ | ------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| Sensor en PC3            | Entrada analógica, pull-up interno deshabilitado | El pull-up alteraría el divisor; la medición debe depender solo del LDR y la resistencia fija |
+| Divisor con 100 kΩ a GND | Tensión en PC3 varía con la iluminación          | Convierte una magnitud física (luz) en una tensión que el ADC puede cuantizar                 |
+| Canal 3 del ADC          | Lectura en ADC3 / PC3                            | La consigna lo exige explícitamente; acota el registro `ADMUX` y la validación en Proteus     |
 
-- Rampa subida/bajada: interpolación lineal 0→255 y 255→0 en 1000 ms.
-- Tiempo activo fijo: **3 s** (`TIEMPO_ACTIVO_MS`).
-- Si **T = 3 s** (máxima luz): no hay meseta apagada; al terminar la bajada arranca de inmediato la siguiente subida.
-- Si **T > 3 s**: el resto del período es LED apagado.
 
-El color se escala con el **mismo factor** en R, G y B (`escalar_componente` con redondeo +127/255), así se mantiene el **tono** y solo cambia la intensidad global.
+**Justificación central:** el LDR no entrega un valor de “segundos” directamente. El firmware debe **interpretar** la lectura. La consigna solo fija dos puntos (mínima luz → 6 s, máxima luz → 3 s), por lo que se adoptó un **mapeo lineal** entre el valor ADC y el período *T*: es la interpolación más simple, **comprobable en la demo** (tapar el LDR → *T* crece; iluminarlo → *T* baja) y no introduce supuestos extra no pedidos.
 
-### 4. Sensor LDR → período T
+### 2.3 Terminal serie en UART0 a 9600 bps, 8N1
 
-- ADC canal 3, referencia AVCC, 10 bits, f_ADC = 125 kHz.
-- Mapeo lineal: ADC 0 → **6000 ms**, ADC 1023 → **3000 ms**.
-- El nuevo período se guarda en `periodo_siguiente_ms` y **solo aplica al inicio del ciclo siguiente**, para no cortar un fade en curso.
+
+| Requisito de la consigna | Cómo se cumple                                            | Por qué importa                                                       |
+| ------------------------ | --------------------------------------------------------- | --------------------------------------------------------------------- |
+| UART0 del MCU            | Comunicación con la PC / terminal virtual de Proteus      | Canal único de configuración del color por el usuario                 |
+| 9600 bps, 8N1            | `UBRR` calculado para 16 MHz; 8 bits, sin paridad, 1 stop | Coincide con la configuración estándar del terminal virtual del curso |
+
+
+**Justificación central:** la UART no puede bloquear el desvanecimiento. Si la recepción o transmisión retuviera al CPU con esperas activas, el efecto de fade dejaría de ser regular. Por eso se usa **UART por interrupciones** con buffers: la ISR solo guarda o envía bytes; el parseo del comando ocurre en el loop principal, cuando el sistema puede dedicar tiempo sin comprometer la base de 1 ms del desvanecimiento.
 
 ---
 
-## Decisiones de diseño (para defender en la mesa)
 
-El archivo `decisiones.txt` resume el “por qué” de cada elección. Para la exposición, conviene agruparlas así:
 
-### Periféricos y temporización
+## 3. Cumplimiento del software bare metal (AVR-GCC)
 
-| Decisión | Justificación |
-|----------|---------------|
-| TIMER1 → G y B | Salidas OC nativas en PB1/PB2 |
-| TIMER0 → R por software | PB5 no tiene OC; 256 posiciones = 8 bits |
-| TIMER2 → 1 ms | TIMER0 y TIMER1 ya usados; base independiente para la MEF |
-| Frecuencias distintas (490 vs 244 Hz) | Consigna solo pide > 30 Hz; se priorizó implementación clara |
-| Modo invertido | LED ánodo común; OCR=255 = máxima intensidad lógica |
-| PWM fase correcta | 8 bits con 0 % y 100 % usando modo invertido |
 
-### Lógica de aplicación
 
-| Decisión | Justificación |
-|----------|---------------|
-| MEF en lugar de delays | Fases distintas, transiciones temporales, sin bloqueos |
-| Período al ciclo siguiente | Evita saltos bruscos en T |
-| Escalado proporcional RGB | Conserva el color elegido durante el fade |
-| ADC cada 100 ms, polling | Luz ambiente lenta; ~104 µs por conversión; baja carga CPU |
-| Mapeo lineal LDR→T | Consigna fija solo extremos; interpolación simple y verificable |
-| Sin corrección gamma | El TP pide proporciones PWM eléctricas, no percepción visual |
-| UART por interrupciones | RX/TX no bloquean el tick de 1 ms del desvanecimiento |
+### 3.1 Tres señales PWM: > 30 Hz, 8 bits, TIMER1 en PB1/PB2 y PWM por software en PB5
 
-### Robustez UART
 
-- Buffers lineales RX (64) y TX (128).
-- Detección de desborde, trama inválida, comando largo.
-- Procesamiento de líneas **fuera** de la ISR de recepción (solo encola bytes).
+| Requisito de la consigna               | Cómo se cumple                                 | Por qué se eligió ese enfoque                                                                 |
+| -------------------------------------- | ---------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Frecuencia > 30 Hz en los tres canales | Verde/azul ≈ 490 Hz; rojo ≈ 244 Hz             | Superan ampliamente el mínimo; evita parpadeo visible por efecto strobo en la intensidad      |
+| Resolución de 8 bits (0–255)           | 256 niveles en los tres canales                | Coincide con el rango del comando `SET_COLOR` y con el escalado del desvanecimiento           |
+| PB1 y PB2 con salidas de TIMER1        | PWM por hardware en OC1A (azul) y OC1B (verde) | Es lo que indica la consigna: aprovechar los comparadores del timer ya cableados a esos pines |
+| PB5 con PWM por software               | TIMER0 genera los flancos por interrupción     | **PB5 no tiene salida OC** en el ATmega328P; la consigna obliga a software en ese pin         |
 
-### Detalle de decisiones técnicas (`decisiones.txt`)
 
-- **¿Por qué fase correcta?** Ofrece 8 bits y permite representar 0 % y 100 % usando modo invertido con el LED de ánodo común.
-- **¿Por qué modo invertido?** El LED se enciende con nivel bajo; así OCR=255 sigue significando máxima intensidad para el usuario.
-- **¿Por qué TIMER0 para rojo?** PB5 no posee salida OC. TIMER0 proporciona desborde y comparación para generar por software los dos flancos.
-- **¿Por qué TIMER2?** TIMER0 y TIMER1 ya están ocupados con PWM; TIMER2 genera una base independiente de 1 ms.
-- **¿Cómo obtiene 8 bits el PWM rojo?** TIMER0 cuenta 256 posiciones y OCR0A puede ubicar el flanco en cualquiera de ellas, con tratamiento especial para 0 y 255.
-- **¿Por qué el apagado dura T−3 s?** Subida, máximo y bajada consumen tres segundos; el resto completa el período total.
-- **¿Qué pasa cuando T=3 s?** No queda tiempo para una meseta apagada; comienza inmediatamente la siguiente subida.
-- **¿Por qué se multiplican los tres colores por el mismo nivel?** Para variar la intensidad total conservando la proporción y el tono elegidos.
+**Por qué PWM fase correcta (verde y azul):** entre los modos del timer, la fase correcta de 8 bits permite alcanzar **0 % y 100 % de duty cycle reales** junto con el modo invertido. Con ánodo común eso se traduce en apagado total y encendido total sin “suelos” o “techos” incorrectos. Fast PWM hubiera complicado los extremos con el LED invertido.
+
+**Por qué modo invertido:** porque el hardware enciende con nivel bajo. Sin invertir, un OCR alto significaría justo lo contrario de lo que el usuario espera al mandar `255`.
+
+**Por qué frecuencias distintas entre canales:** la consigna **no exige** la misma frecuencia en R, G y B; solo pide superar 30 Hz. Se priorizó una configuración **clara y robusta** en cada timer disponible, con buenos extremos de PWM, en lugar de forzar una frecuencia idéntica a costa de más complejidad.
+
+**Por qué TIMER0 para el rojo:** es el timer libre más adecuado para contar 256 posiciones por ciclo y ubicar el flanco de apagado con `OCR0A`, emulando un PWM de 8 bits. Los casos 0 y 255 se tratan aparte porque representan 0 % y 100 % sin ambigüedad.
 
 ---
 
-## Diagrama conceptual
 
-```mermaid
-flowchart TB
-    subgraph ISRs["Interrupciones (tiempo real)"]
-        T0[TIMER0: PWM rojo SW]
-        T1[TIMER1: PWM verde/azul HW]
-        T2[TIMER2: tick 1 ms]
-        UART[UART RX/TX]
-    end
 
-    subgraph BG["Background (main loop)"]
-        CMD[procesar_comandos_uart]
-        MEF[control_rgb_actualizar_1ms]
-        LDR[sensor_luz_leer cada 100 ms]
-    end
+### 3.2 Selección de color por terminal: `SET_COLOR=R,G,B`
 
-    T2 --> MEF
-    CMD --> MEF
-    LDR --> MEF
-    MEF --> PWM[pwm_rgb_establecer_intensidades]
-    T0 --> LED[LED RGB]
-    T1 --> LED
-    UART --> CMD
-```
+
+| Requisito de la consigna           | Cómo se cumple                                                 | Por qué se eligió ese enfoque                                                          |
+| ---------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Proporción de cada color por serie | Comando `SET_COLOR=R,G,B` con valores 0–255                    | Formato explícito, alineado con la resolución PWM de 8 bits                            |
+| Ejemplo con `\r\n`                 | Se aceptan fin de línea `\r` y/o `\n`                          | Compatibilidad con distintos terminales seriales y con Proteus                         |
+| Color resultante en el LED         | Las tres componentes definen el color base del desvanecimiento | El usuario controla el tono; el firmware controla cuánto brilla en cada fase del ciclo |
+
+
+**Por qué validar estrictamente el comando:** un valor fuera de rango o un formato incorrecto no debe corromper el estado del LED. Se responde con mensajes de error por UART para que la demo sea **verificable** ante el docente.
+
+**Por qué el cambio de color no reinicia el ciclo de desvanecimiento:** la consigna pide que el LED siga encendiéndose y apagándose periódicamente; cortar o resetear el fade en cada comando rompería la experiencia. Al cambiar color se **conserva la fase actual** (subida, máximo, bajada o apagado) y solo se actualiza la base RGB, manteniendo el nivel de intensidad del momento.
+
+**Por qué escalar R, G y B con el mismo factor durante el fade:** el desvanecimiento debe modificar la **intensidad global**, no el tono. Si cada color bajara distinto, el color cambiaría durante la rampa; multiplicar las tres componentes por el mismo nivel preserva la proporción elegida por el usuario.
 
 ---
 
-## Periféricos utilizados
 
-| Periférico | Uso | Configuración relevante |
-|------------|-----|-------------------------|
-| TIMER1 | PWM hardware verde (OC1B/PB2) y azul (OC1A/PB1) | Fase correcta 8 bits, invertido, prescaler 64 |
-| TIMER0 | PWM software rojo (PB5) | Modo normal 8 bits, ISRs OVF + COMPA, prescaler 256 |
-| TIMER2 | Base de tiempo 1 ms | CTC, OCR2A=249, prescaler 64 |
-| ADC | Lectura LDR en PC3/ADC3 | AVCC, 10 bits, prescaler 128 |
-| UART0 | Comandos y respuestas | 9600 bps, 8N1, RX/TX por interrupciones |
 
----
+### 3.3 Efecto de desvanecimiento periódico (figura de la consigna)
 
-## Qué mostrar en Proteus / debugger
-
-1. **Registros TIMER1** (TCCR1A/B, OCR1A/B): PWM en verde/azul al cambiar `SET_COLOR`.
-2. **PORTB bit 5 + TCNT0/OCR0A**: flancos del PWM rojo por software.
-3. **TIMER2 / variable de tick**: avance de 1 ms y transiciones de la MEF.
-4. **ADCH:ADCL (ADC)**: variación del período T al tapar/destapar el LDR.
-5. **Terminal virtual**: comando válido e inválido, respuesta inmediata sin “congelar” el fade.
-
----
-
-## Puntos fuertes del proyecto
-
-1. **Separación clara** entre tiempo real (ISRs) y lógica de aplicación (MEF + parser).
-2. **Cumple restricciones hardware** (PB5 sin OC) con solución documentada y medible.
-3. **Comportamiento predecible**: T mínimo 3 s, cambio de color sin reset del ciclo, período LDR diferido al siguiente ciclo.
-4. **Código legible y alineado con la consigna**: nombres en español, constantes nombradas, comentarios en decisiones técnicas.
-
----
-
-## Posibles preguntas del docente (y respuesta corta)
-
-| Pregunta | Respuesta |
-|----------|-----------|
-| ¿Por qué no usaste el mismo timer para todo? | TIMER0/1 generan PWM; TIMER2 da la base de 1 ms sin interferir. |
-| ¿Por qué polling en ADC y no interrupción? | Una conversión cada 100 ms; el bloqueo es ~104 µs y es despreciable frente al intervalo. |
-| ¿Qué pasa si mando `SET_COLOR` en medio de la subida? | Se actualizan R/G/B base y se reaplica el nivel actual de la rampa; el estado de la MEF no cambia. |
-| ¿Cómo verificás 8 bits? | 256 niveles vía OCR en hardware; en rojo, OCR0A ubica el flanco en cualquiera de las 256 cuentas del ciclo. |
-| ¿Por qué frecuencias PWM distintas en cada canal? | La consigna solo exige > 30 Hz; se priorizó una implementación clara con buenos extremos de duty cycle. |
-
----
-
-## Estructura de archivos del proyecto
+La figura del TP define la forma de la intensidad en el tiempo:
 
 ```
-Entregable4/
-├── consigna.pdf
-├── decisiones.txt
-├── analisis_proyecto.md          ← este documento
-└── TP_LED_RGB/
-    ├── main.c
-    ├── pwm_rgb.c / pwm_rgb.h
-    ├── control_rgb.c / control_rgb.h
-    ├── sensor_luz.c / sensor_luz.h
-    ├── timer.c / timer.h
-    ├── uart.c / uart.h
-    └── comandos.c / comandos.h
+Intensidad
+    ^
+Max |     +-------+
+    |    /         \
+    |   /           \
+  0 +--+-------------+--------> t
+       1s  1s  1s      T-3s
+            ←── T ──→
 ```
+
+
+| Requisito de la consigna | Cómo se cumple                    | Por qué se eligió ese enfoque                                       |
+| ------------------------ | --------------------------------- | ------------------------------------------------------------------- |
+| Subida gradual 1 s       | Rampa lineal 0 → 255 en 1000 ms   | Reproduce la primera rampa de la figura                             |
+| Meseta al máximo 1 s     | Intensidad 255 sostenida 1000 ms  | Corresponde al tramo “Max” del diagrama                             |
+| Bajada gradual 1 s       | Rampa lineal 255 → 0 en 1000 ms   | Simetría con la subida, como pide el enunciado                      |
+| Período total *T*        | 3 s activos + *(T − 3 s)* apagado | Los tres segundos de rampas/meseta son fijos; el resto completa *T* |
+
+
+**Por qué una máquina de estados finitos (MEF):** el comportamiento tiene **fases bien diferenciadas** (subida, máximo, bajada, apagado) con duraciones distintas según *T*. Una MEF modela eso de forma directa y evita `_delay_ms()` u otras esperas bloqueantes que impedirían atender UART y ADC en paralelo.
+
+**Por qué el tramo apagado dura *T − 3 s*:** subida, máximo y bajada ocupan exactamente 3 s. El período total lo completa el tiempo con LED apagado. Es la única forma de respetar simultáneamente la figura fija (3 s de actividad con forma definida) y el *T* variable del LDR.
+
+**Qué ocurre cuando *T = 3 s* (máxima iluminación):** no queda tiempo de meseta apagada; al terminar la bajada **arranca de inmediato** la siguiente subida. Es el comportamiento límite coherente con la definición: no se inventa un tiempo negativo de apagado.
+
+**Por qué no se usa corrección gamma:** la consigna habla de **proporciones PWM** y de intensidad en el diagrama temporal, no de igualar la percepción humana de brillo. Aplicar gamma alteraría las relaciones eléctricas pedidas por `SET_COLOR` sin que el TP lo requiera.
 
 ---
 
-## Bibliotecas utilizadas
+### 3.4 Período *T* del parpadeo según el LDR (ADC canal 3): 6 s ↔ 3 s
 
-- `<avr/io.h>` — acceso a registros del microcontrolador.
-- `<avr/interrupt.h>` — macros `sei()`, `cli()`, declaración de ISRs.
-- `<stdint.h>` — tipos enteros de ancho fijo.
-- `<stdio.h>` — `snprintf` para formatear respuestas UART.
-- `<string.h>` — `strncmp` para validar prefijos de comandos.
 
-No se usan bibliotecas externas ni frameworks: es firmware bare metal compilado con AVR-GCC.
+| Requisito de la consigna         | Cómo se cumple                               | Por qué se eligió ese enfoque                                                    |
+| -------------------------------- | -------------------------------------------- | -------------------------------------------------------------------------------- |
+| ADC canal 3                      | Lectura del LDR en PC3/ADC3                  | Cumple el enunciado y el esquema de Proteus                                      |
+| *T* = 6 s con mínima luz         | ADC mínimo → período 6000 ms                 | Extremo inferior pedido: parpadeo más lento en oscuridad                         |
+| *T* = 3 s con máxima iluminación | ADC máximo → período 3000 ms                 | Extremo superior pedido: parpadeo más rápido con mucha luz                       |
+| Relación entre ambos extremos    | Interpolación lineal entre 6000 ms y 3000 ms | La consigna solo fija dos puntos; lo más defendible es un mapeo lineal y medible |
 
-## Mecánica Interna (Defensa de Código)
 
-Para garantizar la robustez del sistema bare-metal, se implementaron técnicas avanzadas a nivel de registros:
+**Por qué leer el ADC cada 100 ms y no en cada milisegundo:** la luz ambiente varía lentamente; 10 lecturas por segundo son suficientes para una demo fluida y dejan casi todo el CPU disponible para el fade y la UART.
 
-- **PWM por software (Rojo en PB5):** Se basa en dos interrupciones del TIMER0. `TIMER0_OVF_vect` marca el inicio del ciclo (enciende el LED poniendo el pin en LOW) y carga el límite en `OCR0A`. El hardware cuenta en background hasta igualar `OCR0A`, disparando `TIMER0_COMPA_vect`, que apaga el LED (pin en HIGH). Esto emula un comportamiento idéntico al hardware PWM.
-- **Protección de variables compartidas (Atomicidad):** Las variables compartidas entre ISRs y el main loop (como el contador de milisegundos o los buffers UART) se leen/escriben deshabilitando momentáneamente las interrupciones (`cli()`). Para no alterar el estado general del sistema, se guarda una copia del registro de estado (`SREG`) y se restaura al finalizar, en lugar de forzar un `sei()`.
-- **Mapeo del ADC sin punto flotante:** Para mapear el valor del ADC (0-1023) al rango de tiempo (3000-6000 ms) se utilizó matemática de punto fijo (enteros de 32 bits). Para evitar el error de truncamiento típico de la división entera en C, se sumó la mitad del divisor (`ADC_MAX / 2`) antes de efectuar la división matemática, logrando un redondeo perfecto sin importar la librería `math.h` ni usar variables `float`, ahorrando drásticamente recursos del microcontrolador.
+**Por qué ADC por polling y no por interrupción:** cada conversión dura del orden de **100 µs** y ocurre cada 100 ms. El bloqueo es despreciable frente al intervalo; una ISR de ADC agregaría complejidad sin beneficio real para este TP.
+
+**Por qué el nuevo *T* se aplica al ciclo siguiente:** si *T* cambiara a mitad de un desvanecimiento, el usuario vería un salto brusco en la duración de la fase apagada o en el ritmo general. Diferir el cambio al **próximo ciclo** mantiene la continuidad visual y es coherente con la naturaleza lenta del sensor.
+
+---
+
+## 4. Metodología de diseño (herramientas y criterios generales)
+
+Esta sección responde a lo que la consigna pide explicitar en la evaluación: *razonamientos, herramientas, tareas del MCU y respuestas en tiempo y forma*.
+
+### 4.1 Enfoque bare metal con AVR-GCC
+
+**Por qué:** el TP exige firmware sin sistema operativo ni frameworks. AVR-GCC es la toolchain del curso para el ATmega del kit y de Proteus; permite acceso directo a registros, interrupciones y temporización determinista.
+
+**Herramientas:** AVR-GCC, Proteus 8.12 (simulación y debugger), terminal serial 9600 8N1, kit ATmega328P a 16 MHz.
+
+### 4.2 Separación entre “tiempo real” y “tareas de fondo”
+
+El MCU debe hacer **varias cosas a la vez** sin que una afecte a las otras:
+
+
+| Tarea                        | Plazo               | Por qué no puede bloquearse                                                |
+| ---------------------------- | ------------------- | -------------------------------------------------------------------------- |
+| PWM rojo, verde, azul        | Continuo, > 30 Hz   | El ojo integra la luz; cualquier jitter visible arruina el color y el fade |
+| Avance del desvanecimiento   | Cada 1 ms           | La figura del TP está definida en segundos con resolución de rampa         |
+| Recepción / transmisión UART | Cuando llegan datos | El usuario debe poder cambiar el color en cualquier momento                |
+| Lectura del LDR              | Cada 100 ms         | Ajusta *T* sin necesidad de alta frecuencia                                |
+
+
+**Criterio adoptado:** las ISRs hacen lo mínimo (PWM, tick de 1 ms, bytes UART). La MEF del fade, el parser de comandos y la lectura del ADC corren en el **loop principal**, sincronizados por eventos. Así se evita anidar retardos bloqueantes y se cumple el comportamiento temporal del TP.
+
+### 4.3 Por qué TIMER2 como base de 1 ms
+
+TIMER0 y TIMER1 ya cumplen roles impuestos por la consigna (PWM rojo por software y PWM verde/azul por hardware). Queda TIMER2 como **único timer libre** para generar una referencia estable de 1 ms, independiente de las frecuencias PWM. Sin esa base, el desvanecimiento dependería de conteos imprecisos o de delays.
+
+### 4.4 Descomposición del programa (sin entrar en implementación)
+
+La división en módulos responde a **responsabilidades del enunciado**, no a un gusto estético:
+
+
+| Parte del programa                | Responsabilidad respecto de la consigna                           |
+| --------------------------------- | ----------------------------------------------------------------- |
+| Configuración de pines y arranque | Conectar firmware con el esquema Proteus (PB5/PB2/PB1, PC3, UART) |
+| PWM                               | Requisito 1: tres señales 8 bits, > 30 Hz, software en PB5        |
+| Control de desvanecimiento        | Requisito 3: forma temporal de la intensidad                      |
+| Sensor de luz                     | Requisito 4: *T* entre 6 s y 3 s según ADC3                       |
+| UART y comandos                   | Requisito 2: color por terminal + feedback al usuario             |
+| Timer de 1 ms                     | Soporte temporal para la MEF sin bloqueos                         |
+
+
+**Por qué modular:** cada requisito del TP se puede **demostrar y explicar por separado** en la mesa (mostrar PWM en un pin, mostrar ADC al tapar el LDR, mostrar comando UART, mostrar transición de estados del fade).
+
+## 5. Mapa de verificación para la demo (consigna + debugger Proteus)
+
+La evaluación pide demostrar funcionamiento, simulación, conexionado y verificación temporal. Propuesta de guion alineada con la consigna:
+
+
+| Qué muestra la consigna   | Qué demostrar                                                 | Qué justificar oralmente                                         |
+| ------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------- |
+| Esquema Proteus           | LED en PB5/PB2/PB1, LDR en PC3, UART 9600 8N1                 | El ánodo común define la lógica invertida del PWM                |
+| PWM 8 bits, > 30 Hz       | Forma de onda o cambio visible al variar `SET_COLOR`          | Hardware en PB1/PB2; software en PB5 porque no hay OC            |
+| Comando serie             | `SET_COLOR=0,255,255` y casos erróneos                        | Validación para no romper el estado; color base vs nivel de fade |
+| Figura de desvanecimiento | Subida 1 s, meseta 1 s, bajada 1 s, pausa hasta completar *T* | MEF elegida porque hay fases distintas; apagado = *T* − 3 s      |
+| LDR → *T* 6 s…3 s         | Tapar / iluminar sensor; medir *T* con cronómetro o debugger  | Mapeo lineal entre extremos; cambio de *T* al ciclo siguiente    |
+| Tareas concurrentes       | Fade continuo mientras se envían comandos                     | UART y ADC no bloquean porque no usan delays globales            |
+
+

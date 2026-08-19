@@ -32,7 +32,7 @@ static uint8_t escalar_componente (uint8_t componente, uint8_t nivel) {
 static void aplicar_nivel (uint8_t nivel) {
     nivel_desvanecimiento = nivel;
 
-    pwm_rgb_establecer_intensidades(
+    pwm_rgb_establecer_intensidades( 
         escalar_componente(color_rojo, nivel),
         escalar_componente(color_verde, nivel),
         escalar_componente(color_azul, nivel)
@@ -57,18 +57,18 @@ void control_rgb_iniciar (uint16_t periodo_inicial_ms) {
     color_verde = COLOR_INICIAL_VERDE;
     color_azul = COLOR_INICIAL_AZUL;
 
-    periodo_actual_ms = periodo_inicial_ms;
-    periodo_siguiente_ms = periodo_inicial_ms;
+    periodo_actual_ms = periodo_inicial_ms; 
+    periodo_siguiente_ms = periodo_inicial_ms; 
     estado_actual = ESTADO_SUBIDA;
     tiempo_estado_ms = 0;
 
-    aplicar_nivel(0);
+    aplicar_nivel(0); // Apaga el LED
 }
 
 // Actualiza cada 1 ms la MEF: subida, maximo, bajada y tiempo restante apagado
 void control_rgb_actualizar_1ms (void) {
-    uint16_t tiempo_apagado_ms;
-    uint8_t nuevo_nivel;
+    uint16_t tiempo_apagado_ms; // Tiempo restante de apagado
+    uint8_t nuevo_nivel; // Nuevo nivel de desvanecimiento
 
     tiempo_estado_ms++;
 
@@ -77,11 +77,11 @@ void control_rgb_actualizar_1ms (void) {
             if (tiempo_estado_ms >= RAMPA_SUBIDA_MS) {
                 estado_actual = ESTADO_MAXIMO;
                 tiempo_estado_ms = 0;
-                aplicar_nivel(255);
+                aplicar_nivel(255); // Enciende el LED al maximo
             }
             else {
-                nuevo_nivel = (uint8_t)(((uint32_t)tiempo_estado_ms * 255U) / RAMPA_SUBIDA_MS);
-                aplicar_nivel(nuevo_nivel);
+                nuevo_nivel = (uint8_t)(((uint32_t)tiempo_estado_ms * 255U) / RAMPA_SUBIDA_MS); // Calculo del nivel de desvanecimiento 
+                aplicar_nivel(nuevo_nivel); // Aplica el nuevo nivel de desvanecimiento
             }
             break;
 
@@ -89,17 +89,17 @@ void control_rgb_actualizar_1ms (void) {
             if (tiempo_estado_ms >= TIEMPO_MAXIMO_MS) {
                 estado_actual = ESTADO_BAJADA;
                 tiempo_estado_ms = 0;
-                aplicar_nivel(255);
+                aplicar_nivel(255); // Enciende el LED al maximo
             }
             break;
 
         case ESTADO_BAJADA:
             if (tiempo_estado_ms >= RAMPA_BAJADA_MS) {
                 tiempo_estado_ms = 0;
-                aplicar_nivel(0);
+                aplicar_nivel(0); // Apaga el LED
 
                 if (periodo_actual_ms > TIEMPO_ACTIVO_MS) {
-                    estado_actual = ESTADO_APAGADO;
+                    estado_actual = ESTADO_APAGADO; 
                 }
                 else {
                     comenzar_nuevo_ciclo();
@@ -107,8 +107,8 @@ void control_rgb_actualizar_1ms (void) {
             }
             else {
                 nuevo_nivel = (uint8_t)(255U -
-                              ((uint32_t)tiempo_estado_ms * 255U) / RAMPA_BAJADA_MS);
-                aplicar_nivel(nuevo_nivel);
+                              ((uint32_t)tiempo_estado_ms * 255U) / RAMPA_BAJADA_MS); // Calculo del nivel de desvanecimiento 
+                aplicar_nivel(nuevo_nivel); // Aplica el nuevo nivel de desvanecimiento
             }
             break;
 
