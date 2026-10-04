@@ -1,0 +1,70 @@
+****** Linux net NAT commands ******
+
+*** Agregar reglas de NAPT (Masquerade, enmascaramiento)
+
+ iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o eth0 -j MASQUERADE
+
+# 192.168.1.0/24 es el bloque IPv4 detrás del NAT
+# eth0 es la interfaz WAN, de salida
+
+*** Quitar la regla (-D)
+
+ iptables -t nat -D POSTROUTING -s 192.168.1.0/24 -o eth0 -j MASQUERADE
+
+*** Ver reglas y estado:
+
+ iptables -t nat -L -n -v
+ netstat-nat (fuera de uso)
+ conntrack -L 
+
+*** Otras formas:
+
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o eth0 -j SNAT --to 100.0.7.33
+iptables -t nat -D POSTROUTING -s 192.168.1.0/24 -o eth0 -j SNAT --to 100.0.7.33
+
+# 100.0.7.33 (Es la IP WAN, de la interfaz eth0 del router donde se corre el comando)
+# 192.168.1.0/24 es el bloque IPv4 detrás del NAT, en la LAN
+#####################################################################################
+
+*** NAT estático 1:1 (no masquerade)
+
+iptables -t nat -A POSTROUTING -s 192.168.1.34  -o eth0 -j SNAT --to 100.0.6.34
+
+### El bloque IP  100.0.6.0/24 o la IP  100.0.6.34 debe ser alcanzable desde fuera de la LAN
+### La regla siguiente no es necesaria para la vuelta, con conntrack si sale tráfico interno, desde la LAN
+### iptables -t nat -A PREROUTING  -s  100.0.6.34   -o eth1 -j SNAT --to 192.168.1.34
+
+#####################################################################################
+# NAT 1:1 individual
+# OUTPUT desde la LAN
+iptables -t nat -A POSTROUTING -s 192.168.1.34  -o eth0 -j SNAT --to 100.0.6.34
+# INPUT hacia la LAN
+iptables -t nat -A PREROUTING -i eth0 -d  100.0.6.34 -j DNAT --to-destination 192.168.1.34
+
+### 
+### Si entra o sale solo se aplica una de las 2 reglas, la vuelta se permite con el estado de conntrack
+### Para dejar/entrar tráfico de forma que se permita entrada y/o salida sin importar desde donde se genera el tráfico se requieran las dos entradas con iptables
+#####################################################################################
+# NAT 1:1 por bloques
+# Mapear bloques completos 1:1 en este caso de 128 a 128 IPs
+
+iptables -t nat -A POSTROUTING -s 192.168.1.0/25    -j NETMAP  --to 100.0.6.128/25
+iptables -t nat -A PREROUTING  -d 100.0.6.128/25    -j NETMAP  --to 192.168.1.0/25
+#####################################################################################
+
+*** Todas las reglas hasta acá consideran el forwarding activo:
+
+iptables -P FORWARD ACCEPT
+sysctl net.ipv4.ip_forward=1
+sysctl net.ipv4.conf.all.forwarding=1
+
+*** Port forwarding (Mapeo de puertos desde afuera hacia la LAN)
+
+iptables -t nat -A PREROUTING -p tcp -i eth1 --dport 48080 -j DNAT --to-destination 192.168.1.34:8080
+
+
+# En caso que iptables -P FORWARD DROP agregar:
+
+iptables -A FORWARD -p tcp -d 192.168.1.34 --dport 8080 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+
+iptables sobre INPUT por más que este en DROP en el fwall no afecta
