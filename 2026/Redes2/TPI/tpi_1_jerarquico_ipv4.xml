@@ -1,0 +1,664 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<scenario>
+  <networks>
+    <network id="12" name="n15" icon="/home/labartajoaquin/.coregui/icons/hub.png" canvas="0" type="SWITCH">
+      <position x="221.3333282470703" y="215.0" lat="47.57721209905448" lon="-122.12934181207525" alt="2.0"/>
+    </network>
+    <network id="13" name="n16" icon="/home/labartajoaquin/.coregui/icons/hub.png" canvas="0" type="SWITCH">
+      <position x="1175.0" y="182.0" lat="47.57751206816026" lon="-122.11649141186739" alt="2.0"/>
+    </network>
+    <network id="14" name="n28" icon="/home/labartajoaquin/.coregui/icons/hub.png" canvas="0" type="SWITCH">
+      <position x="1295.0" y="676.0" lat="47.57302144185508" lon="-122.11487444435595" alt="2.0"/>
+    </network>
+    <network id="15" name="n27" icon="/home/labartajoaquin/.coregui/icons/hub.png" canvas="0" type="SWITCH">
+      <position x="1073.0" y="669.6666870117188" lat="47.57307901623926" lon="-122.11786583425209" alt="2.0"/>
+    </network>
+    <network id="16" name="n26" icon="/home/labartajoaquin/.coregui/icons/hub.png" canvas="0" type="SWITCH">
+      <position x="841.3333129882812" y="672.6666870117188" lat="47.57305174408283" lon="-122.12098748013854" alt="2.0"/>
+    </network>
+    <network id="17" name="n25" icon="/home/labartajoaquin/.coregui/icons/hub.png" canvas="0" type="SWITCH">
+      <position x="706.3333129882812" y="672.6666870117188" lat="47.57305174408283" lon="-122.12280656858887" alt="2.0"/>
+    </network>
+    <network id="18" name="n20" icon="/home/labartajoaquin/.coregui/icons/hub.png" canvas="0" type="SWITCH">
+      <position x="502.0" y="671.6666870117188" lat="47.57306083480322" lon="-122.12555990466058" alt="2.0"/>
+    </network>
+    <network id="19" name="n19" icon="/home/labartajoaquin/.coregui/icons/hub.png" canvas="0" type="SWITCH">
+      <position x="409.0" y="674.6666870117188" lat="47.57303356263732" lon="-122.12681305448191" alt="2.0"/>
+    </network>
+    <network id="20" name="n4" icon="/home/labartajoaquin/.coregui/icons/hub.png" canvas="0" type="SWITCH">
+      <position x="215.0" y="669.6666870117188" lat="47.57307901623926" lon="-122.1294271519587" alt="2.0"/>
+    </network>
+    <network id="21" name="n3" icon="/home/labartajoaquin/.coregui/icons/hub.png" canvas="0" type="SWITCH">
+      <position x="121.0" y="672.6666870117188" lat="47.57305174408283" lon="-122.1306937765093" alt="2.0"/>
+    </network>
+  </networks>
+  <devices>
+    <device id="1" name="n34" icon="/home/labartajoaquin/.coregui/icons/host.png" canvas="0" type="host" class="" image="" compose="" compose_name="">
+      <position x="77.0" y="199.0" lat="47.577357538835535" lon="-122.13128666459683" alt="2.0"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="2" name="n11" icon="/home/labartajoaquin/.coregui/icons/host.png" canvas="0" type="host" class="" image="" compose="" compose_name="">
+      <position x="125.0" y="836.0" lat="47.57156690542534" lon="-122.13063987759226" alt="2.0"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="3" name="n12" icon="/home/labartajoaquin/.coregui/icons/host.png" canvas="0" type="host" class="" image="" compose="" compose_name="">
+      <position x="218.6666717529297" y="837.6666870117188" lat="47.571551753606634" lon="-122.12937774454952" alt="2.0"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="4" name="n13" icon="/home/labartajoaquin/.coregui/icons/host.png" canvas="0" type="host" class="" image="" compose="" compose_name="">
+      <position x="403.3333435058594" y="827.0" lat="47.57164872417183" lon="-122.12688941114399" alt="2.0"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="5" name="n14" icon="/home/labartajoaquin/.coregui/icons/host.png" canvas="0" type="host" class="" image="" compose="" compose_name="">
+      <position x="507.6666564941406" y="828.0" lat="47.57163963320631" lon="-122.12548354799848" alt="2.0"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="6" name="n29" icon="/home/labartajoaquin/.coregui/icons/host.png" canvas="0" type="host" class="" image="" compose="" compose_name="">
+      <position x="709.0" y="832.0" lat="47.57160326932845" lon="-122.12277063570336" alt="2.0"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="7" name="n30" icon="/home/labartajoaquin/.coregui/icons/host.png" canvas="0" type="host" class="" image="" compose="" compose_name="">
+      <position x="840.3333129882812" y="832.3333129882812" lat="47.57160023918912" lon="-122.1210009548678" alt="2.0"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="8" name="n31" icon="/home/labartajoaquin/.coregui/icons/host.png" canvas="0" type="host" class="" image="" compose="" compose_name="">
+      <position x="1076.6666259765625" y="839.3333129882812" lat="47.57153660233842" lon="-122.11781642745973" alt="2.0"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="9" name="n32" icon="/home/labartajoaquin/.coregui/icons/host.png" canvas="0" type="host" class="" image="" compose="" compose_name="">
+      <position x="1239.6666259765625" y="850.3333129882812" lat="47.571436601416806" lon="-122.11562004659005" alt="2.0"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="10" name="n33" icon="/home/labartajoaquin/.coregui/icons/host.png" canvas="0" type="host" class="" image="" compose="" compose_name="">
+      <position x="1359.6666259765625" y="848.3333129882812" lat="47.571454783416755" lon="-122.11400307907866" alt="2.0"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="11" name="n35" icon="/home/labartajoaquin/.coregui/icons/host.png" canvas="0" type="host" class="" image="" compose="" compose_name="">
+      <position x="1292.0" y="166.0" lat="47.57765750710809" lon="-122.11491486854374" alt="2.0"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="22" name="n5-spine1" icon="/home/labartajoaquin/.coregui/icons/router.png" canvas="0" type="router" class="" image="" compose="" compose_name="">
+      <position x="362.0" y="256.0" lat="47.57683940777155" lon="-122.1274463667572" alt="2.0"/>
+      <services>
+        <service name="StaticRoute"/>
+        <service name="IPForward"/>
+      </services>
+    </device>
+    <device id="23" name="n1" icon="/home/labartajoaquin/.coregui/icons/router.png" canvas="0" type="router" class="" image="" compose="" compose_name="">
+      <position x="52.33333206176758" y="536.3333129882812" lat="47.574291098107444" lon="-122.13161904126908" alt="2.0"/>
+      <services>
+        <service name="StaticRoute"/>
+        <service name="IPForward"/>
+      </services>
+    </device>
+    <device id="24" name="n2" icon="/home/labartajoaquin/.coregui/icons/router.png" canvas="0" type="router" class="" image="" compose="" compose_name="">
+      <position x="249.0" y="550.3333129882812" lat="47.574163830868365" lon="-122.1289690111638" alt="2.0"/>
+      <services>
+        <service name="StaticRoute"/>
+        <service name="IPForward"/>
+      </services>
+    </device>
+    <device id="25" name="n7-leaf1" icon="/home/labartajoaquin/.coregui/icons/router.png" canvas="0" type="router" class="" image="" compose="" compose_name="">
+      <position x="167.0" y="410.0" lat="47.575439519257856" lon="-122.13007393896328" alt="2.0"/>
+      <services>
+        <service name="StaticRoute"/>
+        <service name="IPForward"/>
+      </services>
+    </device>
+    <device id="35" name="n6-spine2" icon="/home/labartajoaquin/.coregui/icons/router.png" canvas="0" type="router" class="" image="" compose="" compose_name="">
+      <position x="1027.0" y="266.0" lat="47.57674850705622" lon="-122.11848567179811" alt="2.0"/>
+      <services>
+        <service name="StaticRoute"/>
+        <service name="IPForward"/>
+      </services>
+    </device>
+    <device id="26" name="n17" icon="/home/labartajoaquin/.coregui/icons/router.png" canvas="0" type="router" class="" image="" compose="" compose_name="">
+      <position x="380.0" y="552.3333129882812" lat="47.574145649808955" lon="-122.1272038216305" alt="2.0"/>
+      <services>
+        <service name="StaticRoute"/>
+        <service name="IPForward"/>
+      </services>
+    </device>
+    <device id="27" name="n18" icon="/home/labartajoaquin/.coregui/icons/router.png" canvas="0" type="router" class="" image="" compose="" compose_name="">
+      <position x="552.0" y="528.3333129882812" lat="47.5743638221052" lon="-122.12488616819746" alt="2.0"/>
+      <services>
+        <service name="StaticRoute"/>
+        <service name="IPForward"/>
+      </services>
+    </device>
+    <device id="28" name="n8-leaf2" icon="/home/labartajoaquin/.coregui/icons/router.png" canvas="0" type="router" class="" image="" compose="" compose_name="">
+      <position x="450.6666564941406" y="411.0" lat="47.575430428950405" lon="-122.1262516075664" alt="2.0"/>
+      <services>
+        <service name="StaticRoute"/>
+        <service name="IPForward"/>
+      </services>
+    </device>
+    <device id="29" name="n21" icon="/home/labartajoaquin/.coregui/icons/router.png" canvas="0" type="router" class="" image="" compose="" compose_name="">
+      <position x="679.1666870117188" y="565.3333129882812" lat="47.57402747276896" lon="-122.12317263151886" alt="2.0"/>
+      <services>
+        <service name="StaticRoute"/>
+        <service name="IPForward"/>
+      </services>
+    </device>
+    <device id="30" name="n22" icon="/home/labartajoaquin/.coregui/icons/router.png" canvas="0" type="router" class="" image="" compose="" compose_name="">
+      <position x="912.0" y="561.6666870117188" lat="47.57406080441171" lon="-122.12003526566323" alt="2.0"/>
+      <services>
+        <service name="StaticRoute"/>
+        <service name="IPForward"/>
+      </services>
+    </device>
+    <device id="31" name="n9-leaf3" icon="/home/labartajoaquin/.coregui/icons/router.png" canvas="0" type="router" class="" image="" compose="" compose_name="">
+      <position x="764.0" y="404.0" lat="47.575494061069456" lon="-122.12202952559399" alt="2.0"/>
+      <services>
+        <service name="StaticRoute"/>
+        <service name="IPForward"/>
+      </services>
+    </device>
+    <device id="32" name="n23" icon="/home/labartajoaquin/.coregui/icons/router.png" canvas="0" type="router" class="" image="" compose="" compose_name="">
+      <position x="1069.3333740234375" y="541.6666870117188" lat="47.574242615016274" lon="-122.1179152410444" alt="2.0"/>
+      <services>
+        <service name="StaticRoute"/>
+        <service name="IPForward"/>
+      </services>
+    </device>
+    <device id="33" name="n24" icon="/home/labartajoaquin/.coregui/icons/router.png" canvas="0" type="router" class="" image="" compose="" compose_name="">
+      <position x="1293.3333740234375" y="545.6666870117188" lat="47.574206252945864" lon="-122.11489690168978" alt="2.0"/>
+      <services>
+        <service name="StaticRoute"/>
+        <service name="IPForward"/>
+      </services>
+    </device>
+    <device id="34" name="n10-leaf4" icon="/home/labartajoaquin/.coregui/icons/router.png" canvas="0" type="router" class="" image="" compose="" compose_name="">
+      <position x="1175.0" y="413.0" lat="47.575412248330764" lon="-122.11649141186739" alt="2.0"/>
+      <services>
+        <service name="StaticRoute"/>
+        <service name="IPForward"/>
+      </services>
+    </device>
+  </devices>
+  <links>
+    <link node1="1" node2="12">
+      <iface1 id="0" name="eth0" mac="00:00:00:aa:00:00" ip4="130.0.20.2" ip4_mask="23"/>
+      <iface2 id="0" name="veth12.0.1"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="23" node2="21">
+      <iface1 id="0" name="eth0" mac="00:00:00:aa:00:01" ip4="130.0.16.1" ip4_mask="24"/>
+      <iface2 id="0" name="veth21.0.1"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="21" node2="2">
+      <iface1 id="1" name="veth21.1.1"/>
+      <iface2 id="0" name="eth0" mac="00:00:00:aa:00:02" ip4="130.0.16.2" ip4_mask="24"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="20" node2="3">
+      <iface1 id="0" name="veth20.0.1"/>
+      <iface2 id="0" name="eth0" mac="00:00:00:aa:00:03" ip4="130.0.17.2" ip4_mask="24"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="24" node2="20">
+      <iface1 id="0" name="eth0" mac="00:00:00:aa:00:04" ip4="130.0.17.1" ip4_mask="24"/>
+      <iface2 id="1" name="veth20.1.1"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="25" node2="23">
+      <iface1 id="0" name="eth0" mac="00:00:00:aa:00:05" ip4="130.0.18.2" ip4_mask="30"/>
+      <iface2 id="1" name="eth1" mac="00:00:00:aa:00:06" ip4="130.0.18.1" ip4_mask="30"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="25" node2="24">
+      <iface1 id="1" name="eth1" mac="00:00:00:aa:00:07" ip4="130.0.18.6" ip4_mask="30"/>
+      <iface2 id="1" name="eth1" mac="00:00:00:aa:00:08" ip4="130.0.18.5" ip4_mask="30"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="19" node2="4">
+      <iface1 id="0" name="veth19.0.1"/>
+      <iface2 id="0" name="eth0" mac="00:00:00:aa:00:09" ip4="130.0.22.130" ip4_mask="27"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="18" node2="5">
+      <iface1 id="0" name="veth18.0.1"/>
+      <iface2 id="0" name="eth0" mac="00:00:00:aa:00:0a" ip4="130.0.22.2" ip4_mask="25"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="27" node2="18">
+      <iface1 id="0" name="eth0" mac="00:00:00:aa:00:0b" ip4="130.0.22.1" ip4_mask="25"/>
+      <iface2 id="1" name="veth18.1.1"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="26" node2="19">
+      <iface1 id="0" name="eth0" mac="00:00:00:aa:00:0c" ip4="130.0.22.129" ip4_mask="27"/>
+      <iface2 id="1" name="veth19.1.1"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="28" node2="26">
+      <iface1 id="0" name="eth0" mac="00:00:00:aa:00:0d" ip4="130.0.22.162" ip4_mask="30"/>
+      <iface2 id="1" name="eth1" mac="00:00:00:aa:00:0e" ip4="130.0.22.161" ip4_mask="30"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="28" node2="27">
+      <iface1 id="1" name="eth1" mac="00:00:00:aa:00:0f" ip4="130.0.22.166" ip4_mask="30"/>
+      <iface2 id="1" name="eth1" mac="00:00:00:aa:00:10" ip4="130.0.22.165" ip4_mask="30"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="17" node2="6">
+      <iface1 id="0" name="veth17.0.1"/>
+      <iface2 id="0" name="eth0" mac="00:00:00:aa:00:11" ip4="130.0.23.2" ip4_mask="25"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="16" node2="7">
+      <iface1 id="0" name="veth16.0.1"/>
+      <iface2 id="0" name="eth0" mac="00:00:00:aa:00:12" ip4="130.0.23.130" ip4_mask="26"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="11" node2="13">
+      <iface1 id="0" name="eth0" mac="00:00:00:aa:00:13" ip4="130.0.25.2" ip4_mask="28"/>
+      <iface2 id="0" name="veth13.0.1"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="13" node2="35">
+      <iface1 id="1" name="veth13.1.1"/>
+      <iface2 id="0" name="eth0" mac="00:00:00:aa:00:14" ip4="130.0.25.1" ip4_mask="28"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="33" node2="14">
+      <iface1 id="0" name="eth0" mac="00:00:00:aa:00:15" ip4="130.0.24.33" ip4_mask="27"/>
+      <iface2 id="0" name="veth14.0.1"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="14" node2="9">
+      <iface1 id="1" name="veth14.1.1"/>
+      <iface2 id="0" name="eth0" mac="00:00:00:aa:00:16" ip4="130.0.24.34" ip4_mask="27"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="14" node2="10">
+      <iface1 id="2" name="veth14.2.1"/>
+      <iface2 id="0" name="eth0" mac="00:00:00:aa:00:17" ip4="130.0.24.35" ip4_mask="27"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="32" node2="15">
+      <iface1 id="0" name="eth0" mac="00:00:00:aa:00:18" ip4="130.0.24.1" ip4_mask="27"/>
+      <iface2 id="0" name="veth15.0.1"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="15" node2="8">
+      <iface1 id="1" name="veth15.1.1"/>
+      <iface2 id="0" name="eth0" mac="00:00:00:aa:00:19" ip4="130.0.24.2" ip4_mask="27"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="32" node2="34">
+      <iface1 id="1" name="eth1" mac="00:00:00:aa:00:1a" ip4="130.0.24.129" ip4_mask="30"/>
+      <iface2 id="0" name="eth0" mac="00:00:00:aa:00:1b" ip4="130.0.24.130" ip4_mask="30"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="34" node2="33">
+      <iface1 id="1" name="eth1" mac="00:00:00:aa:00:1c" ip4="130.0.24.134" ip4_mask="30"/>
+      <iface2 id="1" name="eth1" mac="00:00:00:aa:00:1d" ip4="130.0.24.133" ip4_mask="30"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="34" node2="35">
+      <iface1 id="2" name="eth2" mac="00:00:00:aa:00:1e" ip4="130.0.26.29" ip4_mask="30"/>
+      <iface2 id="1" name="eth1" mac="00:00:00:aa:00:1f" ip4="130.0.26.30" ip4_mask="30"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="35" node2="31">
+      <iface1 id="2" name="eth2" mac="00:00:00:aa:00:20" ip4="130.0.26.22" ip4_mask="30"/>
+      <iface2 id="2" name="eth2" mac="00:00:00:aa:00:21" ip4="130.0.26.21" ip4_mask="30"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="35" node2="28">
+      <iface1 id="3" name="eth3" mac="00:00:00:aa:00:22" ip4="130.0.26.14" ip4_mask="30"/>
+      <iface2 id="2" name="eth2" mac="00:00:00:aa:00:23" ip4="130.0.26.13" ip4_mask="30"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="35" node2="25">
+      <iface1 id="4" name="eth4" mac="00:00:00:aa:00:24" ip4="130.0.26.6" ip4_mask="30"/>
+      <iface2 id="3" name="eth3" mac="00:00:00:aa:00:25" ip4="130.0.26.5" ip4_mask="30"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="12" node2="22">
+      <iface1 id="1" name="veth12.1.1"/>
+      <iface2 id="0" name="eth0" mac="00:00:00:aa:00:26" ip4="130.0.20.1" ip4_mask="23"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="22" node2="25">
+      <iface1 id="1" name="eth1" mac="00:00:00:aa:00:27" ip4="130.0.26.2" ip4_mask="30"/>
+      <iface2 id="4" name="eth4" mac="00:00:00:aa:00:28" ip4="130.0.26.1" ip4_mask="30"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="22" node2="28">
+      <iface1 id="2" name="eth2" mac="00:00:00:aa:00:29" ip4="130.0.26.10" ip4_mask="30"/>
+      <iface2 id="3" name="eth3" mac="00:00:00:aa:00:2a" ip4="130.0.26.9" ip4_mask="30"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="22" node2="31">
+      <iface1 id="3" name="eth3" mac="00:00:00:aa:00:2b" ip4="130.0.26.18" ip4_mask="30"/>
+      <iface2 id="3" name="eth3" mac="00:00:00:aa:00:2c" ip4="130.0.26.17" ip4_mask="30"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="22" node2="34">
+      <iface1 id="4" name="eth4" mac="00:00:00:aa:00:2d" ip4="130.0.26.26" ip4_mask="30"/>
+      <iface2 id="3" name="eth3" mac="00:00:00:aa:00:2e" ip4="130.0.26.25" ip4_mask="30"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="29" node2="17">
+      <iface1 id="0" name="eth0" mac="00:00:00:aa:00:2f" ip4="130.0.23.1" ip4_mask="25"/>
+      <iface2 id="1" name="veth17.1.1"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="30" node2="16">
+      <iface1 id="0" name="eth0" mac="00:00:00:aa:00:30" ip4="130.0.23.129" ip4_mask="26"/>
+      <iface2 id="1" name="veth16.1.1"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="31" node2="29">
+      <iface1 id="0" name="eth0" mac="00:00:00:aa:00:31" ip4="130.0.23.194" ip4_mask="30"/>
+      <iface2 id="1" name="eth1" mac="00:00:00:aa:00:32" ip4="130.0.23.193" ip4_mask="30"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+    <link node1="31" node2="30">
+      <iface1 id="1" name="eth1" mac="00:00:00:aa:00:33" ip4="130.0.23.198" ip4_mask="30"/>
+      <iface2 id="1" name="eth1" mac="00:00:00:aa:00:34" ip4="130.0.23.197" ip4_mask="30"/>
+      <options delay="0" bandwidth="0" loss="0.0" dup="0" jitter="0" unidirectional="0" buffer="0"/>
+    </link>
+  </links>
+  <service_configurations>
+    <service name="DefaultRoute" node="1">
+      <templates>
+        <template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.20.1
+
+]]></template>
+      </templates>
+    </service>
+    <service name="DefaultRoute" node="2">
+      <templates>
+        <template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.16.1
+
+]]></template>
+      </templates>
+    </service>
+    <service name="DefaultRoute" node="3">
+      <templates>
+        <template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.17.1
+
+]]></template>
+      </templates>
+    </service>
+    <service name="DefaultRoute" node="4">
+      <templates>
+        <template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.22.129
+
+]]></template>
+      </templates>
+    </service>
+    <service name="DefaultRoute" node="5">
+      <templates>
+        <template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.22.1
+
+]]></template>
+      </templates>
+    </service>
+    <service name="DefaultRoute" node="6">
+      <templates>
+        <template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.23.1
+
+]]></template>
+      </templates>
+    </service>
+    <service name="DefaultRoute" node="7">
+      <templates>
+        <template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.23.129
+
+]]></template>
+      </templates>
+    </service>
+    <service name="DefaultRoute" node="8">
+      <templates>
+        <template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.24.1
+
+]]></template>
+      </templates>
+    </service>
+    <service name="DefaultRoute" node="9">
+      <templates>
+        <template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.24.33
+
+]]></template>
+      </templates>
+    </service>
+    <service name="DefaultRoute" node="10">
+      <templates>
+        <template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.24.33
+
+]]></template>
+      </templates>
+    </service>
+    <service name="DefaultRoute" node="11">
+      <templates>
+        <template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.25.1
+
+]]></template>
+      </templates>
+    </service>
+    <service name="StaticRoute" node="22">
+      <templates>
+        <template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n5-spine1: una ruta por Net (sin ruta por defecto)
+/sbin/ip route add 130.0.16.0/22 via 130.0.26.1
+/sbin/ip route add 130.0.22.0/24 via 130.0.26.9
+/sbin/ip route add 130.0.23.0/24 via 130.0.26.17
+/sbin/ip route add 130.0.24.0/24 via 130.0.26.25
+# Net6 por leaf3
+/sbin/ip route add 130.0.25.0/24 via 130.0.26.17
+# Enlaces leaf-spine2 (solo para poder hacer ping a esas interfaces)
+/sbin/ip route add 130.0.26.4/30 via 130.0.26.1
+/sbin/ip route add 130.0.26.12/30 via 130.0.26.9
+/sbin/ip route add 130.0.26.20/30 via 130.0.26.17
+/sbin/ip route add 130.0.26.28/30 via 130.0.26.25
+
+]]></template>
+      </templates>
+    </service>
+    <service name="StaticRoute" node="23">
+      <templates>
+        <template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n1
+/sbin/ip route add default via 130.0.18.2
+
+]]></template>
+      </templates>
+    </service>
+    <service name="StaticRoute" node="24">
+      <templates>
+        <template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n2
+/sbin/ip route add default via 130.0.18.6
+
+]]></template>
+      </templates>
+    </service>
+    <service name="StaticRoute" node="25">
+      <templates>
+        <template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n7-leaf1
+/sbin/ip route add 130.0.16.0/24 via 130.0.18.1
+/sbin/ip route add 130.0.17.0/24 via 130.0.18.5
+/sbin/ip route add 130.0.25.0/24 via 130.0.26.6
+/sbin/ip route add default via 130.0.26.2
+
+]]></template>
+      </templates>
+    </service>
+    <service name="StaticRoute" node="35">
+      <templates>
+        <template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n6-spine2: una ruta por Net (sin ruta por defecto)
+/sbin/ip route add 130.0.16.0/22 via 130.0.26.5
+/sbin/ip route add 130.0.22.0/24 via 130.0.26.13
+/sbin/ip route add 130.0.23.0/24 via 130.0.26.21
+/sbin/ip route add 130.0.24.0/24 via 130.0.26.29
+# Net5 por leaf3
+/sbin/ip route add 130.0.20.0/23 via 130.0.26.21
+# Enlaces leaf-spine1 (solo para poder hacer ping a esas interfaces)
+/sbin/ip route add 130.0.26.0/30 via 130.0.26.5
+/sbin/ip route add 130.0.26.8/30 via 130.0.26.13
+/sbin/ip route add 130.0.26.16/30 via 130.0.26.21
+/sbin/ip route add 130.0.26.24/30 via 130.0.26.29
+
+]]></template>
+      </templates>
+    </service>
+    <service name="StaticRoute" node="26">
+      <templates>
+        <template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n17
+/sbin/ip route add default via 130.0.22.162
+
+]]></template>
+      </templates>
+    </service>
+    <service name="StaticRoute" node="27">
+      <templates>
+        <template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n18
+/sbin/ip route add default via 130.0.22.166
+
+]]></template>
+      </templates>
+    </service>
+    <service name="StaticRoute" node="28">
+      <templates>
+        <template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n8-leaf2
+/sbin/ip route add 130.0.22.128/27 via 130.0.22.161
+/sbin/ip route add 130.0.22.0/25 via 130.0.22.165
+/sbin/ip route add 130.0.25.0/24 via 130.0.26.14
+/sbin/ip route add default via 130.0.26.10
+
+]]></template>
+      </templates>
+    </service>
+    <service name="StaticRoute" node="29">
+      <templates>
+        <template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n21
+/sbin/ip route add default via 130.0.23.194
+
+]]></template>
+      </templates>
+    </service>
+    <service name="StaticRoute" node="30">
+      <templates>
+        <template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n22
+/sbin/ip route add default via 130.0.23.198
+
+]]></template>
+      </templates>
+    </service>
+    <service name="StaticRoute" node="31">
+      <templates>
+        <template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n9-leaf3
+/sbin/ip route add 130.0.23.0/25 via 130.0.23.193
+/sbin/ip route add 130.0.23.128/26 via 130.0.23.197
+/sbin/ip route add 130.0.25.0/24 via 130.0.26.22
+/sbin/ip route add default via 130.0.26.18
+
+]]></template>
+      </templates>
+    </service>
+    <service name="StaticRoute" node="32">
+      <templates>
+        <template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n23
+/sbin/ip route add default via 130.0.24.130
+
+]]></template>
+      </templates>
+    </service>
+    <service name="StaticRoute" node="33">
+      <templates>
+        <template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n24
+/sbin/ip route add default via 130.0.24.134
+
+]]></template>
+      </templates>
+    </service>
+    <service name="StaticRoute" node="34">
+      <templates>
+        <template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n10-leaf4
+/sbin/ip route add 130.0.24.0/27 via 130.0.24.129
+/sbin/ip route add 130.0.24.32/27 via 130.0.24.133
+/sbin/ip route add 130.0.25.0/24 via 130.0.26.30
+/sbin/ip route add default via 130.0.26.26
+
+]]></template>
+      </templates>
+    </service>
+  </service_configurations>
+  <session_origin lat="47.579166412353516" lon="-122.13232421875" alt="2.0" scale="150.0"/>
+  <session_options>
+    <configuration name="controlnet" value=""/>
+    <configuration name="controlnet0" value=""/>
+    <configuration name="controlnet1" value=""/>
+    <configuration name="controlnet2" value=""/>
+    <configuration name="controlnet3" value=""/>
+    <configuration name="controlnet_updown_script" value=""/>
+    <configuration name="enablerj45" value="1"/>
+    <configuration name="preservedir" value="0"/>
+    <configuration name="enablesdt" value="0"/>
+    <configuration name="sdturl" value="tcp://127.0.0.1:50000/"/>
+    <configuration name="ovs" value="0"/>
+    <configuration name="platform_id_start" value="1"/>
+    <configuration name="nem_id_start" value="1"/>
+    <configuration name="link_enabled" value="1"/>
+    <configuration name="loss_threshold" value="30"/>
+    <configuration name="link_interval" value="1"/>
+    <configuration name="link_timeout" value="4"/>
+    <configuration name="mtu" value="0"/>
+    <configuration name="checksums" value="0"/>
+  </session_options>
+  <session_metadata>
+    <configuration name="shapes" value="[]"/>
+    <configuration name="edges" value="[]"/>
+    <configuration name="hidden" value="[]"/>
+    <configuration name="canvas" value="{&quot;gridlines&quot;: true, &quot;canvases&quot;: [{&quot;id&quot;: 1, &quot;wallpaper&quot;: null, &quot;wallpaper_style&quot;: 1, &quot;fit_image&quot;: false, &quot;dimensions&quot;: [3000, 2000]}]}"/>
+  </session_metadata>
+</scenario>
