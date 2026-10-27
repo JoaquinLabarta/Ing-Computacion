@@ -1,0 +1,439 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<scenario name="tpi_1_nuevo.xml">
+  <networks>
+    <network id="12" name="n15" type="SWITCH">
+      <position x="221.3" y="215.0"/>
+    </network>
+    <network id="13" name="n16" type="SWITCH">
+      <position x="1175.0" y="182.0"/>
+    </network>
+    <network id="14" name="n28" type="SWITCH">
+      <position x="1295.0" y="676.0"/>
+    </network>
+    <network id="15" name="n27" type="SWITCH">
+      <position x="1073.0" y="669.7"/>
+    </network>
+    <network id="16" name="n26" type="SWITCH">
+      <position x="841.3" y="672.7"/>
+    </network>
+    <network id="17" name="n25" type="SWITCH">
+      <position x="706.3" y="672.7"/>
+    </network>
+    <network id="18" name="n20" type="SWITCH">
+      <position x="502.0" y="671.7"/>
+    </network>
+    <network id="19" name="n19" type="SWITCH">
+      <position x="409.0" y="674.7"/>
+    </network>
+    <network id="20" name="n4" type="SWITCH">
+      <position x="215.0" y="669.7"/>
+    </network>
+    <network id="21" name="n3" type="SWITCH">
+      <position x="121.0" y="672.7"/>
+    </network>
+  </networks>
+  <devices>
+    <device id="1" name="n34" type="host">
+      <position x="77.0" y="199.0"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="2" name="n11" type="host">
+      <position x="125.0" y="836.0"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="3" name="n12" type="host">
+      <position x="218.7" y="837.7"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="4" name="n13" type="host">
+      <position x="403.3" y="827.0"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="5" name="n14" type="host">
+      <position x="507.7" y="828.0"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="6" name="n29" type="host">
+      <position x="709.0" y="832.0"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="7" name="n30" type="host">
+      <position x="840.3" y="832.3"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="8" name="n31" type="host">
+      <position x="1076.7" y="839.3"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="9" name="n32" type="host">
+      <position x="1239.7" y="850.3"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="10" name="n33" type="host">
+      <position x="1470.3" y="829.7"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="11" name="n35" type="host">
+      <position x="1292.0" y="166.0"/>
+      <services>
+        <service name="DefaultRoute"/>
+      </services>
+    </device>
+    <device id="22" name="n5-spine1" type="router">
+      <position x="362.0" y="256.0"/>
+      <services>
+        <service name="IPForward"/>
+        <service name="StaticRoute"/>
+      </services>
+    </device>
+    <device id="23" name="n1" type="router">
+      <position x="52.3" y="536.3"/>
+      <services>
+        <service name="IPForward"/>
+        <service name="StaticRoute"/>
+      </services>
+    </device>
+    <device id="24" name="n2" type="router">
+      <position x="249.0" y="550.3"/>
+      <services>
+        <service name="IPForward"/>
+        <service name="StaticRoute"/>
+      </services>
+    </device>
+    <device id="25" name="n7-leaf1" type="router">
+      <position x="167.0" y="410.0"/>
+      <services>
+        <service name="IPForward"/>
+        <service name="StaticRoute"/>
+      </services>
+    </device>
+    <device id="35" name="n6-spine2" type="router">
+      <position x="1027.0" y="266.0"/>
+      <services>
+        <service name="IPForward"/>
+        <service name="StaticRoute"/>
+      </services>
+    </device>
+    <device id="26" name="n17" type="router">
+      <position x="380.0" y="552.3"/>
+      <services>
+        <service name="IPForward"/>
+        <service name="StaticRoute"/>
+      </services>
+    </device>
+    <device id="27" name="n18" type="router">
+      <position x="552.0" y="528.3"/>
+      <services>
+        <service name="IPForward"/>
+        <service name="StaticRoute"/>
+      </services>
+    </device>
+    <device id="28" name="n8-leaf2" type="router">
+      <position x="450.7" y="411.0"/>
+      <services>
+        <service name="IPForward"/>
+        <service name="StaticRoute"/>
+      </services>
+    </device>
+    <device id="29" name="n21" type="router">
+      <position x="679.2" y="565.3"/>
+      <services>
+        <service name="IPForward"/>
+        <service name="StaticRoute"/>
+      </services>
+    </device>
+    <device id="30" name="n22" type="router">
+      <position x="912.0" y="561.7"/>
+      <services>
+        <service name="IPForward"/>
+        <service name="StaticRoute"/>
+      </services>
+    </device>
+    <device id="31" name="n9-leaf3" type="router">
+      <position x="764.0" y="404.0"/>
+      <services>
+        <service name="IPForward"/>
+        <service name="StaticRoute"/>
+      </services>
+    </device>
+    <device id="32" name="n23" type="router">
+      <position x="1069.3" y="541.7"/>
+      <services>
+        <service name="IPForward"/>
+        <service name="StaticRoute"/>
+      </services>
+    </device>
+    <device id="33" name="n24" type="router">
+      <position x="1293.3" y="545.7"/>
+      <services>
+        <service name="IPForward"/>
+        <service name="StaticRoute"/>
+      </services>
+    </device>
+    <device id="34" name="n10-leaf4" type="router">
+      <position x="1173.0" y="413.0"/>
+      <services>
+        <service name="IPForward"/>
+        <service name="StaticRoute"/>
+      </services>
+    </device>
+  </devices>
+  <links>
+    <link node1="1" node2="12">
+      <iface1 name="eth0" ip4="130.0.20.2" ip4_mask="23" ip6="2002:dae1:0:50::2" ip6_mask="64" id="0"/>
+    </link>
+    <link node1="23" node2="21">
+      <iface1 name="eth0" ip4="130.0.16.1" ip4_mask="24" id="0"/>
+    </link>
+    <link node1="21" node2="2">
+      <iface2 name="eth0" ip4="130.0.16.2" ip4_mask="24" id="0"/>
+    </link>
+    <link node1="20" node2="3">
+      <iface2 name="eth0" ip4="130.0.17.2" ip4_mask="24" id="0"/>
+    </link>
+    <link node1="24" node2="20">
+      <iface1 name="eth0" ip4="130.0.17.1" ip4_mask="24" id="0"/>
+    </link>
+    <link node1="25" node2="23">
+      <iface1 name="eth0" ip4="130.0.18.2" ip4_mask="30" id="0"/>
+      <iface2 name="eth1" ip4="130.0.18.1" ip4_mask="30" id="1"/>
+    </link>
+    <link node1="25" node2="24">
+      <iface1 name="eth1" ip4="130.0.18.6" ip4_mask="30" id="1"/>
+      <iface2 name="eth1" ip4="130.0.18.5" ip4_mask="30" id="1"/>
+    </link>
+    <link node1="19" node2="4">
+      <iface2 name="eth0" ip4="130.0.22.130" ip4_mask="27" id="0"/>
+    </link>
+    <link node1="18" node2="5">
+      <iface2 name="eth0" ip4="130.0.22.2" ip4_mask="25" id="0"/>
+    </link>
+    <link node1="27" node2="18">
+      <iface1 name="eth0" ip4="130.0.22.1" ip4_mask="25" id="0"/>
+    </link>
+    <link node1="26" node2="19">
+      <iface1 name="eth0" ip4="130.0.22.129" ip4_mask="27" id="0"/>
+    </link>
+    <link node1="28" node2="26">
+      <iface1 name="eth0" ip4="130.0.22.162" ip4_mask="30" id="0"/>
+      <iface2 name="eth1" ip4="130.0.22.161" ip4_mask="30" id="1"/>
+    </link>
+    <link node1="28" node2="27">
+      <iface1 name="eth1" ip4="130.0.22.166" ip4_mask="30" id="1"/>
+      <iface2 name="eth1" ip4="130.0.22.165" ip4_mask="30" id="1"/>
+    </link>
+    <link node1="17" node2="6">
+      <iface2 name="eth0" ip4="130.0.23.2" ip4_mask="25" id="0"/>
+    </link>
+    <link node1="16" node2="7">
+      <iface2 name="eth0" ip4="130.0.23.130" ip4_mask="26" id="0"/>
+    </link>
+    <link node1="11" node2="13">
+      <iface1 name="eth0" ip4="130.0.25.2" ip4_mask="28" ip6="2002:dae1:0:60::2" ip6_mask="64" id="0"/>
+    </link>
+    <link node1="13" node2="35">
+      <iface2 name="eth0" ip4="130.0.25.1" ip4_mask="28" ip6="2002:dae1:0:60::1" ip6_mask="64" id="0"/>
+    </link>
+    <link node1="33" node2="14">
+      <iface1 name="eth0" ip4="130.0.24.33" ip4_mask="27" id="0"/>
+    </link>
+    <link node1="14" node2="9">
+      <iface2 name="eth0" ip4="130.0.24.34" ip4_mask="27" id="0"/>
+    </link>
+    <link node1="14" node2="10">
+      <iface2 name="eth0" ip4="130.0.24.35" ip4_mask="27" id="0"/>
+    </link>
+    <link node1="32" node2="15">
+      <iface1 name="eth0" ip4="130.0.24.1" ip4_mask="27" id="0"/>
+    </link>
+    <link node1="15" node2="8">
+      <iface2 name="eth0" ip4="130.0.24.2" ip4_mask="27" id="0"/>
+    </link>
+    <link node1="32" node2="34">
+      <iface1 name="eth1" ip4="130.0.24.129" ip4_mask="30" id="1"/>
+      <iface2 name="eth0" ip4="130.0.24.130" ip4_mask="30" id="0"/>
+    </link>
+    <link node1="34" node2="33">
+      <iface1 name="eth1" ip4="130.0.24.134" ip4_mask="30" id="1"/>
+      <iface2 name="eth1" ip4="130.0.24.133" ip4_mask="30" id="1"/>
+    </link>
+    <link node1="34" node2="35">
+      <iface1 name="eth2" ip4="130.0.26.29" ip4_mask="30" id="2"/>
+      <iface2 name="eth1" ip4="130.0.26.30" ip4_mask="30" id="1"/>
+    </link>
+    <link node1="35" node2="31">
+      <iface1 name="eth2" ip4="130.0.26.22" ip4_mask="30" ip6="2002:dae1:0:f5::2" ip6_mask="64" id="2"/>
+      <iface2 name="eth2" ip4="130.0.26.21" ip4_mask="30" ip6="2002:dae1:0:f5::1" ip6_mask="64" id="2"/>
+    </link>
+    <link node1="35" node2="28">
+      <iface1 name="eth3" ip4="130.0.26.14" ip4_mask="30" id="3"/>
+      <iface2 name="eth2" ip4="130.0.26.13" ip4_mask="30" id="2"/>
+    </link>
+    <link node1="35" node2="25">
+      <iface1 name="eth4" ip4="130.0.26.6" ip4_mask="30" id="4"/>
+      <iface2 name="eth3" ip4="130.0.26.5" ip4_mask="30" id="3"/>
+    </link>
+    <link node1="12" node2="22">
+      <iface2 name="eth0" ip4="130.0.20.1" ip4_mask="23" ip6="2002:dae1:0:50::1" ip6_mask="64" id="0"/>
+    </link>
+    <link node1="22" node2="25">
+      <iface1 name="eth1" ip4="130.0.26.2" ip4_mask="30" id="1"/>
+      <iface2 name="eth4" ip4="130.0.26.1" ip4_mask="30" id="4"/>
+    </link>
+    <link node1="22" node2="28">
+      <iface1 name="eth2" ip4="130.0.26.10" ip4_mask="30" id="2"/>
+      <iface2 name="eth3" ip4="130.0.26.9" ip4_mask="30" id="3"/>
+    </link>
+    <link node1="22" node2="31">
+      <iface1 name="eth3" ip4="130.0.26.18" ip4_mask="30" ip6="2002:dae1:0:f4::2" ip6_mask="64" id="3"/>
+      <iface2 name="eth3" ip4="130.0.26.17" ip4_mask="30" ip6="2002:dae1:0:f4::1" ip6_mask="64" id="3"/>
+    </link>
+    <link node1="22" node2="34">
+      <iface1 name="eth4" ip4="130.0.26.26" ip4_mask="30" id="4"/>
+      <iface2 name="eth3" ip4="130.0.26.25" ip4_mask="30" id="3"/>
+    </link>
+    <link node1="29" node2="17">
+      <iface1 name="eth0" ip4="130.0.23.1" ip4_mask="25" id="0"/>
+    </link>
+    <link node1="30" node2="16">
+      <iface1 name="eth0" ip4="130.0.23.129" ip4_mask="26" id="0"/>
+    </link>
+    <link node1="31" node2="29">
+      <iface1 name="eth0" ip4="130.0.23.194" ip4_mask="30" id="0"/>
+      <iface2 name="eth1" ip4="130.0.23.193" ip4_mask="30" id="1"/>
+    </link>
+    <link node1="31" node2="30">
+      <iface1 name="eth1" ip4="130.0.23.198" ip4_mask="30" id="1"/>
+      <iface2 name="eth1" ip4="130.0.23.197" ip4_mask="30" id="1"/>
+    </link>
+  </links>
+  <service_configurations><service name="DefaultRoute" node="1"><templates><template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.20.1
+ip -6 route add default via 2002:dae1:0:50::1
+]]></template></templates></service><service name="DefaultRoute" node="2"><templates><template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.16.1
+]]></template></templates></service><service name="DefaultRoute" node="3"><templates><template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.17.1
+]]></template></templates></service><service name="DefaultRoute" node="4"><templates><template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.22.129
+]]></template></templates></service><service name="DefaultRoute" node="5"><templates><template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.22.1
+]]></template></templates></service><service name="DefaultRoute" node="6"><templates><template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.23.1
+]]></template></templates></service><service name="DefaultRoute" node="7"><templates><template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.23.129
+]]></template></templates></service><service name="DefaultRoute" node="8"><templates><template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.24.1
+]]></template></templates></service><service name="DefaultRoute" node="9"><templates><template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.24.33
+]]></template></templates></service><service name="DefaultRoute" node="10"><templates><template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.24.33
+]]></template></templates></service><service name="DefaultRoute" node="11"><templates><template name="defaultroute.sh"><![CDATA[#!/bin/sh
+ip route add default via 130.0.25.1
+ip -6 route add default via 2002:dae1:0:60::1
+]]></template></templates></service><service name="StaticRoute" node="22"><templates><template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n5-spine1: una ruta por Net (sin ruta por defecto)
+/sbin/ip route add 130.0.16.0/22 via 130.0.26.1
+/sbin/ip route add 130.0.22.0/24 via 130.0.26.9
+/sbin/ip route add 130.0.23.0/24 via 130.0.26.17
+/sbin/ip route add 130.0.24.0/24 via 130.0.26.25
+# Net6 por leaf3
+/sbin/ip route add 130.0.25.0/24 via 130.0.26.17
+# Enlaces leaf-spine2 (solo para poder hacer ping a esas interfaces)
+/sbin/ip route add 130.0.26.4/30 via 130.0.26.1
+/sbin/ip route add 130.0.26.12/30 via 130.0.26.9
+/sbin/ip route add 130.0.26.20/30 via 130.0.26.17
+/sbin/ip route add 130.0.26.28/30 via 130.0.26.25
+# IPv6: Net6 por leaf3
+/sbin/ip -6 route add 2002:dae1:0:60::/60 via 2002:dae1:0:f4::1
+# Enlace leaf3-spine2 (solo para ping a esas interfaces)
+/sbin/ip -6 route add 2002:dae1:0:f5::/64 via 2002:dae1:0:f4::1
+]]></template></templates></service><service name="StaticRoute" node="23"><templates><template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n1
+/sbin/ip route add default via 130.0.18.2
+]]></template></templates></service><service name="StaticRoute" node="24"><templates><template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n2
+/sbin/ip route add default via 130.0.18.6
+]]></template></templates></service><service name="StaticRoute" node="25"><templates><template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n7-leaf1
+/sbin/ip route add 130.0.16.0/24 via 130.0.18.1
+/sbin/ip route add 130.0.17.0/24 via 130.0.18.5
+/sbin/ip route add 130.0.25.0/24 via 130.0.26.6
+/sbin/ip route add default via 130.0.26.2
+]]></template></templates></service><service name="StaticRoute" node="35"><templates><template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n6-spine2: una ruta por Net (sin ruta por defecto)
+/sbin/ip route add 130.0.16.0/22 via 130.0.26.5
+/sbin/ip route add 130.0.22.0/24 via 130.0.26.13
+/sbin/ip route add 130.0.23.0/24 via 130.0.26.21
+/sbin/ip route add 130.0.24.0/24 via 130.0.26.29
+# Net5 por leaf3
+/sbin/ip route add 130.0.20.0/23 via 130.0.26.21
+# Enlaces leaf-spine1 (solo para poder hacer ping a esas interfaces)
+/sbin/ip route add 130.0.26.0/30 via 130.0.26.5
+/sbin/ip route add 130.0.26.8/30 via 130.0.26.13
+/sbin/ip route add 130.0.26.16/30 via 130.0.26.21
+/sbin/ip route add 130.0.26.24/30 via 130.0.26.29
+# IPv6: Net5 por leaf3
+/sbin/ip -6 route add 2002:dae1:0:50::/60 via 2002:dae1:0:f5::1
+# Enlace leaf3-spine1 (solo para ping a esas interfaces)
+/sbin/ip -6 route add 2002:dae1:0:f4::/64 via 2002:dae1:0:f5::1
+]]></template></templates></service><service name="StaticRoute" node="26"><templates><template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n17
+/sbin/ip route add default via 130.0.22.162
+]]></template></templates></service><service name="StaticRoute" node="27"><templates><template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n18
+/sbin/ip route add default via 130.0.22.166
+]]></template></templates></service><service name="StaticRoute" node="28"><templates><template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n8-leaf2
+/sbin/ip route add 130.0.22.128/27 via 130.0.22.161
+/sbin/ip route add 130.0.22.0/25 via 130.0.22.165
+/sbin/ip route add 130.0.25.0/24 via 130.0.26.14
+/sbin/ip route add default via 130.0.26.10
+]]></template></templates></service><service name="StaticRoute" node="29"><templates><template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n21
+/sbin/ip route add default via 130.0.23.194
+]]></template></templates></service><service name="StaticRoute" node="30"><templates><template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n22
+/sbin/ip route add default via 130.0.23.198
+]]></template></templates></service><service name="StaticRoute" node="31"><templates><template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n9-leaf3
+/sbin/ip route add 130.0.23.0/25 via 130.0.23.193
+/sbin/ip route add 130.0.23.128/26 via 130.0.23.197
+/sbin/ip route add 130.0.25.0/24 via 130.0.26.22
+/sbin/ip route add default via 130.0.26.18
+# IPv6: leaf3 une Net5 y Net6
+/sbin/ip -6 route add 2002:dae1:0:50::/60 via 2002:dae1:0:f4::2
+/sbin/ip -6 route add 2002:dae1:0:60::/60 via 2002:dae1:0:f5::2
+]]></template></templates></service><service name="StaticRoute" node="32"><templates><template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n23
+/sbin/ip route add default via 130.0.24.130
+]]></template></templates></service><service name="StaticRoute" node="33"><templates><template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n24
+/sbin/ip route add default via 130.0.24.134
+]]></template></templates></service><service name="StaticRoute" node="34"><templates><template name="staticroute.sh"><![CDATA[#!/bin/sh
+# n10-leaf4
+/sbin/ip route add 130.0.24.0/27 via 130.0.24.129
+/sbin/ip route add 130.0.24.32/27 via 130.0.24.133
+/sbin/ip route add 130.0.25.0/24 via 130.0.26.30
+/sbin/ip route add default via 130.0.26.26
+]]></template></templates></service></service_configurations></scenario>
